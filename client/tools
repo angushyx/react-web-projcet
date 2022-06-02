@@ -1,0 +1,39 @@
+1.language -> html、css、sass、js 
+2.frontend framework -> react、redux-toolkit、tailwind、sass
+3.backend server -> node.js、express 
+4.database -> mongodb 、mongoose 
+5.design -> figma 
+6.deploy -> heroku
+7.version control -> git
+8.get apis -> axios to fetch data
+9.style -> font awesome
+
+
+            <CardList>
+              <ListImage src="https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
+              <FoodInfo>
+                <FoodTitle>惠玲燉牛排</FoodTitle>{" "}
+                <FoodDescription>拉姆其驕傲之作。</FoodDescription>
+              </FoodInfo>
+            </CardList>
+            <CardList>
+              <ListImage src="https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
+              <FoodInfo>
+                <FoodTitle>堂楊寶寶</FoodTitle>{" "}
+                <FoodDescription>吃完保證堂堂的。</FoodDescription>
+              </FoodInfo>
+            </CardList>
+            <CardList>
+              <ListImage src="https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />{" "}
+              <FoodInfo>
+                <FoodTitle>美國大熱狗</FoodTitle>{" "}
+                <FoodDescription>想吞吞不下反而吐出來的巨物。</FoodDescription>
+              </FoodInfo>
+            </CardList>
+            <CardList>
+              <ListImage src="https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDh8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
+              <FoodInfo>
+                <FoodTitle>德式小香腸</FoodTitle>
+                <FoodDescription>一口秒殺，讓人又愛又恨。</FoodDescription>
+              </FoodInfo>
+            </CardList>
