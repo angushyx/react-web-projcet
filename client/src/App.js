@@ -89,11 +89,68 @@ function App() {
     //   </Route>
     //   <Route path="/register" element={<Register />} />
     // </Routes>
-
-    <Container>
-      <>{element}</>
-    </Container>
+    <>
+      <Container>
+        <>{element}</>
+        <Navigation />
+      </Container>
+    </>
   );
 }
+
+/*
+ 
+ {
+    path: "/",
+    element: <Home />,
+    children: [],
+  },
+  {
+    path: "/auth",
+    element: <auth />,
+      children: [
+        path:"/google",element:<原本google的>
+      ],
+  },
+  {
+    path: "/Shop",
+    element: <Shop />,
+  },
+
+  { path: "/new", element: <NewItem /> },
+
+  { path: "/product/:itemId", element: <DetailPages /> },
+  {
+    path: "/Location",
+    element: <Location />,
+  },
+  {
+    path: "/confirm",
+    element: <ConfirmPage />,
+  },
+  {
+    path: "/search",
+    element: <Search />,
+  },
+  {
+    path: "/payment",
+    element: <PaymentPage />,
+  },
+  {
+    path: "/checkout",
+    element: <CheckoutPage />,
+  },
+
+  {
+    path: "*",
+    element: <NoFound />,
+  },
+
+
+
+
+
+
+ */
 
 export default App;

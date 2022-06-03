@@ -1,18 +1,24 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-  /* position */
+  position: sticky;
+  height: 5rem;
+  background-color: var(--color-grey-light-1);
+  bottom: 0;
 
-  top: 0;
-  height: 8rem;
-  /* flexBox */
-  display: flex;
-  align-items: center;
+  @media screen and (min-width: 576px) {
+    /* position */
+    /* top: 0; */
 
-  background-color: #fff;
-  opacity: 0.9;
+    /* flexBox */
+    /* display: flex;
+    align-items: center;
 
-  z-index: 20;
+    background-color: #fff;
+    opacity: 0.9;
+
+    z-index: 20; */
+  }
 `;
 
 export const Wrapper = styled.nav`
@@ -20,16 +26,16 @@ export const Wrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   font-size: 2rem;
 
   width: 90%;
+  max-width: 34rem;
   height: 100%;
   margin: 0 auto;
 `;
 
 export const LeftNav = styled.div`
-  gap: 2rem;
+  /* gap: 2rem;
   font-size: 2rem;
   transition: 1s all;
   cursor: pointer;
@@ -38,22 +44,22 @@ export const LeftNav = styled.div`
   }
   @media screen and (min-width: 786px) {
     font-size: 2rem;
-  }
+  } */
 `;
 
 export const Search = styled.form`
-  display: none;
+  /* display: none;
 
   @media screen and (min-width: 600px) {
     flex: 0 0 40%;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+  } */
 `;
 
 export const Input = styled.input`
-  font-size: inherit;
+  /* font-size: inherit;
   border-radius: 10rem;
   border: none;
   padding: 0.6rem 3rem;
@@ -69,10 +75,10 @@ export const Input = styled.input`
   &::-webkit-input-placeholder {
     font-weight: 100;
     color: #999;
-  }
+  } */
 `;
 export const SearchBtn = styled.button`
-  border: none;
+  /* border: none;
   font-size: inherit;
 
   &:focus {
@@ -81,42 +87,68 @@ export const SearchBtn = styled.button`
 
   &:active {
     transform: translateY(2px);
-  }
+  } */
 `;
 export const IconStyle = styled.div`
-  height: 2rem;
-  width: 2rem;
-  opacity: 0.6;
+  position: ${(props) => props.position || "relative"};
+  top: ${(props) => props.top || "auto"};
+  right: ${(props) => props.right || "auto"};
+  color: ${(props) => props.color || "var(--color-grey-dark-2)"};
+  font-size: ${(props) => props.fontSize || "auto"};
+  height: ${(props) => props.height || "3.7rem"};
+  width: ${(props) => props.width || "3.7rem"};
+
+  border-radius: ${(props) => props.radius || "0"};
+
+  background: ${(props) => props.bgc || "none"};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :hover {
+    ::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      height: 3.7rem;
+      width: 3.7rem;
+      background-color: var(--color-primary);
+      z-index: -1;
+    }
+  }
 `;
 
 export const LogoWrapper = styled.div``;
 
 export const Logo = styled.div`
-  width: 5rem;
+  /* width: 5rem;
   height: 5rem;
   @media screen and (min-width: 600px) {
     width: 4rem;
     height: 4rem;
-  }
+  } */
 `;
 
 export const UserNav = styled.nav`
-  height: inherit;
+  /* height: inherit;
   display: flex;
-  align-items: center;
+  align-items: center; */
 `;
 
 export const UserImage = styled.div`
-  display: flex;
+  /* display: flex;
   align-items: center;
   gap: 1rem;
   width: 11rem;
   height: 4rem;
-  border-radius: 50%;
+  border-radius: 50%; */
 `;
 
 export const Ul = styled.ul`
-  display: flex;
+  /* display: flex;
   align-items: center;
   height: 100%;
 
@@ -129,54 +161,57 @@ export const Ul = styled.ul`
       height: inherit;
       background-color: #eee;
     }
-  }
+  } */
 `;
 export const Li = styled.li`
-  cursor: pointer;
+  /* cursor: pointer;
   @media screen and (min-width: 600px) {
     display: block;
     font-size: 2.4rem;
     padding: 0 1.5rem;
-  }
+  } */
 `;
 export const Li2 = styled.li`
-  display: block;
+  /* display: block;
   font-size: 3rem;
   @media screen and (min-width: 600px) {
     display: none;
-  }
+  } */
 `;
 
 export const Image = styled.img`
-  border-radius: 50%;
+  /* width: ${(props) => props.width || "100%"};
+  height: ${(props) => props.height || "100%"};
+  border-radius: ${(props) => props.radius || "50%"}; */
 `;
 
 export const CartIcon = styled.div`
-  display: none;
+  /* display: none; */
   position: relative;
-  @media screen and (min-width: 600px) {
+  /* @media screen and (min-width: 600px) {
     display: block;
     position: relative;
-  }
+  } */
 `;
 
 export const Hamburger = styled.div`
-  font-size: 3rem;
+  /* font-size: 3rem;
   @media screen and (min-width: 600px) {
     display: none;
-  }
+  } */
 `;
 
 export const Notification = styled.span`
   position: absolute;
-  top: -1.3rem;
-  left: 1.5rem;
-  height: 2rem;
-  width: 2rem;
+  top: -0.5rem;
+  right: 0;
+
+  height: 1.4rem;
+  width: 1.4rem;
   z-index: 99;
 
-  font-size: 2rem;
-  background-color: #ee1e;
+  font-size: 1.2rem;
+  background-color: var(--color-primary-dark);
 
   display: flex;
   justify-content: center;
@@ -184,13 +219,3 @@ export const Notification = styled.span`
 
   border-radius: 50%;
 `;
-
-/***media query
- *
- *
- *
- *
- *
- *
- *
- * ****/

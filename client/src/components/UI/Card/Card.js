@@ -1,41 +1,84 @@
 import styled from "styled-components";
 
 export const CardStyle = styled.div`
-  display: flex;
-  flex-direction: column;
+  -webkit-box-shadow: -7px 16px 31px -32px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -7px 16px 31px -32px rgba(0, 0, 0, 0.75);
+  box-shadow: -7px 16px 31px -32px rgba(0, 0, 0, 0.75);
+
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+
+  min-width: 23rem;
+  border-radius: 1rem;
 `;
 export const Image = styled.img`
   width: 100%;
   height: 22vh;
-  -webkit-box-shadow: -6px 0px 22px -14px rgba(0, 0, 0, 1);
-  -moz-box-shadow: -6px 0px 22px -14px rgba(0, 0, 0, 1);
-  box-shadow: -6px 0px 22px -14px rgba(0, 0, 0, 1);
-  transition: 0.004 all;
-
-  border-radius: 2rem;
+  border-radius: 1rem 1rem 0 0;
   &:hover {
     cursor: pointer;
-    transform: scale(1.01);
   }
 `;
-export const Detail = styled.div`
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+
+export const CardContext = styled.div`
+  padding: 1.3rem;
+  padding-bottom: 0;
+  background: var(--color-grey-light-3);
+  border-radius: 0 0 1rem 1rem;
 `;
 
-export const Name = styled.div`
-  font-size: 2rem;
+export const Name = styled.p`
+  font-size: 2.4rem;
+`;
+
+export const PriceWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 1rem;
 `;
 
 export const Price = styled.div`
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--dark-gray);
 `;
 
-export const CardWrapper = styled.div`
+export const Detail = styled.div`
+  padding-bottom: 1rem;
+`;
+
+export const HightLightPill = styled.span`
+  padding: ${(props) => props.padding || ".1rem 0"};
+
+  text-align: center;
+  height: 100%;
+  width: 30%;
+
+  color: ${(props) => props.color || ".var(--color-grey-dark-1)"};
+
+  font-size: ${(props) => props.fontSize || ".auto"};
+
+  border-radius: 2rem;
+  background: ${(props) => props.bgc || "var(--color-primary-dark)"};
+`;
+
+export const RatingWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+`;
+
+export const Star = styled.div`
+  color: var(--color-primary-dark);
+`;
+
+export const Rating = styled.strong`
+  flex: 1;
+`;
+export const Discount = styled.s`
+  flex: 1;
 `;

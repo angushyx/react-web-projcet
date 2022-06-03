@@ -6,15 +6,14 @@ export const BtnStyle = styled.button`
   border: 1px solid #000;
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "4rem"};
+  font-size: ${(props) => props.fontSize || "1.8rem"};
+  border-radius: ${(props) => props.radius || "0"};
+  background-color: #fff;
 
   text-align: center;
-  font-size: ${(props) => props.fontSize || "1.8rem"};
-  font-weight: 700;
+  font-weight: 900;
   text-transform: capitalize;
-
   transition: all 0.3s;
-
-  border-radius: ${(props) => props.radius || "0"};
 
   &:hover {
     border: 1px solid #fff;

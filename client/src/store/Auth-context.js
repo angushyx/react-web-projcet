@@ -1,4 +1,4 @@
-  import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 let logoutTimer;
 const AuthContext = React.createContext({
@@ -9,7 +9,7 @@ const AuthContext = React.createContext({
 });
 
 /**
- * Helper func 計算在網站中剩餘停留的時間
+ * Helper function 計算在網站中剩餘停留的時間
  * @param {Number} expirationTime
  * @returns 登入剩餘時間
  */

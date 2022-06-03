@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Rubik:wght@400;500;600;700&display=swap');
 
 *,
 *::after,
@@ -8,6 +8,8 @@
   box-sizing: border-box;
 }
 html {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 62.5%;
 }
 body {
@@ -16,6 +18,26 @@ body {
   margin: 0;
   padding: 0;
 }
+
+:root{
+  --color-primary:#ffd43b;
+  --color-primary-light:#ffe176;
+  --color-primary-dark:#ee1e;
+  
+  --color-grey-light-1:#faf9f9;
+  --color-grey-light-2:#f4f2f2;
+  --color-grey-light-3:#f0eeee;
+  --color-grey-light-4:#ccc;
+
+  --color-grey-dark-1:#222;
+  --color-grey-dark-2:#555;
+  --color-grey-dark-3:#999;
+
+  --show-dark:0 2rem 6rem rgba(0,0,0,.3);
+  --show-light:0 2rem 5rem rgba(0,0,0,.06)
+}
+
+
 
 h1,
 h2,

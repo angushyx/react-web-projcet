@@ -48,85 +48,96 @@ const Navigation = ({ onShowCart }) => {
 
   const totalQuantity = cartReducer.totalQuantity;
 
-  // const [authenticated, setAuthenticated] = useState(false);
-  // const [user, setUser] = useState("");
-  // const handleNotAuthenticated = () => {
-  //   setAuthenticated(false);
-  // };
-
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8080/auth/login/success")
-  //     .then((res) => {
-  //       if (res.status === 200) return res.json();
-  //       throw new Error("failed to authenticate user");
-  //     })
-  //     .then((responseJson) => {
-  //       setAuthenticated(true);
-  //       setUser(responseJson.user);
-  //     });
-  // }).catch((error) => {
-  //   setAuthenticated(false);
-  //   error: "Failed to authenticate user";
-  // });
-
   return (
     <>
+      {" "}
+      <Link to="register">
+        <IconStyle
+          position="absolute"
+          top="1.4rem"
+          color="var(--color-grey-dark-1)"
+          fontSize="2rem"
+          right="1.4rem"
+          radius="50%"
+          bgc="var(--color-grey-light-1)"
+        >
+          <FontAwesomeIcon icon="fa-solid fa-user" />
+        </IconStyle>{" "}
+      </Link>{" "}
       <Header>
         <Wrapper>
-          <Hamburger>
-            <FontAwesomeIcon icon="fa-solid fa-bars" />
-          </Hamburger>
-          <LogoWrapper>
-            <Link to="/">
-              <Logo>
-                <Image src={require("../../../image/logo.png")} alt="logo" />
-              </Logo>
-            </Link>{" "}
-          </LogoWrapper>
-          <Search method="GET" action="/search">
-            <Input type="text" placeholder="search..." name="keyword" />
-            <SearchBtn>
-              <IconStyle>
-                <FontAwesomeIcon icon="fa-solid fa-search" />
-              </IconStyle>
-            </SearchBtn>
-          </Search>
-          <UserNav>
-            <Ul>
-              {!isLoggedIn && (
-                <Link to="register">
-                  <Li>
-                    <FontAwesomeIcon icon="fa-solid fa-user" />
-                  </Li>{" "}
-                </Link>
-              )}
-              {isLoggedIn && (
-                <Li onClick={toggleUserModalHandler}>
-                  <UserImage>
-                    <Image
-                      src={require("../../../image/user.JPG")}
-                      alt="user"
-                    />{" "}
-                    <span>Angus</span>
-                  </UserImage>{" "}
-                </Li>
-              )}
-              {isLoggedIn && (
-                <Li onClick={onShowCart}>
-                  <CartIcon>
-                    <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
-                    <Notification>{totalQuantity}</Notification>
-                  </CartIcon>
-                </Li>
-              )}{" "}
-            </Ul>
-          </UserNav>{" "}
+          {" "}
+          <Link to="/">
+            <IconStyle>
+              <FontAwesomeIcon icon="fa-solid fa-house" />
+            </IconStyle>{" "}
+          </Link>{" "}
+          <Link to="/">
+            <IconStyle>
+              <FontAwesomeIcon icon="fa-solid fa-heart" />
+            </IconStyle>{" "}
+          </Link>{" "}
+          <Link to="/search">
+            <IconStyle>
+              <FontAwesomeIcon icon="fa-solid fa-search" />
+            </IconStyle>{" "}
+          </Link>
+          <Link to="/">
+            <IconStyle>
+              <FontAwesomeIcon icon="fa-solid fa-tag" />
+            </IconStyle>{" "}
+          </Link>{" "}
+          <IconStyle onClick={onShowCart}>
+            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
+            <Notification>{totalQuantity}</Notification>
+          </IconStyle>
         </Wrapper>{" "}
-        {showModal && <UserModal onLogout={logoutHandler} />}
       </Header>{" "}
     </>
   );
 };
 
 export default Navigation;
+
+{
+  /* <Hamburger>
+            <FontAwesomeIcon icon="fa-solid fa-bars" />
+          </Hamburger> */
+}
+// {
+//   showModal && <UserModal onLogout={logoutHandler} />;
+// }
+
+//  {/* <Search method="GET" action="/search">
+//       <Input type="text" placeholder="search..." name="keyword" />
+//       <SearchBtn>
+//         <IconStyle>
+//           <FontAwesomeIcon icon="fa-solid fa-search" />
+//         </IconStyle>
+//       </SearchBtn>
+//     </Search> */}
+//     <UserNav>
+//       <Ul>
+//         {!isLoggedIn && (
+//           <Link to="register">
+//             <Li>
+//               <FontAwesomeIcon icon="fa-solid fa-user" />
+//             </Li>{" "}
+//           </Link>
+//         )}
+//         {isLoggedIn && (
+//           <Li onClick={toggleUserModalHandler}>
+//             <UserImage>
+//               <Image
+//                 src={require("../../../image/user.JPG")}
+//                 alt="user"
+//               />{" "}
+//               <span>Angus</span>
+//             </UserImage>{" "}
+//           </Li>
+//         )}
+//         {/* {isLoggedIn && (
+
+//         )}{" "} */}
+//       </Ul>
+//     </UserNav>{" "}

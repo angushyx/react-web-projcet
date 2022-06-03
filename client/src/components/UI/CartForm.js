@@ -71,7 +71,7 @@ const CartForm = React.forwardRef((props, ref) => {
 
   return (
     <AmountWrapper>
-      {/* <CartBtn onClick={minusItemHandler}>-</CartBtn> */}
+      <CartBtn>-</CartBtn>
       <Input
         ref={amountInputRef}
         label="Amount"
