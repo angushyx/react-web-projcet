@@ -8,7 +8,8 @@ export const BtnStyle = styled.button`
   height: ${(props) => props.height || "4rem"};
   font-size: ${(props) => props.fontSize || "1.8rem"};
   border-radius: ${(props) => props.radius || "0"};
-  background-color: #fff;
+  background: ${(props) => props.bgc || "#fff"};
+  margin-top: ${(props) => props.mt || "auto"};
 
   text-align: center;
   font-weight: 900;
@@ -17,7 +18,7 @@ export const BtnStyle = styled.button`
 
   &:hover {
     border: 1px solid #fff;
-    background-color: #000;
+    background: ${(props) => props.hoverBgc || "#222"};
     color: #fff;
     cursor: pointer;
   }
@@ -30,6 +31,9 @@ const Button = (props) => {
       width={props.width}
       fontSize={props.fontSize}
       radius={props.radius}
+      mt={props.mt}
+      bgc={props.bgc}
+      hoverBgc={props.hoverBgc}
     >
       {props.children}
     </BtnStyle>

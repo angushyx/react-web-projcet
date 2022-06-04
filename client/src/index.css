@@ -8,6 +8,7 @@
   box-sizing: border-box;
 }
 html {
+  font-family: "Font Awesome 5 Free"; 
   font-family: 'Noto Sans TC', sans-serif;
   font-family: 'Rubik', sans-serif;
   font-size: 62.5%;
@@ -32,6 +33,7 @@ body {
   --color-grey-dark-1:#222;
   --color-grey-dark-2:#555;
   --color-grey-dark-3:#999;
+  --color-grey-dark-4:#aaa;
 
   --show-dark:0 2rem 6rem rgba(0,0,0,.3);
   --show-light:0 2rem 5rem rgba(0,0,0,.06)

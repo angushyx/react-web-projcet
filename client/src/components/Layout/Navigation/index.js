@@ -23,6 +23,7 @@ import {
   CartIcon,
   UserImage,
   Notification,
+  LinkStyle,
 } from "./NavigationElement";
 
 const Navigation = ({ onShowCart }) => {
@@ -50,7 +51,6 @@ const Navigation = ({ onShowCart }) => {
 
   return (
     <>
-      {" "}
       <Link to="register">
         <IconStyle
           position="absolute"
@@ -67,30 +67,47 @@ const Navigation = ({ onShowCart }) => {
       <Header>
         <Wrapper>
           {" "}
-          <Link to="/">
+          <LinkStyle
+            style={{ height: "100%", display: "flex", alignItems: "center" }}
+            to="/"
+          >
             <IconStyle>
               <FontAwesomeIcon icon="fa-solid fa-house" />
             </IconStyle>{" "}
-          </Link>{" "}
-          <Link to="/">
+          </LinkStyle>{" "}
+          <LinkStyle
+            style={{ height: "100%", display: "flex", alignItems: "center" }}
+            to="/"
+          >
             <IconStyle>
               <FontAwesomeIcon icon="fa-solid fa-heart" />
             </IconStyle>{" "}
-          </Link>{" "}
-          <Link to="/search">
+          </LinkStyle>{" "}
+          <LinkStyle
+            style={{ height: "100%", display: "flex", alignItems: "center" }}
+            to="/search"
+          >
             <IconStyle>
               <FontAwesomeIcon icon="fa-solid fa-search" />
             </IconStyle>{" "}
-          </Link>
-          <Link to="/">
+          </LinkStyle>
+          <LinkStyle
+            style={{ height: "100%", display: "flex", alignItems: "center" }}
+            to="/"
+          >
             <IconStyle>
               <FontAwesomeIcon icon="fa-solid fa-tag" />
             </IconStyle>{" "}
-          </Link>{" "}
-          <IconStyle onClick={onShowCart}>
-            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
-            <Notification>{totalQuantity}</Notification>
-          </IconStyle>
+          </LinkStyle>{" "}
+          <LinkStyle
+            style={{ height: "100%", display: "flex", alignItems: "center" }}
+            to="/"
+          >
+            <IconStyle onClick={onShowCart}>
+              <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
+              <Notification>{totalQuantity}</Notification>
+            </IconStyle>{" "}
+          </LinkStyle>{" "}
         </Wrapper>{" "}
       </Header>{" "}
     </>
@@ -98,46 +115,3 @@ const Navigation = ({ onShowCart }) => {
 };
 
 export default Navigation;
-
-{
-  /* <Hamburger>
-            <FontAwesomeIcon icon="fa-solid fa-bars" />
-          </Hamburger> */
-}
-// {
-//   showModal && <UserModal onLogout={logoutHandler} />;
-// }
-
-//  {/* <Search method="GET" action="/search">
-//       <Input type="text" placeholder="search..." name="keyword" />
-//       <SearchBtn>
-//         <IconStyle>
-//           <FontAwesomeIcon icon="fa-solid fa-search" />
-//         </IconStyle>
-//       </SearchBtn>
-//     </Search> */}
-//     <UserNav>
-//       <Ul>
-//         {!isLoggedIn && (
-//           <Link to="register">
-//             <Li>
-//               <FontAwesomeIcon icon="fa-solid fa-user" />
-//             </Li>{" "}
-//           </Link>
-//         )}
-//         {isLoggedIn && (
-//           <Li onClick={toggleUserModalHandler}>
-//             <UserImage>
-//               <Image
-//                 src={require("../../../image/user.JPG")}
-//                 alt="user"
-//               />{" "}
-//               <span>Angus</span>
-//             </UserImage>{" "}
-//           </Li>
-//         )}
-//         {/* {isLoggedIn && (
-
-//         )}{" "} */}
-//       </Ul>
-//     </UserNav>{" "}

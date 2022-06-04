@@ -6,21 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { useState, useRef, useContext } from "react";
 import { useSelector } from "react-redux";
 import { login, logout } from "../../slices/auth-slice";
+import { ImageStyleFree, ButtonWrapper } from "../Detail/DetailElement";
 
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import AuthContext from "../../store/Auth-context";
 
-import {
-  Wrapper,
-  Headline,
-  SignupCard,
-  From,
-  FacebookBtn,
-  GoogleBtn,
-  ChangeModeBtn,
-} from "./AuthForm";
+import { Wrapper, Headline, SignupCard, From } from "./AuthForm";
 import { useDispatch } from "react-redux";
 
 const AuthForm = () => {
@@ -39,8 +32,6 @@ const AuthForm = () => {
   const authCtx = useContext(AuthContext);
   const dispatch = useDispatch();
   const cartReducer = useSelector((state) => state.authReducer);
-
-  console.log(cartReducer);
 
   //轉換登入、建立帳號模式
   const switchAuthModeHandler = () => {
@@ -119,6 +110,8 @@ const AuthForm = () => {
       });
   };
 
+  console.log(isLogin);
+
   return (
     <Wrapper>
       {" "}
@@ -152,17 +145,36 @@ const AuthForm = () => {
             }}
           />
           {!isLoading && (
-            <Button type="submit">{isLogin ? "Login" : "Creat Account"}</Button>
+            <Button mt="2rem" type="submit">
+              {isLogin ? "Login" : "Creat Account"}
+            </Button>
           )}
           {isLoading && <LoadingSpinner />}
-          <ChangeModeBtn type="button" onClick={switchAuthModeHandler}>
+          <Button mt="2rem" type="button" onClick={switchAuthModeHandler}>
             {isLogin ? "Creat new account" : "Login with existing account"}
-          </ChangeModeBtn>
+          </Button>
           <br />
           <br />
           <h2>----------------OR----------------</h2>
-          <FacebookBtn type="submit">FACEBOOK</FacebookBtn>
-          <GoogleBtn type="submit">GOOGLE</GoogleBtn>
+          <ButtonWrapper>
+            <Button hoverBgc="#1877f2" radius="3rem" type="submit">
+              <ImageStyleFree
+                src={require("../../image/Social Media/facebook-logo-2019.png")}
+                alt="login with facebook"
+              />
+              FACEBOOK{" "}
+            </Button>
+          </ButtonWrapper>
+          <ButtonWrapper>
+            <Button radius="3rem" type="submit">
+              {" "}
+              <ImageStyleFree
+                src={require("../../image/Social Media/google.png")}
+                alt="login with google"
+              />
+              GOOGLE
+            </Button>
+          </ButtonWrapper>
         </From>
       </SignupCard>
     </Wrapper>

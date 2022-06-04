@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { BackdropStyle } from "../Cart/Cart";
 import Input from "../UI/Input";
+import Button from "../UI/Button";
 
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
@@ -36,6 +37,7 @@ import {
   DetailBtn,
   CheckoutModal,
   ImageStyleFree,
+  MainContainer,
 } from "./DetailElement";
 
 const Detail = () => {
@@ -96,6 +98,7 @@ const Detail = () => {
               </ButtonWrapper>{" "}
               <ButtonWrapper>
                 <ImageStyleFree
+                  top="2rem"
                   src={require("../../image/Social Media/google.png")}
                   alt=""
                 />
@@ -113,71 +116,79 @@ const Detail = () => {
           </BackdropStyle>
         </>
       )}
-      <HeadlineWrapper>
-        <DetailHeadline>
-          <HeadlineItem>
-            <FontAwesomeIcon icon="fa-solid fa-location-dot" />
-            <HeadlineItemContent>
-              <HeadlineItemTitle>LOCATION</HeadlineItemTitle>{" "}
-              <HeadlineItemInfo>Taipei no.1 street</HeadlineItemInfo>
-            </HeadlineItemContent>
-          </HeadlineItem>
-          <HeadlineItem>
-            <FontAwesomeIcon icon="fa-solid fa-calendar" />
-            <HeadlineItemContent>
-              <HeadlineItemTitle>CALENDER</HeadlineItemTitle>{" "}
-              <HeadlineItemInfo>29 April</HeadlineItemInfo>
-            </HeadlineItemContent>
-          </HeadlineItem>
-          <HeadlineItem>
-            <FontAwesomeIcon icon="fa-solid fa-users" />
-            <HeadlineItemContent>
-              <HeadlineItemTitle>GUESTS</HeadlineItemTitle>{" "}
-              <HeadlineItemInfo>1 adults / meal</HeadlineItemInfo>
-            </HeadlineItemContent>
-          </HeadlineItem>
-        </DetailHeadline>
-      </HeadlineWrapper>
-      <MainWrapper>
-        <HeroWrapper>
-          <MainImg src={detailProduct.image} />
-          <SubImgOne src={detailProduct.image} />
-          <SubImgTwo src={detailProduct.image} />
-          <SubImgThree src={detailProduct.image} />
-          <SubImgFour src={detailProduct.image} />
+      <MainContainer>
+        <HeadlineWrapper>
+          <DetailHeadline>
+            <HeadlineItem>
+              <FontAwesomeIcon icon="fa-solid fa-location-dot" />
+              <HeadlineItemContent>
+                <HeadlineItemTitle>LOCATION</HeadlineItemTitle>{" "}
+                <HeadlineItemInfo>Taipei no.1 street</HeadlineItemInfo>
+              </HeadlineItemContent>
+            </HeadlineItem>
+            <HeadlineItem>
+              <FontAwesomeIcon icon="fa-solid fa-calendar" />
+              <HeadlineItemContent>
+                <HeadlineItemTitle>CALENDER</HeadlineItemTitle>{" "}
+                <HeadlineItemInfo>29 April</HeadlineItemInfo>
+              </HeadlineItemContent>
+            </HeadlineItem>
+            <HeadlineItem>
+              <FontAwesomeIcon icon="fa-solid fa-users" />
+              <HeadlineItemContent>
+                <HeadlineItemTitle>GUESTS</HeadlineItemTitle>{" "}
+                <HeadlineItemInfo>1 adults / meal</HeadlineItemInfo>
+              </HeadlineItemContent>
+            </HeadlineItem>
+          </DetailHeadline>
+        </HeadlineWrapper>
+        <MainWrapper>
+          <HeroWrapper>
+            <MainImg src={detailProduct.image} />
+            <SubImgOne src={detailProduct.image} />
+            <SubImgTwo src={detailProduct.image} />
+            <SubImgThree src={detailProduct.image} />
+            <SubImgFour src={detailProduct.image} />
 
-          <DetailBtn onClick={checkoutModalHandler}>checkout</DetailBtn>
-        </HeroWrapper>
-        <ContextWrapper>
-          <DescriptionWrapper>
-            <FoodName>{detailProduct.name}</FoodName>
-            <RatingWrapper>
-              <StarWrapper>
-                <FontAwesomeIcon icon="fa-solid fa-star" />
-                <FontAwesomeIcon icon="fa-solid fa-star" />
-                <FontAwesomeIcon icon="fa-solid fa-star" />
-                <FontAwesomeIcon icon="fa-solid fa-star" />
-              </StarWrapper>
-              <RatingText>4.0(235)</RatingText>
-            </RatingWrapper>
-          </DescriptionWrapper>
+            <DetailBtn
+              height="100%"
+              fontSize="1rem"
+              onClick={checkoutModalHandler}
+            >
+              checkout
+            </DetailBtn>
+          </HeroWrapper>
+          <ContextWrapper>
+            <DescriptionWrapper>
+              <FoodName>{detailProduct.name}</FoodName>
+              <RatingWrapper>
+                <StarWrapper>
+                  <FontAwesomeIcon icon="fa-solid fa-star" />
+                  <FontAwesomeIcon icon="fa-solid fa-star" />
+                  <FontAwesomeIcon icon="fa-solid fa-star" />
+                  <FontAwesomeIcon icon="fa-solid fa-star" />
+                </StarWrapper>
+                <RatingText>4.0(235)</RatingText>
+              </RatingWrapper>
+            </DescriptionWrapper>
 
-          <SubInfo>105台北市松山區八德路三段12巷No15號</SubInfo>
-          <AllInfo>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-            expedita voluptas modi? Sapiente accusamus, aperiam veniam, dolor
-            facere, esse perspiciatis eveniet praesentium commodi adipisci fugit
-            tempora recusandae amet quaerat nobis. Atque incidunt animi voluptas
-            consectetur? Alias sint assumenda tenetur dolorem, modi, ab vitae
-            error laboriosam eius in enim cupiditate voluptatem. Optio deserunt
-            libero ipsam consequuntur, delectus aliquam tempora recusandae amet
-            quaerat nobis. Atque incidunt animi voluptas consectetur? Alias sint
-            assumenda tenetur dolorem, modi, ab vitae error laboriosam eius in
-            enim cupiditate voluptatem. Optio deserunt libero ipsam
-            consequuntur, delectus aliquam
-          </AllInfo>
-        </ContextWrapper>
-      </MainWrapper>
+            <SubInfo>105台北市松山區八德路三段12巷No15號</SubInfo>
+            <AllInfo>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
+              expedita voluptas modi? Sapiente accusamus, aperiam veniam, dolor
+              facere, esse perspiciatis eveniet praesentium commodi adipisci
+              fugit tempora recusandae amet quaerat nobis. Atque incidunt animi
+              voluptas consectetur? Alias sint assumenda tenetur dolorem, modi,
+              ab vitae error laboriosam eius in enim cupiditate voluptatem.
+              Optio deserunt libero ipsam consequuntur, delectus aliquam tempora
+              recusandae amet quaerat nobis. Atque incidunt animi voluptas
+              consectetur? Alias sint assumenda tenetur dolorem, modi, ab vitae
+              error laboriosam eius in enim cupiditate voluptatem. Optio
+              deserunt libero ipsam consequuntur, delectus aliquam
+            </AllInfo>
+          </ContextWrapper>
+        </MainWrapper>
+      </MainContainer>
     </>
   );
 };

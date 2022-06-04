@@ -18,6 +18,7 @@ const Container = (props) => {
     <>
       {cartIsShown && <Cart onHiddenCart={hiddenCartHandler} />}
       {props.children}
+      <Navigation />
     </>
   );
 };

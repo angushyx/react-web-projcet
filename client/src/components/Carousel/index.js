@@ -6,7 +6,6 @@ import {
   CarouselLayout,
   HeadlineWrapper,
   Title,
-  CaretContainer,
   CaretLeft,
   CaretRight,
   CartListContainer,
@@ -14,6 +13,7 @@ import {
   CardList,
   ListImage,
   FoodInfo,
+  Nav,
   FoodTitle,
   FoodDescription,
 } from "./CarouselElement";
@@ -39,7 +39,7 @@ const Cards = (props) => {
   const commodityList = commodityReducer.commodity;
   const sliceOne = commodityList.slice(0, 4);
   const sliceTwo = commodityList.slice(4, 8);
-  const sliceThree = commodityList.slice(-4);
+  const sliceThree = commodityList.slice(8, 12);
 
   const colors = "yellow";
   //設定一個空的陣列來存放目前的 PAGE
@@ -70,11 +70,6 @@ const Cards = (props) => {
           {currentPage.map((item) => (
             <CardList key={item.id}>
               <ListImage src={item.image} />
-              <FoodInfo footerColor={colors}>
-                <FoodTitle>{item.name}</FoodTitle>
-                <FoodDescription>{item.Description}</FoodDescription>
-                <button onClick={props.onToggle}>Check out</button>
-              </FoodInfo>
             </CardList>
           ))}
           <CaretRight onClick={nextSlice} />
@@ -94,6 +89,8 @@ const Carousel = () => {
     <CarouselLayout>
       <Headline />
       <Cards key={uuidv4()} onToggle={toggle} />
+      <Cards key={uuidv4()} onToggle={toggle} />
+
       {/* <SchemeModal isOpen={isOpen} /> */}
     </CarouselLayout>
   );

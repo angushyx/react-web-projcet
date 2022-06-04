@@ -2,64 +2,84 @@ import styled from "styled-components";
 import { BtnStyle } from "../UI/Button";
 import { ModalStyle } from "../Cart/Cart";
 import { ImageStyle } from "../Payment/PaymentElement";
+import { devices } from "../../MediaQuery/MediaQuery";
 
 export const MainContainer = styled.div`
-  max-width: 90%;
-  margin: 0 auto;
+  height: 93vh;
 `;
 
 export const HeadlineWrapper = styled.div`
   height: 10rem;
-  background-color: #ccc;
+  background: var(--color-primary-light);
   margin-bottom: 3rem;
 `;
 export const DetailHeadline = styled.ul`
-  width: 80%;
   height: 100%;
+  width: 95%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+
+  @media ${devices.mobileL} {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export const HeadlineItem = styled.li`
-  background-color: #fff;
-  width: 32%;
-  height: 50%;
-  font-size: 2rem;
+  background: var(--color-grey-light-1);
+  width: 40%;
+  height: 80%;
+  font-size: 1.5rem;
+  border-radius: 1rem;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  gap: 1rem;
 
-  @media screen and (max-width: 900px) {
-    font-size: 1.5rem;
+  @media ${devices.mobileL} {
+    background-color: var(--color-grey-light-1);
+    width: 32%;
+    height: 50%;
+    font-size: 2rem;
+    gap: 0;
+
+    flex-direction: row;
   }
 `;
 
 export const HeadlineItemContent = styled.div`
-  font-size: 2rem;
-
-  margin-left: 2rem;
+  font-size: 1rem;
+  @media ${devices.mobileL} {
+    font-size: 2rem;
+    margin-left: 1rem;
+  }
 `;
 export const HeadlineItemTitle = styled.strong`
-  font-size: 2rem;
-  @media screen and (max-width: 900px) {
-    font-size: 1.8rem;
-  }
-  @media screen and (max-width: 700px) {
+  font-size: 1.3rem;
+  color: var(--color-grey-dark-1);
+  @media ${devices.mobileL} {
     font-size: 1.5rem;
   }
 `;
 export const HeadlineItemInfo = styled.h5`
   font-size: 1.2rem;
-  color: #aaa;
+  color: var(--color-grey-dark-2);
 `;
 
 export const MainWrapper = styled.main`
   width: 80%;
+
   margin: 0 auto;
-  height: 50vh;
 `;
 
 export const HeroWrapper = styled.div`
@@ -67,10 +87,12 @@ export const HeroWrapper = styled.div`
   grid-template-columns: 1fr repeat(2, 20%);
   grid-template-rows: 1fr repeat(2, 25%);
 
-  height: 50vh;
+  padding-bottom: 1.5rem;
+  gap: 0.5rem;
 
-  padding-bottom: 4rem;
-  gap: 1rem;
+  @media ${devices.mobileL} {
+    padding-bottom: 2rem;
+  }
 `;
 export const ContextWrapper = styled.div``;
 
@@ -100,29 +122,38 @@ export const DetailBtn = styled(BtnStyle)`
   align-self: flex-end;
   justify-self: center;
   border-radius: 2rem;
+  width: 100%;
 `;
 export const ButtonWrapper = styled.div`
-  margin: 0 auto;
-  width: 90%;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  position: relative;
+  width: 100%;
+  padding: 1.5rem 0;
+  font-size: 0.5rem;
+  @media ${devices.mobileL} {
+    margin: 0 auto;
+    width: 90%;
+  }
 `;
 
 export const DescriptionWrapper = styled.div`
   display: flex;
-  /* background-color: #ccc; */
+  flex-direction: column;
 `;
 export const FoodName = styled.h1`
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 600;
   /* background-color: #f2f; */
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.2rem;
+  @media ${devices.mobileL} {
+    font-size: 3.5rem;
+  }
 `;
 export const RatingWrapper = styled.div`
+  flex: 1;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  margin: auto auto 0 3rem;
+  margin: 1rem auto 0 0;
   background-color: #fff;
   font-size: 1.5rem;
 `;
@@ -130,7 +161,7 @@ export const StarWrapper = styled.span``;
 export const RatingText = styled.span``;
 
 export const SubInfo = styled.div`
-  margin: 0.3rem auto 3rem;
+  margin: 0.3rem auto 1rem;
   font-size: 1.3rem;
   letter-spacing: 0.2rem;
 `;
@@ -184,7 +215,9 @@ export const CheckoutModal = styled(ModalStyle)`
 
 export const Headline = styled.h2`
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--color-grey-light-4);
+  @media ${devices.mobileL} {
+  }
 `;
 
 export const SplitLine = styled.div`
@@ -209,7 +242,8 @@ export const SplitLine = styled.div`
 
 export const ImageStyleFree = styled(ImageStyle)`
   position: absolute;
-  transform: translate(50%, 20%);
+  transform: translate(40%, 20%);
+  top: 20%;
 `;
 
 //  &::after {

@@ -4,7 +4,7 @@ const BtnContainer = styled.button`
   width: 3.5rem;
   height: 3.5rem;
   position: sticky;
-  background-color: #222;
+  background-color: var(--color-grey-dark-1);
   bottom: 10%;
   left: 100%;
   border-radius: 50%;
@@ -17,14 +17,14 @@ const BtnContainer = styled.button`
     left: 50%;
     transform: translate(0%, -30%);
     border-top: 1rem solid transparent;
-    border-bottom: 1rem solid #fff;
+    border-bottom: 1rem solid var(--color-grey-light-1);
     border-left: 1rem solid transparent;
     border-right: 1rem solid transparent;
   }
   :hover {
-    background-color: #000;
+    background: var(--color-grey-light-1);
     &::after {
-      border-bottom: 1rem solid #fff;
+      border-bottom: 1rem solid var(--color-grey-dark-1);
     }
   }
 `;

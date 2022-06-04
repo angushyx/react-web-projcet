@@ -1,23 +1,14 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { devices } from "../../../MediaQuery/MediaQuery";
 
 export const Header = styled.header`
   position: sticky;
   height: 5rem;
   background-color: var(--color-grey-light-1);
   bottom: 0;
-
-  @media screen and (min-width: 576px) {
-    /* position */
-    /* top: 0; */
-
-    /* flexBox */
-    /* display: flex;
-    align-items: center;
-
-    background-color: #fff;
-    opacity: 0.9;
-
-    z-index: 20; */
+  @media ${devices.mobileL} {
+    display: none;
   }
 `;
 
@@ -47,48 +38,6 @@ export const LeftNav = styled.div`
   } */
 `;
 
-export const Search = styled.form`
-  /* display: none;
-
-  @media screen and (min-width: 600px) {
-    flex: 0 0 40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } */
-`;
-
-export const Input = styled.input`
-  /* font-size: inherit;
-  border-radius: 10rem;
-  border: none;
-  padding: 0.6rem 3rem;
-  width: 90%;
-  background-color: #eee;
-  transition: all 0.2s;
-  margin-right: -3.5rem;
-
-  &:focus {
-    outline: none;
-    width: 100%;
-  }
-  &::-webkit-input-placeholder {
-    font-weight: 100;
-    color: #999;
-  } */
-`;
-export const SearchBtn = styled.button`
-  /* border: none;
-  font-size: inherit;
-
-  &:focus {
-    outline: none;
-  }
-
-  &:active {
-    transform: translateY(2px);
-  } */
-`;
 export const IconStyle = styled.div`
   position: ${(props) => props.position || "relative"};
   top: ${(props) => props.top || "auto"};
@@ -104,6 +53,7 @@ export const IconStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   :hover {
     ::after {
@@ -118,6 +68,18 @@ export const IconStyle = styled.div`
       background-color: var(--color-primary);
       z-index: -1;
     }
+  }
+`;
+
+export const LinkStyle = styled(Link)`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  align-self: center;
+  width: 4rem;
+  :active,
+  :hover {
+    border-top: 0.3rem solid #222;
   }
 `;
 
@@ -191,13 +153,6 @@ export const CartIcon = styled.div`
   /* @media screen and (min-width: 600px) {
     display: block;
     position: relative;
-  } */
-`;
-
-export const Hamburger = styled.div`
-  /* font-size: 3rem;
-  @media screen and (min-width: 600px) {
-    display: none;
   } */
 `;
 

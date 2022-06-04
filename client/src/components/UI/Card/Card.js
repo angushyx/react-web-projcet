@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const CardStyle = styled.div`
+  position: relative;
   -webkit-box-shadow: -7px 16px 31px -32px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -7px 16px 31px -32px rgba(0, 0, 0, 0.75);
   box-shadow: -7px 16px 31px -32px rgba(0, 0, 0, 0.75);
@@ -68,12 +69,13 @@ export const RatingWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+
   font-size: 1.5rem;
 `;
 
-export const Star = styled.div`
-  color: var(--color-primary-dark);
+export const IconStyle = styled.div`
+  position: ${(props) => props.position || "relative"};
+  color: ${(props) => props.color || "var(--color-primary-dark)"};
 `;
 
 export const Rating = styled.strong`

@@ -91,8 +91,8 @@ function App() {
     // </Routes>
     <>
       <Container>
+        {" "}
         <>{element}</>
-        <Navigation />
       </Container>
     </>
   );

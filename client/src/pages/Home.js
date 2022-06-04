@@ -7,6 +7,7 @@ import Hero from "../components/HeroPart";
 const Home = () => {
   return (
     <>
+      {" "}
       <Hero />
       <Meal />
       <Carousel />
