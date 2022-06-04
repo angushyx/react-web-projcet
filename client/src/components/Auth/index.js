@@ -7,19 +7,28 @@ import { useState, useRef, useContext } from "react";
 import { useSelector } from "react-redux";
 import { login, logout } from "../../slices/auth-slice";
 import { ImageStyleFree, ButtonWrapper } from "../Detail/DetailElement";
+import { BtnStyle } from "../UI/Button";
 
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import AuthContext from "../../store/Auth-context";
 
-import { Wrapper, Headline, SignupCard, From } from "./AuthForm";
+import {
+  Wrapper,
+  Headline,
+  SignupCard,
+  From,
+  ChangeModeBtn,
+  InputWrapper,
+} from "./AuthForm";
 import { useDispatch } from "react-redux";
 
 const AuthForm = () => {
   //記憶 email 和 password 的值
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+
   const navigate = useNavigate();
 
   // 引入SweetAlert
@@ -97,7 +106,6 @@ const AuthForm = () => {
         );
         //把 idToken 放到 Ctx 裡 再透過是否有 idToken 來改變 UI --> Nav
         authCtx.login(data.idToken, expirationTime.toISOString());
-        console.log(authCtx.login);
         //when user success login redirect to /
         navigate("/");
       })
@@ -109,17 +117,42 @@ const AuthForm = () => {
         });
       });
   };
-
-  console.log(isLogin);
+  const LoginByGoogleHandler = () => {
+    window.open("http://localhost:8080/auth/google", "_self");
+  };
 
   return (
     <Wrapper>
       {" "}
       <SignupCard>
-        {" "}
         <Headline>{isLogin ? "LOGIN" : "SIGNUP"}</Headline>
         <From method="POST" action="/" onSubmit={submitHandler}>
-          {" "}
+          {!isLogin && (
+            <InputWrapper>
+              <Input
+                label="First Name"
+                required
+                input={{
+                  type: "text",
+                  id: "firstName",
+                  placeholder: "First Name",
+                  name: "firstName",
+                  width: "80%",
+                }}
+              />
+              <Input
+                label="First Name"
+                required
+                input={{
+                  type: "text",
+                  id: "lastName",
+                  placeholder: "Last Name",
+                  name: "lastName",
+                  width: "80%",
+                }}
+              />
+            </InputWrapper>
+          )}
           <Input
             icon="fa-solid fa-envelope"
             label="userEmail"
@@ -145,36 +178,50 @@ const AuthForm = () => {
             }}
           />
           {!isLoading && (
-            <Button mt="2rem" type="submit">
+            <Button type="submit" mt="2rem">
               {isLogin ? "Login" : "Creat Account"}
             </Button>
           )}
           {isLoading && <LoadingSpinner />}
-          <Button mt="2rem" type="button" onClick={switchAuthModeHandler}>
+          <BtnStyle
+            fontSize="1.3rem"
+            type="button"
+            mt="2rem"
+            onClick={switchAuthModeHandler}
+          >
             {isLogin ? "Creat new account" : "Login with existing account"}
-          </Button>
+          </BtnStyle>
           <br />
           <br />
-          <h2>----------------OR----------------</h2>
-          <ButtonWrapper>
-            <Button hoverBgc="#1877f2" radius="3rem" type="submit">
-              <ImageStyleFree
-                src={require("../../image/Social Media/facebook-logo-2019.png")}
-                alt="login with facebook"
-              />
-              FACEBOOK{" "}
-            </Button>
-          </ButtonWrapper>
-          <ButtonWrapper>
-            <Button radius="3rem" type="submit">
-              {" "}
-              <ImageStyleFree
-                src={require("../../image/Social Media/google.png")}
-                alt="login with google"
-              />
-              GOOGLE
-            </Button>
-          </ButtonWrapper>
+
+          {isLogin && (
+            <>
+              <h2>----------------OR----------------</h2>
+              <ButtonWrapper>
+                <Button hoverBgc="#1877f2" radius="3rem" pe="button">
+                  <ImageStyleFree
+                    src={require("../../image/Social Media/facebook-logo-2019.png")}
+                    alt="login with facebook"
+                  />
+                  FACEBOOK{" "}
+                </Button>
+              </ButtonWrapper>
+              <ButtonWrapper>
+                <BtnStyle
+                  onClick={LoginByGoogleHandler}
+                  radius="3rem"
+                  type="button"
+                >
+                  {" "}
+                  <ImageStyleFree
+                    src={require("../../image/Social Media/google.png")}
+                    alt="login with google"
+                  />
+                  GOOGLE
+                </BtnStyle>
+              </ButtonWrapper>
+            </>
+          )}
         </From>
       </SignupCard>
     </Wrapper>

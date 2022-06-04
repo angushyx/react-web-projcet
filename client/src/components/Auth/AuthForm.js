@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { devices } from "../../MediaQuery/MediaQuery";
 
 export const Wrapper = styled.div`
   width: 40rem;
@@ -27,4 +26,29 @@ export const From = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
+export const ChangeModeBtn = styled.button`
+  all: unset;
+  margin-top: 1rem;
+  border: 1px solid #fff;
+  width: 18rem;
+  height: 4rem;
+  background-color: #e777ee;
+  color: #000;
+  text-align: center;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  &:hover {
+    border: 1px solid #fff;
+    background-color: #aaa;
+    color: #fff;
+    cursor: pointer;
+  }
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+  width: 80%;
 `;

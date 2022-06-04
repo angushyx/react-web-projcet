@@ -19,7 +19,7 @@ export const InputStyle = styled.input`
   padding-left: 24px;
   font-weight: 700;
   font-size: 1.5rem;
-  width: 90%;
+  width: ${(props) => props.width || "90%"};
   transition: 0.2s;
 `;
 
