@@ -3,8 +3,10 @@ import { useState, useEffect, useCallback } from "react";
 
 let logoutTimer;
 const initialState = {
+  googleUserData: {},
   token: "",
   isLoggedIn: false,
+  auth: () => {},
   login: () => {},
   logout: () => {},
 };
@@ -93,17 +95,22 @@ export const AuthValue = () => {
     logout: logoutHandler,
   });
 };
-console.log(initialState);
 
-/***最後執行的函式?*********/
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    auth: (state, action) => {
+      const newGoogleUserData = action?.payload;
+      localStorage.setItem("profile", JSON.stringify({ ...action?.payload }));
+      return {
+        googleUserData: newGoogleUserData,
+      };
+    },
     login: (token) => {},
     logout: () => {},
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout, auth } = authSlice.actions;
 export default authSlice.reducer;

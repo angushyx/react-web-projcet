@@ -1,10 +1,10 @@
 import React from "react";
-import { useState, useContext } from "react";
-import UserModal from "../../UI/UserModal";
+import { useState, useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthContext from "../../../store/Auth-context";
+import { useLocation } from "react-router-dom";
 
 import {
   Header,
@@ -29,6 +29,15 @@ import {
 const Navigation = ({ onShowCart }) => {
   /********user modal **************/
   const [showModal, setShowModal] = useState(false);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const token = user?.token;
+
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, [location]);
 
   const authCtx = useContext(AuthContext);
 
@@ -42,8 +51,10 @@ const Navigation = ({ onShowCart }) => {
   };
   /**************************************/
 
+  const authReducer = useSelector((state) => state.authReducer);
   const cartReducer = useSelector((state) => state.cartReducer);
-  const isLoggedIn = authCtx.isLoggedIn;
+  // const googleUserData = authReducer.googleUserData;
+  // console.log(googleUserData);
 
   //todo 處理 Price 累加的問題
 
@@ -61,7 +72,11 @@ const Navigation = ({ onShowCart }) => {
           radius="50%"
           bgc="var(--color-grey-light-1)"
         >
-          <FontAwesomeIcon icon="fa-solid fa-user" />
+          {user ? (
+            <img style={{ borderRadius: "50%" }} src={user.imageUrl} alt="" />
+          ) : (
+            <FontAwesomeIcon icon="fa-solid fa-user" />
+          )}
         </IconStyle>{" "}
       </Link>{" "}
       <Header>

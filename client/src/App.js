@@ -13,6 +13,8 @@ import ConfirmPage from "./pages/ConfirmPage";
 import Navigation from "./components/Layout/Navigation";
 import Cart from "./components/Cart";
 import { useState } from "react";
+import { gapi } from "gapi-script";
+import { useEffect } from "react";
 
 import Container from "./components/Layout/Container";
 
@@ -65,6 +67,18 @@ const routeConfig = [
 ];
 
 function App() {
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId:
+          "472610148148-acvlomegqtfkp1a32drp8oqaft1rnoae.apps.googleusercontent.com",
+        scope: "",
+        plugin_name: "App Name that you used in google developer console API",
+      });
+    }
+    gapi.load("client", start);
+  });
+
   const element = useRoutes(routeConfig);
 
   const [cartIsShown, setCartIsShown] = useState(false);

@@ -1,18 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
+import { ImageStyleFree, ButtonWrapper } from "../Detail/DetailElement";
+import { BtnStyle } from "../UI/Button";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 
-import { useNavigate } from "react-router-dom";
-import { useState, useRef, useContext } from "react";
-import { useSelector } from "react-redux";
 import { login, logout } from "../../slices/auth-slice";
-import { ImageStyleFree, ButtonWrapper } from "../Detail/DetailElement";
-import { BtnStyle } from "../UI/Button";
+import { GoogleLogin } from "react-google-login";
 
-import Swal from "sweetalert2";
+import { useState, useRef, useContext } from "react";
+import AuthContext from "../../store/Auth-context";
+import { useSelector, useDispatch } from "react-redux";
+import { auth } from "../../slices/auth-slice";
+
 import withReactContent from "sweetalert2-react-content";
 import LoadingSpinner from "../UI/LoadingSpinner";
-import AuthContext from "../../store/Auth-context";
+import Swal from "sweetalert2";
 
 import {
   Wrapper,
@@ -22,7 +26,6 @@ import {
   ChangeModeBtn,
   InputWrapper,
 } from "./AuthForm";
-import { useDispatch } from "react-redux";
 
 const AuthForm = () => {
   //記憶 email 和 password 的值
@@ -39,7 +42,7 @@ const AuthForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const authCtx = useContext(AuthContext);
-  const dispatch = useDispatch();
+
   const cartReducer = useSelector((state) => state.authReducer);
 
   //轉換登入、建立帳號模式
@@ -117,9 +120,17 @@ const AuthForm = () => {
         });
       });
   };
-  const LoginByGoogleHandler = () => {
-    window.open("http://localhost:8080/auth/google", "_self");
+  const dispatch = useDispatch();
+  const googleSuccess = async (res) => {
+    const result = res?.profileObj;
+    const token = res?.tokenId;
+
+    try {
+      dispatch(auth(result));
+      navigate("/");
+    } catch (error) {}
   };
+  const googleFailure = async (res) => {};
 
   return (
     <Wrapper>
@@ -177,6 +188,20 @@ const AuthForm = () => {
               name: "Password",
             }}
           />
+          {!isLogin && (
+            <Input
+              icon="fa-solid fa-lock"
+              label="userPassword"
+              required
+              input={{
+                ref: passwordInputRef,
+                type: "password",
+                id: "confirmPassword",
+                placeholder: "Password again",
+                name: "confirmPassword",
+              }}
+            />
+          )}
           {!isLoading && (
             <Button type="submit" mt="2rem">
               {isLogin ? "Login" : "Creat Account"}
@@ -206,19 +231,27 @@ const AuthForm = () => {
                   FACEBOOK{" "}
                 </Button>
               </ButtonWrapper>
+
               <ButtonWrapper>
-                <BtnStyle
-                  onClick={LoginByGoogleHandler}
-                  radius="3rem"
-                  type="button"
-                >
-                  {" "}
-                  <ImageStyleFree
-                    src={require("../../image/Social Media/google.png")}
-                    alt="login with google"
-                  />
-                  GOOGLE
-                </BtnStyle>
+                <GoogleLogin
+                  clientId="472610148148-acvlomegqtfkp1a32drp8oqaft1rnoae.apps.googleusercontent.com"
+                  render={(renderProps) => (
+                    <BtnStyle
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                      radius="3rem"
+                    >
+                      <ImageStyleFree
+                        src={require("../../image/Social Media/google.png")}
+                        alt="login with google"
+                      />
+                      GOOGLE
+                    </BtnStyle>
+                  )}
+                  onSuccess={googleSuccess}
+                  onFailure={googleFailure}
+                  cookiePolicy="single_host_origin"
+                />
               </ButtonWrapper>
             </>
           )}
