@@ -8,24 +8,34 @@ const userSchema = new mongoose.Schema({
     minLength: 2,
     maxLength: 255,
   },
+
   googleID: {
     type: String,
   },
-  data: {
+  date: {
     type: Date,
     default: Date.now,
   },
-  thumbnail: {
+  avatar: {
     type: String,
   },
 
   //local login *使用者不是選擇 google login 方式，而是選擇本地的 login
   email: {
     type: String,
+    required: true,
   },
   password: {
     type: String,
     maxLength: 1024,
+    required: true,
+  },
+  confirmPassword: {
+    type: String,
+    maxLength: 1024,
+  },
+  id: {
+    type: String,
   },
 });
 

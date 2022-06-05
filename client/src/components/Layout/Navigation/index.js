@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthContext from "../../../store/Auth-context";
 import { useLocation } from "react-router-dom";
+import UserModal from "../../UI/UserModal";
 
 import {
   Header,
@@ -73,7 +74,10 @@ const Navigation = ({ onShowCart }) => {
           bgc="var(--color-grey-light-1)"
         >
           {user ? (
-            <img style={{ borderRadius: "50%" }} src={user.imageUrl} alt="" />
+            <>
+              {/* <UserModal /> */}
+              <img style={{ borderRadius: "50%" }} src={user.imageUrl} alt="" />
+            </>
           ) : (
             <FontAwesomeIcon icon="fa-solid fa-user" />
           )}

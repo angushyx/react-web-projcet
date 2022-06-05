@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-
+import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
 import { BackdropStyle } from "../Cart/Cart";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
+import { auth } from "../../slices/auth-slice";
+
 import {
   Headline,
   HeadlineWrapper,
@@ -42,6 +44,7 @@ import {
 
 const Detail = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
   const params = useParams();
@@ -55,9 +58,16 @@ const Detail = () => {
     setShowCheckoutModal((prev) => !prev);
   };
 
-  const LoginByGoogleHandler = () => {
-    window.open("http://localhost:8080/auth/google", "_self");
+  const googleSuccess = async (res) => {
+    const result = res?.profileObj;
+    const token = res?.tokenId;
+
+    try {
+      dispatch(auth(result));
+      navigate("/");
+    } catch (error) {}
   };
+  const googleFailure = async (res) => {};
 
   return (
     <>
@@ -102,9 +112,17 @@ const Detail = () => {
                   src={require("../../image/Social Media/google.png")}
                   alt=""
                 />
-                <DetailBtn onClick={LoginByGoogleHandler}>
-                  Continue with Google
-                </DetailBtn>
+                <GoogleLogin
+                  clientId="472610148148-acvlomegqtfkp1a32drp8oqaft1rnoae.apps.googleusercontent.com"
+                  onSuccess={googleSuccess}
+                  onFailure={googleFailure}
+                  cookiePolicy="single_host_origin"
+                  render={(renderProps) => (
+                    <DetailBtn onClick={renderProps.onClick}>
+                      Continue with Google
+                    </DetailBtn>
+                  )}
+                />
               </ButtonWrapper>{" "}
               <div>
                 By clicking Continue or Continue with Google, Facebook, or

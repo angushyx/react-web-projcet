@@ -1,14 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useState, useEffect, useCallback } from "react";
+import * as api from "../api";
 
 let logoutTimer;
 const initialState = {
   googleUserData: {},
+  userData: {},
   token: "",
   isLoggedIn: false,
   auth: () => {},
   login: () => {},
   logout: () => {},
+  signup: () => {},
+  sigIn: () => {},
 };
 /***************  Helper func    *******************/
 /**
@@ -50,7 +54,10 @@ const retrieveStoredToken = () => {
 /******************************************
  ********************************************/
 
-/****當作 middleware? ***** */
+/**
+ *
+ * @returns token、
+ */
 export const AuthValue = () => {
   const tokenData = retrieveStoredToken();
   let initialToken;
@@ -70,6 +77,11 @@ export const AuthValue = () => {
     }
   }, []);
 
+  /**
+   * 以 JWT 的方式登入
+   * @param {String} token
+   * @param {String} expirationTime
+   */
   const loginHandler = (token, expirationTime) => {
     setToken(token);
     //把 token 加入 localStorage 的 item 裡
@@ -109,8 +121,23 @@ export const authSlice = createSlice({
     },
     login: (token) => {},
     logout: () => {},
+    signup: async (state, action) => {
+      try {
+        // const { data } = await api.signup(action.payload);
+        // console.log(data.payload);
+        // return {
+        //   userData: data,
+        // };
+      } catch (error) {}
+    },
+    signIn: async (state, action) => {
+      try {
+        console.log(action.payload);
+        // const { data } = await api.signIn(action.payload);
+      } catch (error) {}
+    },
   },
 });
 
-export const { login, logout, auth } = authSlice.actions;
+export const { login, logout, auth, signup, signIn } = authSlice.actions;
 export default authSlice.reducer;

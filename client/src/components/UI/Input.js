@@ -28,7 +28,7 @@ const Input = (props) => {
     <InputField>
       <FontAwesomeIcon icon={props.icon} />
       <label htmlFor={props.label}></label>
-      <InputStyle {...props.input} />
+      <InputStyle onChange={props.onChange} {...props.input} />
     </InputField>
   );
 };

@@ -11,10 +11,13 @@ const session = require("express-session");
 
 require("./config/passport-setup");
 
-const authRoutes = require("./routes/auth-routes");
+const authRoutes = require("./routes/auth-routes.js");
+// const cartRoutes = require("./routes/cart-routes");
+
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
+const req = require("express/lib/request");
 
 mongoose
   .connect(process.env.DB_CONNECT, {
@@ -31,6 +34,8 @@ mongoose
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use("/auth", authRoutes);
 
 app.use(
   cookieSession({
@@ -54,16 +59,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // set up cors to allow us to accept requests from our client
-app.use(
-  cors({
-    origin: "http://localhost:3000", // allow to server to accept request from different origin
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // allow session cookie from browser to pass through
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000", // allow to server to accept request from different origin
+//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//     credentials: true, // allow session cookie from browser to pass through
+//   })
+// );
 
 // set up routes
-app.use("/auth", authRoutes);
+
+// app.use("/cart", cartRoutes);
 
 // const authCheck = (req, res, next) => {
 //   if (!req.user) {

@@ -1,8 +1,13 @@
 const router = require("express").Router();
 const passport = require("passport");
-const CLIENT_HOME_PAGE_URL = "http://localhost:3000";
 
-//middleware
+const { signIn, signup } = require("../controllers/user");
+
+// //middleware
+
+router.post("/signIn", signIn);
+router.post("/signup", signup);
+
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -10,40 +15,26 @@ router.get(
   })
 );
 
-// When logout, redirect to client
-router.get(
-  "/google/redirect",
-  passport.authenticate("google", {
-    successRedirect: CLIENT_HOME_PAGE_URL,
-  })
-);
-
-//要做 login 還是 google login
-router.get("/login/success", (req, res) => {
-  console.log(req.body);
-  if (req.user) {
-    console.log(req.user);
-    res.json({
-      success: true,
-      message: "user has successfully authenticated",
-      user: req.user,
-      cookies: req.cookies,
-    });
-  }
-});
-
-// // when login failed, send failed msg
-// router.get("/login/failed", (req, res) => {
-//   res.status(401).json({
-//     success: false,
-//     message: "user failed to authenticate.",
-//   });
-// });
-
 // // When logout, redirect to client
-// router.get("/logout", (req, res) => {
-//   req.logout();
-//   res.redirect(CLIENT_HOME_PAGE_URL);
+// router.get(
+//   "/google/redirect",
+//   passport.authenticate("google", {
+//     successRedirect: CLIENT_HOME_PAGE_URL,
+//   })
+// );
+
+// //要做 login 還是 google login
+// router.get("/login/success", (req, res) => {
+//   console.log(req.body);
+//   if (req.user) {
+//     console.log(req.user);
+//     res.json({
+//       success: true,
+//       message: "user has successfully authenticated",
+//       user: req.user,
+//       cookies: req.cookies,
+//     });
+//   }
 // });
 
 module.exports = router;

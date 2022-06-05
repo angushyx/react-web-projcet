@@ -15,7 +15,17 @@ const reducers = combineReducers({
 const store = configureStore({
   reducer: reducers,
   // //思考看看有沒有需要寫 middleware
-  // middleware: () => {},
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Ignore these action types
+        ignoredActions: ["your/action/type"],
+        // Ignore these field paths in all actions
+        ignoredActionPaths: ["meta.arg", "payload.timestamp"],
+        // Ignore these paths in the state
+        ignoredPaths: ["items.dates"],
+      },
+    }),
 });
 
 export default store;

@@ -5,8 +5,8 @@ export const DetailBox = styled.ul`
   width: 25rem;
   background-color: #000;
   position: absolute;
-  top: 8.3rem;
-  right: 0;
+  top: 5rem;
+  left: -25rem;
   border-radius: 0.3rem;
 
   &:not(:first-child) {
