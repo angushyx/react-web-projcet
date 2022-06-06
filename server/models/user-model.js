@@ -5,8 +5,8 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    minLength: 2,
-    maxLength: 255,
+    minLength: 3,
+    maxLength: 50,
   },
 
   googleID: {
@@ -24,21 +24,23 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    minLength: 6,
+    maxLength: 50,
   },
   password: {
     type: String,
-    maxLength: 1024,
+    maxLength: 255,
+    minLength: 6,
     required: true,
   },
   confirmPassword: {
     type: String,
-    maxLength: 1024,
   },
   id: {
     type: String,
   },
 });
 
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
