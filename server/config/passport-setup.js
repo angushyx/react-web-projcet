@@ -63,7 +63,7 @@ module.exports = (passport) => {
 //   User.findById({ _id })
 //     .then((user) => {
 //       console.log("Found user");
-//       done(null, user);()
+//       done(null, user);
 //     })
 //     .catch((e) => {
 //       done(new Error("Failed to deserialize an user"));

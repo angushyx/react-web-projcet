@@ -20,5 +20,17 @@ const loginValidation = (data) => {
   return schema.validate(data);
 };
 
+const mealValidation = (data) => {
+  const schema = Joi.object({
+    name: Joi.string().min(3).max(50).required(),
+    description: Joi.string().min(2).max(500).required(),
+    price: Joi.number().min(10).max(9999).required(),
+    amount: Joi.number().min(5).max(9999).required(),
+    picture: Joi.string().min(2).max(5000).required(),
+  });
+  return schema.validate(data);
+};
+
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
+module.exports.mealValidation = mealValidation;

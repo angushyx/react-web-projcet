@@ -42,11 +42,17 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["user", "seller"],
+    enum: ["consumer", "seller"],
     required: true,
   },
 });
 
+userSchema.methods.isConsumer = function () {
+  return this.role === "consumer";
+};
+userSchema.methods.isSeller = function () {
+  return this.role === "seller";
+};
 //mongoose schema  middleware
 userSchema.pre("save", async function (next) {
   if (this.isModified("password" || this.isNew)) {
@@ -67,6 +73,9 @@ userSchema.methods.comparePassword = function (password, cb) {
   });
 };
 
+/**
+ * model meal 裡面 seller 使用的 ref:"User"  從這裡來的
+ */
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
