@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useState, useEffect, useCallback } from "react";
-import * as api from "../api";
 
 let logoutTimer;
 const initialState = {
@@ -8,13 +7,8 @@ const initialState = {
   userData: {},
   token: "",
   isLoggedIn: false,
-  auth: () => {},
-  login: () => {},
-  logout: () => {},
-  signup: () => {},
-  sigIn: () => {},
 };
-/***************  Helper func    *******************/
+// /***************  Helper func    *******************/
 /**
  * Helper func 計算在網站中剩餘停留的時間
  * @param {Number} expirationTime
@@ -123,20 +117,18 @@ export const authSlice = createSlice({
     logout: () => {},
     signup: (state, action) => {
       // const { data } = await api.signup(action.payload);
-
       // return {
       //   userData: data,
       // };
-      // const { firstName, lastName, email, password, confirmPassword } =
-      //   action.payload;
+      const { firstName, lastName, email, password, confirmPassword } =
+        action.payload;
       console.log(action.payload);
-      // console.log(firstName);
-      // console.log(lastName);
-      // console.log(email);
-      // console.log(password);
-      // console.log(confirmPassword);
+      // console.log(action.payload);
     },
     signIn: (state, action) => {
+      const { firstName, lastName, email, password, confirmPassword } =
+        action.payload;
+      console.log(action.payload);
       // const { data } = await api.signIn(action.payload);
     },
   },

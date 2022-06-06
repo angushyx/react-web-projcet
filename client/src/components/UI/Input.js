@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const InputField = styled.div`
   padding-top: 3rem;
@@ -26,7 +25,6 @@ export const InputStyle = styled.input`
 const Input = (props) => {
   return (
     <InputField>
-      <FontAwesomeIcon icon={props.icon} />
       <label htmlFor={props.label}></label>
       <InputStyle onChange={props.onChange} {...props.input} />
     </InputField>

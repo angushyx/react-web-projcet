@@ -21,10 +21,15 @@ import {
   InputWrapper,
 } from "./AuthForm";
 
+import AuthService from "../../services/authApi";
+import { useGetUserMutation } from "../../services/authApi";
+
 const AuthForm = () => {
   //記憶 email 和 password 的值
   // const emailInputRef = useRef();
   // const passwordInputRef = useRef();
+
+  const [getUserAuth] = useGetUserMutation();
 
   const navigate = useNavigate();
 
@@ -32,15 +37,12 @@ const AuthForm = () => {
   const AuthSwal = withReactContent(Swal);
 
   //判斷狀態，1. 是否登入?  2. 是否 load 中
-  const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [isLogin, setIsLogin] = useState(true);
+  // const { data, error, isLoading } = useGetUserMutation();
   const dispatch = useDispatch();
 
   //轉換登入、建立帳號模式
-  const switchAuthModeHandler = () => {
-    setIsLogin((prevState) => !prevState);
-  };
 
   /**************JWT VERSION 2*************/
 
@@ -50,6 +52,7 @@ const AuthForm = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "",
   };
 
   const [formData, setFormData] = useState(initialState);
@@ -59,18 +62,48 @@ const AuthForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const updateData = {
+    email: formData.email,
+    password: formData.password,
+    role: formData.role,
+    name: formData.firstName + formData.lastName,
+  };
+
+  const switchAuthModeHandler = () => {
+    setIsSignup((prevState) => !prevState);
+    setIsLogin((prevState) => !prevState);
+  };
+
+  // console.log(isSignup);。
   /**
    * USE JWT login or signup
    * @param {event} e
    */
-  const handlerSubmit = (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault();
 
     if (isSignup) {
-      dispatch(signup(formData));
+      // AuthService.signup(
+      //   updateData.name,
+      //   updateData.email,
+      //   updateData.password,
+      //   updateData.role
+      // ).then(() => {
+      //   window.alert("Registration success!!");
+      // });
+      // dispatch(signup(formData));
+      // console.log(JSON.stringify(...updateData));
+      getUserAuth(
+        updateData.email,
+        updateData.name,
+        updateData.password,
+        updateData.role
+      );
       // navigate("/");
     } else {
-      dispatch(signIn(formData));
+      // dispatch(signIn(formData));
+      // getUserAuth(formData);
+      // console.log(formData);
       // navigate("/");
     }
   };
@@ -84,7 +117,7 @@ const AuthForm = () => {
     const token = res?.tokenId;
     try {
       dispatch(auth(result));
-      // navigate("/");
+      navigate("/");
     } catch (error) {}
   };
   const googleFailure = async (res) => {};
@@ -177,7 +210,6 @@ const AuthForm = () => {
           </BtnStyle>
           <br />
           <br />
-
           {isLogin && (
             <>
               <h2>----------------OR----------------</h2>
@@ -213,7 +245,23 @@ const AuthForm = () => {
                 />
               </ButtonWrapper>
             </>
-          )}
+          )}{" "}
+          <input
+            name="role"
+            onChange={handleChange}
+            value="consumer"
+            id="consumer"
+            type="radio"
+          />
+          <label htmlFor="role">consumer</label>
+          <input
+            name="role"
+            onChange={handleChange}
+            value="seller"
+            id="seller"
+            type="radio"
+          />
+          <label htmlFor="role">seller</label>
         </From>
       </SignupCard>
     </Wrapper>
