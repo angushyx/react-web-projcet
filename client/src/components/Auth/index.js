@@ -1,23 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { useSelector, useDispatch } from "react-redux";
+import { login, logout, auth, signIn, signup } from "../../slices/auth-slice";
+import { GoogleLogin } from "react-google-login";
 
 import { ImageStyleFree, ButtonWrapper } from "../Detail/DetailElement";
 import { BtnStyle } from "../UI/Button";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
-
-import { GoogleLogin } from "react-google-login";
-
-import { useState, useRef, useContext } from "react";
-import AuthContext from "../../store/Auth-context";
-import { useSelector, useDispatch } from "react-redux";
-
-import { login, logout, auth, signIn, signup } from "../../slices/auth-slice";
-
 import withReactContent from "sweetalert2-react-content";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import Swal from "sweetalert2";
-
 import {
   Wrapper,
   Headline,
@@ -47,77 +41,6 @@ const AuthForm = () => {
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
-
-  // /**
-  //  * 註冊、登入功能，送出帳號資料比對資料庫中的帳號(firebase)
-  //  * @param {event} event
-  //  */
-  // const submitHandler = (event) => {
-  //   event.preventDefault();
-
-  //   // const enteredEmail = emailInputRef.current.value;
-  //   // const enteredPassword = passwordInputRef.current.value;
-
-  //   //fetch user login or not
-  //   let url;
-  //   let errorMessage;
-  //   setIsLoading(true);
-  //   if (isLogin) {
-  //     url =
-  //       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCXtMvHm26CZpI8TGMM5LgW89bZ5WpU6Yc";
-  //     errorMessage = "帳號或密碼錯誤";
-  //   } else {
-  //     setIsLoading(false);
-  //     url =
-  //       "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCXtMvHm26CZpI8TGMM5LgW89bZ5WpU6Yc";
-  //     errorMessage = "已有使用過的帳號";
-  //   }
-
-  //   fetch(url, {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       email: enteredEmail,
-  //       password: enteredPassword,
-  //       returnSecureToken: true,
-  //     }),
-  //     header: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((res) => {
-  //       setIsLoading(false);
-  //       if (res.ok) {
-  //         return res.json().then(
-  //           AuthSwal.fire({
-  //             title: "Success",
-  //             text: "Authentication Success",
-  //             icon: "success",
-  //           })
-  //         );
-  //       } else {
-  //         return res.json().then((data) => {
-  //           throw new Error(errorMessage);
-  //         });
-  //       }
-  //     })
-  //     .then((data) => {
-  //       //set expirationTime
-  //       const expirationTime = new Date(
-  //         new Date().getTime() + +data.expiresIn * 1000
-  //       );
-  //       //把 idToken 放到 Ctx 裡 再透過是否有 idToken 來改變 UI --> Nav
-  //       authCtx.login(data.idToken, expirationTime.toISOString());
-  //       //when user success login redirect to /
-  //       navigate("/");
-  //     })
-  //     .catch((err) => {
-  //       AuthSwal.fire({
-  //         title: "ERROR",
-  //         text: err.message,
-  //         icon: "error",
-  //       });
-  //     });
-  // };
 
   /**************JWT VERSION 2*************/
 
@@ -298,3 +221,74 @@ const AuthForm = () => {
 };
 
 export default AuthForm;
+
+// /**
+//  * 註冊、登入功能，送出帳號資料比對資料庫中的帳號(firebase)
+//  * @param {event} event
+//  */
+// const submitHandler = (event) => {
+//   event.preventDefault();
+
+//   // const enteredEmail = emailInputRef.current.value;
+//   // const enteredPassword = passwordInputRef.current.value;
+
+//   //fetch user login or not
+//   let url;
+//   let errorMessage;
+//   setIsLoading(true);
+//   if (isLogin) {
+//     url =
+//       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCXtMvHm26CZpI8TGMM5LgW89bZ5WpU6Yc";
+//     errorMessage = "帳號或密碼錯誤";
+//   } else {
+//     setIsLoading(false);
+//     url =
+//       "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCXtMvHm26CZpI8TGMM5LgW89bZ5WpU6Yc";
+//     errorMessage = "已有使用過的帳號";
+//   }
+
+//   fetch(url, {
+//     method: "POST",
+//     body: JSON.stringify({
+//       email: enteredEmail,
+//       password: enteredPassword,
+//       returnSecureToken: true,
+//     }),
+//     header: {
+//       "Content-Type": "application/json",
+//     },
+//   })
+//     .then((res) => {
+//       setIsLoading(false);
+//       if (res.ok) {
+//         return res.json().then(
+//           AuthSwal.fire({
+//             title: "Success",
+//             text: "Authentication Success",
+//             icon: "success",
+//           })
+//         );
+//       } else {
+//         return res.json().then((data) => {
+//           throw new Error(errorMessage);
+//         });
+//       }
+//     })
+//     .then((data) => {
+//       //set expirationTime
+//       const expirationTime = new Date(
+//         new Date().getTime() + +data.expiresIn * 1000
+//       );
+//       //把 idToken 放到 Ctx 裡 再透過是否有 idToken 來改變 UI --> Nav
+//       authCtx.login(data.idToken, expirationTime.toISOString());
+//       //when user success login redirect to /
+//       navigate("/");
+//     })
+//     .catch((err) => {
+//       AuthSwal.fire({
+//         title: "ERROR",
+//         text: err.message,
+//         icon: "error",
+//       });
+//     });
+// };

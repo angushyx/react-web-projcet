@@ -121,20 +121,23 @@ export const authSlice = createSlice({
     },
     login: (token) => {},
     logout: () => {},
-    signup: async (state, action) => {
-      try {
-        // const { data } = await api.signup(action.payload);
-        // console.log(data.payload);
-        // return {
-        //   userData: data,
-        // };
-      } catch (error) {}
+    signup: (state, action) => {
+      // const { data } = await api.signup(action.payload);
+
+      // return {
+      //   userData: data,
+      // };
+      // const { firstName, lastName, email, password, confirmPassword } =
+      //   action.payload;
+      console.log(action.payload);
+      // console.log(firstName);
+      // console.log(lastName);
+      // console.log(email);
+      // console.log(password);
+      // console.log(confirmPassword);
     },
-    signIn: async (state, action) => {
-      try {
-        console.log(action.payload);
-        // const { data } = await api.signIn(action.payload);
-      } catch (error) {}
+    signIn: (state, action) => {
+      // const { data } = await api.signIn(action.payload);
     },
   },
 });
