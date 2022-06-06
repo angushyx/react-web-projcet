@@ -5,6 +5,7 @@ const registerValidation = (data) => {
     name: Joi.string().min(3).max(50).required(),
     email: Joi.string().min(6).max(50).required().email(),
     password: Joi.string().min(6).max(255).required(),
+    role: Joi.string().required().valid("user", "seller"),
   });
 
   //讓 schema 做驗證

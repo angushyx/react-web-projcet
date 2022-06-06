@@ -6,8 +6,9 @@ dotenv.config();
 const PORT = process.env.PORT || 8080;
 
 const passport = require("passport");
-const passportSetup = require("./config/passport-setup");
-require("./config/passport-setup");
+require("./config/passport-setup")(passport);
+
+const session = require("express-session");
 
 const authRoutes = require("./routes/auth-routes.js");
 // const cartRoutes = require("./routes/cart-routes");
@@ -34,7 +35,7 @@ app.use("/auth", authRoutes);
 
 app.use(passport.initialize());
 //讓 browser store cookie
-app.use(passport.session());
+// app.use(passport.session());
 // app.use(cors());
 
 // set up cors to allow us to accept requests from our client

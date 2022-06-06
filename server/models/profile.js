@@ -16,9 +16,6 @@ const profileSchema = new mongoose.Schema({
   phoneNumber: {
     type: Number,
   },
-  role: {
-    type: String,
-  },
   // itemId
   preferItemId: {
     type: String,
