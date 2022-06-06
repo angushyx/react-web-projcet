@@ -5,13 +5,6 @@ const User = require("../models/user-model");
 const jwt = require("jsonwebtoken");
 // const { signIn, signup } = require("../controllers/user");
 
-router.get("/test", (req, res) => {
-  const mseObj = {
-    message: "test api",
-  };
-  return res.json(mseObj);
-});
-
 router.post("/signup", async (req, res) => {
   const { error } = registerValidation(req.body);
 
