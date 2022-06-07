@@ -16,10 +16,14 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewUserInfo } from "../../slices/ShippingInfo-slice";
 import FormDialog from "../UI/Modal2";
+import { changePageView } from "../../slices/ShippingInfo-slice";
+import CheckStep from "../UI/CheckStep";
+import CartNavbar from "../Navbar/CartNavbar";
 
 const ShippingForm = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  dispatch(changePageView(window.location.pathname));
 
   const shippingSlice = useSelector((state) => state.userInfoReducer);
   const userList = shippingSlice.userInfos;

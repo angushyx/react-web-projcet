@@ -93,14 +93,6 @@ const Payment = () => {
   return (
     <>
       <Container>
-        <CheckStep
-          bgc2="#222"
-          after2=" "
-          bgc3="#ccc"
-          after3=" "
-          width3="2rem"
-          height3="2rem"
-        />
         <Headline mb=".5rem">Choose a payment method</Headline>
         <Subtitle>
           You will not be charged until you review this order on the next page.

@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: ${(props) => props.width || "50%"};
   max-width: ${(props) => props.maxWidth || "45rem"};
   margin: 0 auto;
+  margin-top: 2rem;
   display: flex;
   flex-direction: ${(props) => props.direction || "column"};
 

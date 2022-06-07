@@ -2,7 +2,8 @@ import React from "react";
 import Confirm from "../components/Confirm";
 import { useDispatch } from "react-redux";
 import { changePageView } from "../slices/ShippingInfo-slice";
-import TopNavbar from "../components/Navbar/TopNavbar";
+import CartNavbar from "../components/Navbar/CartNavbar";
+import CheckStep from "../components/UI/CheckStep";
 
 const ConfirmPage = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,9 @@ const ConfirmPage = () => {
 
   return (
     <>
-      <TopNavbar />
+      <CartNavbar>
+        <CheckStep bgc3="#222" after3=" " />
+      </CartNavbar>
       <Confirm />
     </>
   );

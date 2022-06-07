@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation } from "react-router-dom";
+import UserModal from "../../UI/UserModal";
+import { ImageStyle } from "../../Payment/PaymentElement";
 
 import {
   Header,
@@ -12,26 +14,28 @@ import {
   Notification,
   LinkStyle,
   UserIcon,
-} from "../NavigationElement";
+} from "../Navigation";
 
 const BottomNavbar = ({ onShowCart }) => {
   /********user modal **************/
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
+  const navigator = useNavigate();
+
   //for google login
   const location = useLocation();
   useEffect(() => {
     const token = user?.token;
-
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 
   // const authCtx = useContext(AuthContext);
-  // const logoutHandler = () => {
-  //   authCtx.logout();
-  //   setShowModal((prev) => !prev);
-  // };
+  const logoutHandler = () => {
+    // authCtx.logout();
+    localStorage.removeItem("profile");
+    navigator("/login");
+  };
 
   const toggleUserModalHandler = () => {
     setShowModal((prev) => !prev);
@@ -46,30 +50,37 @@ const BottomNavbar = ({ onShowCart }) => {
   return (
     <>
       <UserIcon>
-        <Link to="/login">
-          <IconStyle
-            position="absolute"
-            top="1.4rem"
-            color="var(--color-grey-dark-1)"
-            fontSize="2rem"
-            right="1.4rem"
-            radius="50%"
-            bgc="var(--color-grey-light-1)"
-          >
-            {user ? (
-              <>
-                {/* <UserModal /> */}
-                <img
-                  style={{ borderRadius: "50%" }}
-                  src={user.imageUrl}
-                  alt=""
-                />
-              </>
-            ) : (
-              <FontAwesomeIcon icon="fa-solid fa-user" />
-            )}
-          </IconStyle>{" "}
-        </Link>{" "}
+        {" "}
+        <IconStyle
+          position="absolute"
+          top="1.8rem"
+          color="var(--color-grey-dark-1)"
+          fontSize="2rem"
+          right="4rem"
+          radius="50%"
+          bgc="var(--color-grey-light-1)"
+        >
+          {user ? (
+            <>
+              <div onClick={toggleUserModalHandler}>
+                {showModal && <UserModal onLogout={logoutHandler} />}
+                <div>
+                  <ImageStyle
+                    width="5rem"
+                    height="5rem"
+                    style={{ borderRadius: "50%" }}
+                    src={user.imageUrl}
+                    alt="user avatar"
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <Link to="/login">
+              <FontAwesomeIcon icon="fa-solid fa-user" />{" "}
+            </Link>
+          )}
+        </IconStyle>
       </UserIcon>
       <Header>
         <Wrapper>

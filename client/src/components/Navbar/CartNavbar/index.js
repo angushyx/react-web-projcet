@@ -6,19 +6,16 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthContext from "../../../store/Auth-context";
 import AuthService from "../../../services/authApi";
+import { changePageView } from "../../../slices/ShippingInfo-slice";
+import { useDispatch } from "react-redux";
 
 import {
   Header,
   Wrapper,
   Image,
-  Search,
-  SearchBtn,
-  Input,
-  IconStyle,
   LogoWrapper,
   UserNav,
   Logo,
-  Hamburger,
   Ul,
   Li,
   CartIcon,
@@ -26,11 +23,15 @@ import {
   Notification,
 } from "../Navigation";
 
-const TopNavbar = ({ onShowCart }) => {
+const CartNavbar = (props) => {
   /********user modal **************/
   const [showModal, setShowModal] = useState(false);
 
   const authCtx = useContext(AuthContext);
+  const dispatch = useDispatch();
+
+  dispatch(changePageView(window.location.pathname));
+  console.log(window.location.pathname);
 
   /**
    * !做 logout 的功能
@@ -47,6 +48,30 @@ const TopNavbar = ({ onShowCart }) => {
   };
   /**************************************/
 
+  /**
+   *  bgc2="#222"
+          after2=" "
+          bgc3="#ccc"
+          after3=" "
+          width3="2rem"
+          height3="2rem"
+   */
+  /**
+   * bgc3="#222" after3=" "
+   */
+  // <CheckStep
+  //   bgc1="#222"
+  //   after1=" "
+  //   bgc2="#ccc"
+  //   after2=" "
+  //   bgc3="#ccc"
+  //   after3=" "
+  //   width2="1.5rem"
+  //   height2="1.5rem"
+  //   width3="1.5rem"
+  //   height3="1.5rem"
+  // />;
+
   const cartReducer = useSelector((state) => state.cartReducer);
   const isLoggedIn = authCtx.isLoggedIn;
 
@@ -56,26 +81,17 @@ const TopNavbar = ({ onShowCart }) => {
 
   return (
     <>
+      {" "}
       <Header height="8rem" display="block">
         <Wrapper maxWidth="auto">
-          <Hamburger>
-            <FontAwesomeIcon icon="fa-solid fa-bars" />
-          </Hamburger>
           <LogoWrapper>
             <Link to="/">
               <Logo>
                 <Image src={require("../../../image/logo.png")} alt="logo" />
               </Logo>
             </Link>{" "}
-          </LogoWrapper>
-          <Search method="GET" action="/search">
-            <Input type="text" placeholder="search..." name="keyword" />
-            <SearchBtn>
-              <IconStyle>
-                <FontAwesomeIcon icon="fa-solid fa-search" />
-              </IconStyle>
-            </SearchBtn>
-          </Search>
+          </LogoWrapper>{" "}
+          {props.children}
           <UserNav>
             <Ul>
               {!isLoggedIn && (
@@ -97,7 +113,7 @@ const TopNavbar = ({ onShowCart }) => {
                 </Li>
               )}
               {isLoggedIn && (
-                <Li onClick={onShowCart}>
+                <Li>
                   <CartIcon>
                     <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
                     <Notification>{totalQuantity}</Notification>
@@ -113,4 +129,4 @@ const TopNavbar = ({ onShowCart }) => {
   );
 };
 
-export default TopNavbar;
+export default CartNavbar;

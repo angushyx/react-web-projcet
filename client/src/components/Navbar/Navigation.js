@@ -4,11 +4,11 @@ import { devices } from "../../MediaQuery/MediaQuery";
 
 export const Header = styled.header`
   position: sticky;
-  height: 5rem;
+  height: ${(props) => props.height || "5rem"};
   background-color: var(--color-grey-light-1);
   bottom: 0;
   @media ${devices.mobileL} {
-    display: none;
+    display: ${(props) => props.display || "none"};
   }
 `;
 
@@ -20,7 +20,7 @@ export const Wrapper = styled.nav`
   font-size: 2rem;
 
   width: 90%;
-  max-width: 34rem;
+  max-width: ${(props) => props.maxWidth || "34rem;"};
   height: 100%;
   margin: 0 auto;
 `;

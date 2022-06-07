@@ -1,12 +1,14 @@
 import styled from "styled-components";
+import { devices } from "../../../MediaQuery/MediaQuery";
 
 export const DetailBox = styled.ul`
-  height: 35rem;
+  height: 30rem;
   width: 25rem;
   background-color: #000;
   position: absolute;
-  top: 5rem;
-  left: -25rem;
+  top: 6rem;
+
+  left: -20rem;
   border-radius: 0.3rem;
 
   &:not(:first-child) {
@@ -17,7 +19,7 @@ export const DetailBox = styled.ul`
     gap: 1rem;
   }
   & > * {
-    height: 15%;
+    height: 17%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -26,14 +28,17 @@ export const DetailBox = styled.ul`
       background-color: #555;
     }
   }
-
-  @media screen and (min-width: 600px) {
+  @media ${devices.mobileL} {
     width: 30rem;
     right: 17rem;
+    font-size: 1.5rem;
+
+    left: -25rem;
   }
 `;
 
 export const UserInfoWrapper = styled.li`
+  font-size: 1.5rem;
   width: 100%;
   justify-content: center;
 
@@ -64,6 +69,7 @@ export const UserInfoWrapper = styled.li`
 
 export const UserName = styled.h3`
   line-height: 2;
+  font-size: 1.4rem;
 `;
 
 export const SettingWrapper = styled.li`

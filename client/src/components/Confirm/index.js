@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
+import CartNavbar from "../Navbar/CartNavbar";
 
 import {
   Checkbox,
@@ -108,9 +109,6 @@ const Confirm = () => {
         handleClickOpen={handleClickOpen}
       />
 
-      <Container>
-        <CheckStep bgc3="#222" after3=" " />
-      </Container>
       <Container width="90%" maxWidth="100rem">
         <Headline>Please confirm and submit your order</Headline>
         <MainWrapper>

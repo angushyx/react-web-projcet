@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const StepContainer = styled.div`
-  margin-top: 6rem;
+  width: 45rem;
 `;
 const StepUl = styled.ul`
   list-style: none;
   display: flex;
+
   width: 100%;
   justify-content: space-between;
 `;

@@ -1,11 +1,11 @@
 import React from "react";
 import Signup from "../components/Signup";
-import TopNavbar from "../components/Navbar/TopNavbar";
+import CartNavbar from "../components/Navbar/CartNavbar";
 
 const SignupPage = () => {
   return (
     <>
-      <TopNavbar />
+      <CartNavbar />
       <Signup />
     </>
   );
