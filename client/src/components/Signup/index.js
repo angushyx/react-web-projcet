@@ -45,6 +45,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
     role: "",
+    imageUrl: "",
   };
 
   const [formData, setFormData] = useState(initialState);
@@ -54,8 +55,10 @@ const Signup = () => {
     role: formData.role,
     name: formData.firstName + formData.lastName,
     confirmPassword: formData.confirmPassword,
+    imageUrl: formData.imageUrl,
   };
 
+  console.log(updateData);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -75,7 +78,8 @@ const Signup = () => {
         updateData.email,
         updateData.password,
         updateData.role,
-        updateData.confirmPassword
+        updateData.confirmPassword,
+        updateData.imageUrl
       );
 
       await setIsLoading(false);
@@ -203,6 +207,7 @@ const Signup = () => {
               <RadioLabel htmlFor="role">seller</RadioLabel>
             </RadioWrapper>
           </InputWrapper>
+          <input onChange={handleChange} name="imageUrl" type="text" />
           <ButtonWrapper>
             <BtnStyle type="submit" mt="2rem">
               Signup

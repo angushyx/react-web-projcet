@@ -18,8 +18,10 @@ import {
 
 const BottomNavbar = ({ onShowCart }) => {
   /********user modal **************/
+
   const [showModal, setShowModal] = useState(false);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const googleLogin = JSON.parse(localStorage.getItem("profile"));
 
   const navigator = useNavigate();
 
@@ -27,12 +29,12 @@ const BottomNavbar = ({ onShowCart }) => {
   const location = useLocation();
   useEffect(() => {
     const token = user?.token;
-    setUser(JSON.parse(localStorage.getItem("profile")));
+    setUser(JSON.parse(localStorage.getItem("user")));
   }, [location]);
 
   // const authCtx = useContext(AuthContext);
   const logoutHandler = () => {
-    // authCtx.logout();
+    localStorage.removeItem("user");
     localStorage.removeItem("profile");
     navigator("/login");
   };
@@ -42,8 +44,10 @@ const BottomNavbar = ({ onShowCart }) => {
   };
   /**************************************/
 
-  const authReducer = useSelector((state) => state.authReducer);
+  // const authReducer = useSelector((state) => state.authReducer);
   const cartReducer = useSelector((state) => state.cartReducer);
+
+  const googleImage = googleLogin?.imageUrl;
 
   const totalQuantity = cartReducer.totalQuantity;
 
@@ -69,7 +73,22 @@ const BottomNavbar = ({ onShowCart }) => {
                     width="5rem"
                     height="5rem"
                     style={{ borderRadius: "50%" }}
-                    src={user.imageUrl}
+                    src={user.user.imageUrl}
+                    alt="user avatar"
+                  />
+                </div>
+              </div>
+            </>
+          ) : googleLogin ? (
+            <>
+              <div onClick={toggleUserModalHandler}>
+                {showModal && <UserModal onLogout={logoutHandler} />}
+                <div>
+                  <ImageStyle
+                    width="5rem"
+                    height="5rem"
+                    style={{ borderRadius: "50%" }}
+                    src={googleImage}
                     alt="user avatar"
                   />
                 </div>

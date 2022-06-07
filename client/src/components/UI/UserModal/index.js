@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { ImageStyle } from "../../Payment/PaymentElement";
 import {
   DetailBox,
   UserInfoWrapper,
@@ -10,19 +10,46 @@ import {
   LogoutWrapper,
   UserName,
 } from "./UserModalElement";
+import { useState } from "react";
 
 const UserModal = (props) => {
+  const userLogin = JSON.parse(localStorage.getItem("user"));
+  const googleLogin = JSON.parse(localStorage.getItem("profile"));
+
+  const user = userLogin?.user;
+
   return (
     <>
       <DetailBox>
         <UserInfoWrapper>
-          <div>
-            <FontAwesomeIcon icon="fa-solid fa-user" />
-          </div>
-          <UserName>
-            <strong>Angus</strong>
-            <div>sickmi14798@gmail.com</div>
-          </UserName>
+          {user ? (
+            <>
+              <div>
+                <ImageStyle src={user.imageUrl} alt="" />
+              </div>
+              <UserName>
+                <strong>{user.name}</strong>
+                <div>{user.email}</div>
+              </UserName>
+            </>
+          ) : googleLogin ? (
+            <>
+              <div>
+                <ImageStyle
+                  width="4rem"
+                  height="4rem"
+                  src={googleLogin.imageUrl}
+                  alt=""
+                />
+              </div>
+              <UserName>
+                <strong>{googleLogin.name}</strong>
+                <div>{googleLogin.email}</div>
+              </UserName>
+            </>
+          ) : (
+            <>{null}</>
+          )}
         </UserInfoWrapper>
 
         <SettingWrapper>

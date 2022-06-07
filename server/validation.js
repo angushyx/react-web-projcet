@@ -7,6 +7,7 @@ const registerValidation = (data) => {
     password: Joi.string().min(6).max(255).required(),
     role: Joi.string().required().valid("consumer", "seller"),
     confirmPassword: Joi.string().required().valid(Joi.ref("password")),
+    imageUrl: Joi.string(),
   });
 
   //讓 schema 做驗證

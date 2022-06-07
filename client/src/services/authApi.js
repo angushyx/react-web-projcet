@@ -2,13 +2,14 @@ import axios from "axios";
 const APL_URL = "http://localhost:8080/api/users";
 
 class AuthService {
-  signup(name, email, password, role, confirmPassword) {
+  signup(name, email, password, role, confirmPassword, imageUrl) {
     return axios.post(APL_URL + "/signup", {
       name,
       email,
       password,
       role,
       confirmPassword,
+      imageUrl,
     });
   }
   login(email, password) {

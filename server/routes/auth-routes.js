@@ -10,24 +10,25 @@ router.get("/test", (req, res) => {
 
 router.post("/signup", async (req, res) => {
   const { error } = registerValidation(req.body);
-
+  console.log(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   const emailExist = await User.findOne({ email: req.body.email });
   if (emailExist)
     return res.status(400).send("Email is already been registered.");
 
-  console.log(req.body);
-
   /**
    * register the user，如果 google 也要存到 mongodb 就要從 client side 拿到 google login 資料，接著再 new 一個新的 google user，用同一套 model，
    */
+
   const newUser = new User({
     email: req.body.email,
     name: req.body.name,
     password: req.body.password,
     confirmPassword: req.body.comparePassword,
     role: req.body.role,
+    imageUrl: req.body.imageUrl,
   });
+
   try {
     const saveUser = await newUser.save();
     res.status(200).send({
