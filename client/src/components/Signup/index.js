@@ -87,8 +87,8 @@ const Signup = () => {
 
       await navigate("/login");
     } catch (error) {
-      AuthSwal.fire({
-        title: "Success",
+      await AuthSwal.fire({
+        title: "Failed",
         text: error.response.data,
         icon: "error",
       });

@@ -11,6 +11,18 @@ class AuthService {
       confirmPassword,
     });
   }
+  login(email, password) {
+    return axios.post(APL_URL + "/signIn", {
+      email,
+      password,
+    });
+  }
+  logout() {
+    localStorage.removeItem("user");
+  }
+  getCurrentUser() {
+    return JSON.parse(localStorage.getItem("user"));
+  }
 }
 
 export default new AuthService();
