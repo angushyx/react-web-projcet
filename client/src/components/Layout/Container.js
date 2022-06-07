@@ -1,26 +1,24 @@
-import Navigation from "./Navigation";
-import Cart from "../Cart";
-import { useState } from "react";
+// import Cart from "../Cart";
+// import { useState } from "react";
 
-const Container = (props) => {
-  const [cartIsShown, setCartIsShown] = useState(false);
+// const Container = (props) => {
+//   const [cartIsShown, setCartIsShown] = useState(false);
 
-  //把它當成 toggle 用
-  const showCartHandler = () => {
-    setCartIsShown(true);
-  };
+//   //把它當成 toggle 用
+//   const showCartHandler = () => {
+//     setCartIsShown(true);
+//   };
 
-  const hiddenCartHandler = () => {
-    setCartIsShown(false);
-  };
+//   const hiddenCartHandler = () => {
+//     setCartIsShown(false);
+//   };
 
-  return (
-    <>
-      {cartIsShown && <Cart onHiddenCart={hiddenCartHandler} />}
-      {props.children}
-      <Navigation />
-    </>
-  );
-};
+//   return (
+//     <>
+//       {cartIsShown && <Cart onHiddenCart={hiddenCartHandler} />}
+//       {props.children}
+//     </>
+//   );
+// };
 
-export default Container;
+// export default Container;

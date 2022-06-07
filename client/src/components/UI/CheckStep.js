@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const StepContainer = styled.div``;
+const StepContainer = styled.div`
+  margin-top: 6rem;
+`;
 const StepUl = styled.ul`
   list-style: none;
   display: flex;

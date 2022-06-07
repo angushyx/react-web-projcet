@@ -11,7 +11,6 @@ import PaymentPage from "./pages/PaymentPage";
 import ConfirmPage from "./pages/ConfirmPage";
 import LoginPage from "./pages/LoginPage";
 
-import Navigation from "./components/Layout/Navigation";
 import Cart from "./components/Cart";
 import { useState } from "react";
 import { gapi } from "gapi-script";
@@ -91,7 +90,7 @@ function App() {
   const hiddenCartHandler = () => {
     setCartIsShown(false);
   };
-  <Navigation onShowCart={showCartHandler} />;
+  // <Navigation onShowCart={showCartHandler} />;
   {
     cartIsShown && <Cart onHiddenCart={hiddenCartHandler} />;
   }
@@ -106,10 +105,8 @@ function App() {
     //   <Route path="/register" element={<Register />} />
     // </Routes>
     <>
-      <Container>
-        {" "}
-        <>{element}</>
-      </Container>
+      {" "}
+      <>{element}</>
     </>
   );
 }

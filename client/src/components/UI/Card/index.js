@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconStyle } from "../../Layout/Navigation/NavigationElement";
+import { IconStyle } from "../../Navbar/NavigationElement";
 import CartForm from "../../UI/CartForm";
 
 import {
@@ -23,7 +23,7 @@ const Card = (props) => {
   return (
     <>
       <CardStyle key={id}>
-        {/* <CartForm price={price} id={props.id} /> */}
+        <CartForm price={price} id={props.id} />
         <IconStyle
           top=".5rem"
           right=".5rem"

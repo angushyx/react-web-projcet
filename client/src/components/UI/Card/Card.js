@@ -73,11 +73,6 @@ export const RatingWrapper = styled.div`
   font-size: 1.5rem;
 `;
 
-export const IconStyle = styled.div`
-  position: ${(props) => props.position || "relative"};
-  color: ${(props) => props.color || "var(--color-primary-dark)"};
-`;
-
 export const Rating = styled.strong`
   flex: 1;
 `;

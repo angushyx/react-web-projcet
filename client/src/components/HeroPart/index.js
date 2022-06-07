@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Button from "../UI/Button";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconStyle } from "../Layout/Navigation/NavigationElement";
+import { IconStyle } from "../Navbar/NavigationElement";
 import TemporaryDrawer from "../UI/Drawer/Drawer";
+import BottomNavbar from "../Navbar/BottomNavbar";
 
 import {
   HeroSection,
@@ -48,7 +49,7 @@ const Hero = () => {
             </Button>
           </Link>
         </Wrapper>
-      </HeroSection>
+      </HeroSection>{" "}
     </>
   );
 };

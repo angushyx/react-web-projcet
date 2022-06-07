@@ -8,6 +8,7 @@ import {
 import Footer from "../components/UI/Footer";
 import { useDispatch } from "react-redux";
 import { changePageView } from "../slices/ShippingInfo-slice";
+import TopNavbar from "../components/Navbar/TopNavbar";
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
@@ -15,8 +16,9 @@ const CheckoutPage = () => {
 
   return (
     <>
+      {" "}
+      <TopNavbar />
       <Container>
-        {" "}
         <CheckStep
           bgc1="#222"
           after1=" "
