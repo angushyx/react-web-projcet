@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import {
+  RadioInput,
+  RadioWrapper,
+  RadioLabel,
+} from "../Payment/PaymentElement";
 
 export const Wrapper = styled.div`
   width: 40rem;
@@ -9,9 +14,9 @@ export const Wrapper = styled.div`
 export const Headline = styled.h1``;
 export const SignupCard = styled.div`
   width: 100%;
-  height: 70%;
+
   margin: auto 0;
-  transform: translateY(15%);
+  transform: translateY(${(props) => props.translateY || "15%"});
 
   display: flex;
   flex-direction: column;
@@ -51,4 +56,5 @@ export const InputWrapper = styled.div`
   display: flex;
   gap: 1rem;
   width: 80%;
+  justify-content: space-evenly;
 `;

@@ -63,7 +63,7 @@ const Navigation = ({ onShowCart }) => {
 
   return (
     <>
-      <Link to="register">
+      <Link to="/login">
         <IconStyle
           position="absolute"
           top="1.4rem"

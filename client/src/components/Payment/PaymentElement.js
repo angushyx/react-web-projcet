@@ -44,7 +44,6 @@ export const CreditCardWrapper = styled.div`
 
 export const RadioInput = styled(Input).attrs({
   type: "radio",
-  name: "radio",
 })`
   all: unset;
 
@@ -53,22 +52,22 @@ export const RadioInput = styled(Input).attrs({
   height: 2rem;
   width: 2rem;
 
-  border: 1px solid #777;
+  border: 1px solid var(--color-grey-dark-2);
   border-radius: 50%;
-  background-color: #fff;
+  background: #fff;
   transition: background-color 0.3s;
   &::before {
     content: "";
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    background-color: #fff;
+    background: var(--color-grey-light-1);
 
     position: absolute;
     transform: translate(50%, 50%);
   }
   &:checked {
-    background-color: #222;
+    background: ${(props) => props.checkedbgc || "var(--color-grey-dark-1)"};
   }
 `;
 

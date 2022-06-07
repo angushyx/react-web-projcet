@@ -9,7 +9,7 @@ const passport = require("passport");
 require("./config/passport-setup")(passport);
 const session = require("express-session");
 
-const authRoutes = require("./routes").auth;
+const authRoutes = require("./routes/auth-routes");
 const mealRoutes = require("./routes/meal-routes");
 
 const cors = require("cors");
@@ -33,7 +33,8 @@ app.use(session({ secret: process.env.PASSPORT_SECRET }));
 app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/api/auth", authRoutes);
+
+app.use("/api/users", authRoutes);
 app.use("/api/meals", mealRoutes);
 
 app.get("/", (req, res) => {

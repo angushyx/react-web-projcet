@@ -5,14 +5,15 @@ const registerValidation = (data) => {
     name: Joi.string().min(3).max(50).required(),
     email: Joi.string().min(6).max(50).required().email(),
     password: Joi.string().min(6).max(255).required(),
-    role: Joi.string().required().valid("user", "seller"),
+    role: Joi.string().required().valid("consumer", "seller"),
+    confirmPassword: Joi.string().required().valid(Joi.ref("password")),
   });
 
   //讓 schema 做驗證
   return schema.validate(data);
 };
 
-const loginValidation = (data) => {
+const signInValidation = (data) => {
   const schema = Joi.object({
     email: Joi.string().min(6).max(50).required().email(),
     password: Joi.string().min(6).max(255).required(),
@@ -32,5 +33,5 @@ const mealValidation = (data) => {
 };
 
 module.exports.registerValidation = registerValidation;
-module.exports.loginValidation = loginValidation;
+module.exports.signInValidation = signInValidation;
 module.exports.mealValidation = mealValidation;

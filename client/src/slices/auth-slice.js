@@ -120,15 +120,15 @@ export const authSlice = createSlice({
       // return {
       //   userData: data,
       // };
-      const { firstName, lastName, email, password, confirmPassword } =
-        action.payload;
-      console.log(action.payload);
+      // const { firstName, lastName, email, password, confirmPassword } =
+      //   action.payload;
+      // console.log(action.payload);
       // console.log(action.payload);
     },
     signIn: (state, action) => {
-      const { firstName, lastName, email, password, confirmPassword } =
-        action.payload;
-      console.log(action.payload);
+      // const { firstName, lastName, email, password, confirmPassword } =
+      //   action.payload;
+      // console.log(action.payload);
       // const { data } = await api.signIn(action.payload);
     },
   },

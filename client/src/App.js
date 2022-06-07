@@ -1,15 +1,16 @@
 import "./App.css";
 import Home from "./pages/Home";
-import Location from "./pages/Location";
 import Shop from "./pages/Shop";
 import NewItem from "./pages/NewItem";
 import NoFound from "./pages/NoFound";
 import DetailPages from "./pages/DetailPages";
-import Register from "./pages/Register";
+import SignupPage from "./pages/SignupPage";
 import Search from "./pages/Search";
 import CheckoutPage from "./pages/CheckoutPage";
 import PaymentPage from "./pages/PaymentPage";
 import ConfirmPage from "./pages/ConfirmPage";
+import LoginPage from "./pages/LoginPage";
+
 import Navigation from "./components/Layout/Navigation";
 import Cart from "./components/Cart";
 import { useState } from "react";
@@ -27,8 +28,13 @@ const routeConfig = [
     children: [],
   },
   {
-    path: "/register",
-    element: <Register />,
+    path: "/signup",
+    element: <SignupPage />,
+    children: [],
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
     children: [],
   },
   {
@@ -39,10 +45,6 @@ const routeConfig = [
   { path: "/new", element: <NewItem /> },
 
   { path: "/product/:itemId", element: <DetailPages /> },
-  {
-    path: "/Location",
-    element: <Location />,
-  },
   {
     path: "/confirm",
     element: <ConfirmPage />,

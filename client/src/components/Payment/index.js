@@ -109,7 +109,11 @@ const Payment = () => {
         <CreditCardWrapper>
           <RadioWrapper>
             <div>
-              <RadioInput onClick={useCardHandler} id="creditCard" />
+              <RadioInput
+                name="payment"
+                onClick={useCardHandler}
+                id="creditCard"
+              />
               <RadioLabel htmlFor="creditCard">Card</RadioLabel>
             </div>
             <CardIconWrapper>
@@ -234,7 +238,11 @@ const Payment = () => {
         <PaypalWrapper>
           <RadioWrapper>
             <div>
-              <RadioInput onClick={usePaypalHandler} id="Paypal" />
+              <RadioInput
+                name="payment"
+                onClick={usePaypalHandler}
+                id="Paypal"
+              />
               <RadioLabel htmlFor="Paypal">Paypal</RadioLabel>
             </div>
             <ImageStyle
