@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { devices } from "../../../MediaQuery/MediaQuery";
 
 export const DetailBox = styled.ul`
-  height: 30rem;
+  height: 33rem;
   width: 25rem;
-  background-color: #000;
+  background: var(--color-grey-dark-1);
   position: absolute;
   top: 6rem;
 
@@ -25,7 +25,8 @@ export const DetailBox = styled.ul`
     align-items: center;
     color: #fff;
     &:hover {
-      background-color: #555;
+      transition: all 0.4s ease-in;
+      background: var(--color-grey-dark-2);
     }
   }
   @media ${devices.mobileL} {
@@ -38,17 +39,17 @@ export const DetailBox = styled.ul`
 `;
 
 export const UserInfoWrapper = styled.li`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
 
   margin: 1rem auto;
-
+  padding: 4rem;
   gap: 2rem;
 
   height: 20%;
   font-size: 1.5rem;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--color-grey-light-1);
   > div {
     font-size: 2.5rem;
   }
@@ -60,7 +61,7 @@ export const UserInfoWrapper = styled.li`
 
     top: -2rem;
     right: 2rem;
-    border-bottom: 1rem solid #000;
+    border-bottom: 1rem solid var(--color-grey-dark-1);
     border-left: 1rem solid transparent;
     border-top: 1rem solid transparent;
     border-right: 1rem solid transparent;

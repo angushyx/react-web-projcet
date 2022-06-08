@@ -12,10 +12,10 @@ const AmountWrapper = styled.form`
 
 const CartBtn = styled.button`
   display: flex;
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   font-size: 2rem;
-  border-radius: 50%;
+
   align-items: center;
   border: 1px solid #000;
   justify-content: center;
@@ -28,7 +28,7 @@ const CartBtn = styled.button`
   }
 `;
 const Input = styled.input`
-  border: none;
+  border: 1px solid #aaa;
   width: 4rem;
   height: 4rem;
 
@@ -47,6 +47,7 @@ const CartForm = React.forwardRef((props, ref) => {
 
   const AddToCartHandler = (e) => {
     e.preventDefault();
+    console.log(e.target);
 
     const itemId = itemIdRef.current;
 
@@ -68,17 +69,21 @@ const CartForm = React.forwardRef((props, ref) => {
 
     dispatch(addToCart({ newItem, enterAmountNum, enterItemPrice }));
   };
+  const decreaseItemHandler = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <AmountWrapper>
-      <CartBtn>-</CartBtn>
+      <CartBtn onClick={decreaseItemHandler}>-</CartBtn>
       <Input
         ref={amountInputRef}
         label="Amount"
         min="1"
-        max="5"
+        max="1"
         type="text"
         defaultValue="1"
+        value={props.itemAmount}
         id="amount"
       />
       <CartBtn onClick={AddToCartHandler}>+</CartBtn>

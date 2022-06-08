@@ -35,17 +35,13 @@ const Login = () => {
   };
 
   const [formData, setFormData] = useState(initialState);
-  // const [isSignup, setIsSignup] = useState(false);
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   const updateData = {
     email: formData.email,
     password: formData.password,
   };
-
   /**
    * USE JWT login
    * @param {event} e

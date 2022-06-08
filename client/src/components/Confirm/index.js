@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Container, Headline } from "../ShippingForm/ShippingFormElement";
-import CheckStep from "../UI/CheckStep";
 import Button from "../UI/Button";
 import FormDialog from "../UI/Modal2";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,6 +10,7 @@ import withReactContent from "sweetalert2-react-content";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
 import CartNavbar from "../Navbar/CartNavbar";
+import CartList from "../../components/UI/CartList";
 
 import {
   Checkbox,
@@ -32,10 +32,6 @@ import {
   CartTableTd,
   CartTableHeader,
   EmailAddress,
-  ProductWrapper,
-  BrandWrapper,
-  ProductDetail,
-  FlexWrapper,
 } from "./ConfirmElement";
 import { ImageStyle } from "../Payment/PaymentElement";
 import Footer from "../UI/Footer";
@@ -59,9 +55,9 @@ const Confirm = () => {
 
   const userSlice = useSelector((state) => state.userInfoReducer);
   const userList = userSlice.userInfos;
-
   const cart = useSelector((state) => state.cartReducer);
   const cartList = cart.items;
+
   const totalAmount = cart.totalAmount.toFixed(2);
 
   const cartItems = cartList.map((item) => {
@@ -71,10 +67,10 @@ const Confirm = () => {
       itemPrice: item.price,
     };
   });
-
   /**
    * Send cart items to firebase <Handler></Handler>
    */
+
   const submitCartItemHandler = async (e) => {
     e.preventDefault();
     try {
@@ -100,7 +96,6 @@ const Confirm = () => {
       console.log("error", err);
     }
   };
-
   return (
     <>
       <FormDialog
@@ -231,50 +226,7 @@ const Confirm = () => {
           </CartWrapper>
         </MainWrapper>
         {isLoading && <LoadingSpinner />}
-        {cartList.map((item) => (
-          <ProductWrapper>
-            <BrandWrapper>
-              <div>
-                <ImageStyle
-                  width="3rem"
-                  height="3rem"
-                  src={require("../../image/picasa.png")}
-                />
-              </div>
-              <div>
-                <h2>OliveCreativeCny</h2>
-                <div>Made just for yos</div>
-              </div>
-            </BrandWrapper>
-            <div>
-              <ProductDetail>
-                <FlexWrapper>
-                  <div>
-                    <ImageStyle
-                      height="10rem"
-                      width="10rem"
-                      src={item.image}
-                      alt="product"
-                    />{" "}
-                    <div>
-                      <h1>{item.name}</h1>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                  <FlexWrapper>
-                    <FlexWrapper>
-                      <InfoText mb="0">Quantity: {item.amount}</InfoText>
-                      <InfoText mb="0">
-                        NT$ <strong>{item.price}</strong>
-                      </InfoText>
-                    </FlexWrapper>
-                  </FlexWrapper>
-                </FlexWrapper>
-              </ProductDetail>
-
-              <div></div>
-            </div>
-          </ProductWrapper>
-        ))}
+        <CartList />
       </Container>
       <Footer />
     </>

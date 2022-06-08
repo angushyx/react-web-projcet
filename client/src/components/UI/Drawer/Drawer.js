@@ -1,23 +1,49 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Hamburger } from "../../HeroPart/HeroElement";
+import { useSelector } from "react-redux";
+import CartList from "../CartList";
+import { ImageStyle } from "../../Payment/PaymentElement";
+import styled from "styled-components";
+import { BtnStyle } from "../Button";
+import { Title } from "../../HeroPart/HeroElement";
+import { devices } from "../../../MediaQuery/MediaQuery";
+import { Link } from "react-router-dom";
+
+export const CartContainer = styled.div`
+  width: 55rem;
+  height: 100%;
+  text-align: center;
+`;
+
+export const CartListWrapper = styled.div`
+  overflow: scroll;
+  text-align: center;
+  width: 100vw;
+
+  @media ${devices.mobileL} {
+    width: 100vw;
+  }
+  @media ${devices.tablet} {
+    width: 65vw;
+  }
+`;
+export const Container = styled.div`
+  width: 90%;
+  height: 50%;
+  margin: 0 4rem;
+`;
 
 export default function TemporaryDrawer() {
+  const cartReducer = useSelector((state) => state.cartReducer);
+
+  const cartList = cartReducer.items;
+  console.log();
+
   const [state, setState] = React.useState({
-    top: false,
     left: false,
-    bottom: false,
-    right: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -31,55 +57,65 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
+  const NoItem = () => {
+    return (
+      <CartContainer>
+        <div>
+          <ImageStyle
+            height="80%"
+            width="80%"
+            style={{ margin: "5rem auto" }}
+            src={require("../../../image/undraw_shopping_app_flsj.png")}
+            alt=""
+          />
+        </div>
+        <h1>Cart Is empty</h1>
+      </CartContainer>
+    );
+  };
   return (
     <div>
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Hamburger onClick={toggleDrawer(anchor, true)}>
-            <FontAwesomeIcon icon="fa-solid fa-bars" />
+            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
           </Hamburger>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
+
+          <div>
+            {" "}
+            <Drawer
+              style={{ position: "absolute" }}
+              anchor="left"
+              open={state[anchor]}
+              onClose={toggleDrawer(anchor, false)}
+            >
+              {" "}
+              {cartList.length !== 0 ? (
+                <CartListWrapper>
+                  <Title>cart</Title>
+                  <Container>
+                    <CartList />
+                  </Container>{" "}
+                </CartListWrapper>
+              ) : (
+                <NoItem />
+              )}{" "}
+              <h2></h2>
+              {/* <Link style={{ all: "unset" }} to="/shop"> */}
+              <BtnStyle
+                style={{
+                  alignSelf: "center",
+                  padding: "1rem",
+                  marginBottom: "2rem ",
+                }}
+                height="3rem"
+                width="85%"
+              >
+                Checkout
+              </BtnStyle>
+              {/* </Link> */}
+            </Drawer>{" "}
+          </div>
         </React.Fragment>
       ))}
     </div>

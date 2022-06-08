@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconStyle } from "../../Navbar/Navigation";
 import CartForm from "../../UI/CartForm";
 
+/**
+ * 把 db 的資料傳進來這裡，代替 redux 的資料。
+ */
 import {
   CardStyle,
   Image,
@@ -19,11 +22,11 @@ import {
 
 const Card = (props) => {
   const { id, image, name, price, description, category } = props;
-
+  console.log(id);
   return (
     <>
       <CardStyle key={id}>
-        <CartForm price={price} id={props.id} />
+        <CartForm id={id} />
         <IconStyle
           top=".5rem"
           right=".5rem"

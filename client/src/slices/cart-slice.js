@@ -32,6 +32,7 @@ export const cartSlice = createSlice({
           amount: exitingItem.amount + action.payload.enterAmountNum,
         };
         updatedItems = [...state.items];
+        console.log(exitingItem);
         updatedItems[exitingItemIndex] = updatedItem;
       } else {
         updatedItems = state.items.concat(action.payload.newItem);
@@ -45,6 +46,7 @@ export const cartSlice = createSlice({
     },
     removeItemFromCart: (state, action) => {
       const id = action.payload;
+      console.log(id);
       const deleteItemIndex = state.items.findIndex((item) => {
         return item.id === id;
       });

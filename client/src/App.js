@@ -16,8 +16,6 @@ import { useState } from "react";
 import { gapi } from "gapi-script";
 import { useEffect } from "react";
 
-import Container from "./components/Layout/Container";
-
 import { Routes, Route, useRoutes, RouteObject } from "react-router-dom";
 
 const routeConfig = [
@@ -68,6 +66,7 @@ const routeConfig = [
 ];
 
 function App() {
+  window.scrollTo(0, 0);
   useEffect(() => {
     function start() {
       gapi.client.init({
@@ -91,9 +90,8 @@ function App() {
     setCartIsShown(false);
   };
   // <Navigation onShowCart={showCartHandler} />;
-  {
-    cartIsShown && <Cart onHiddenCart={hiddenCartHandler} />;
-  }
+  <Cart onHiddenCart={hiddenCartHandler} />;
+
   return (
     // <Routes>
     //   <Route path="/" element={<Home />} />
@@ -158,12 +156,6 @@ function App() {
     path: "*",
     element: <NoFound />,
   },
-
-
-
-
-
-
  */
 
 export default App;

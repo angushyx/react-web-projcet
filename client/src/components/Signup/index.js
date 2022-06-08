@@ -58,7 +58,6 @@ const Signup = () => {
     imageUrl: formData.imageUrl,
   };
 
-  console.log(updateData);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

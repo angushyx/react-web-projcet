@@ -10,7 +10,6 @@ import {
   LogoutWrapper,
   UserName,
 } from "./UserModalElement";
-import { useState } from "react";
 
 const UserModal = (props) => {
   const userLogin = JSON.parse(localStorage.getItem("user"));
@@ -25,7 +24,13 @@ const UserModal = (props) => {
           {user ? (
             <>
               <div>
-                <ImageStyle src={user.imageUrl} alt="" />
+                <ImageStyle
+                  radius="50%"
+                  width="6rem"
+                  height="6rem"
+                  src={user.imageUrl}
+                  alt=""
+                />
               </div>
               <UserName>
                 <strong>{user.name}</strong>
@@ -36,8 +41,9 @@ const UserModal = (props) => {
             <>
               <div>
                 <ImageStyle
-                  width="4rem"
-                  height="4rem"
+                  radius="50%"
+                  width="6rem"
+                  height="6rem"
                   src={googleLogin.imageUrl}
                   alt=""
                 />

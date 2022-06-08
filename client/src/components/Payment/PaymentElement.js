@@ -119,4 +119,5 @@ export const ImageStyle = styled.img`
   width: ${(props) => props.width || "3rem"};
   cursor: pointer;
   display: ${(props) => props.display || "block"};
+  border-radius: ${(props) => props.radius || "auto"};
 `;

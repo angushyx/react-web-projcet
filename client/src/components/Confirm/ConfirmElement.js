@@ -206,30 +206,3 @@ export const ChangeBTN = styled.button`
     color: #222;
   }
 `;
-
-export const ProductWrapper = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px #ccc solid;
-  gap: 3rem;
-`;
-export const BrandWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-evenly;
-`;
-
-export const ProductDetail = styled.div`
-  display: flex;
-`;
-export const FlexWrapper = styled.div`
-  display: flex;
-  gap: 3rem;
-  align-items: flex-end;
-  @media screen and (max-width: 800px) {
-    flex-direction: column;
-  }
-`;

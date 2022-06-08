@@ -14,15 +14,10 @@ import {
   Search,
   Input,
   SearchBtn,
-  Hamburger,
 } from "./HeroElement";
 
 const Hero = () => {
   const [showDrawer, setShowDrawer] = useState({ top: false });
-
-  const drawerHandler = () => {
-    setShowDrawer({ top: true });
-  };
 
   return (
     <>
