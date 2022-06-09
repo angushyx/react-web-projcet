@@ -144,7 +144,7 @@ const CartList = (props) => {
               <TrashIcon onClick={cartItemRemoveHandler}>
                 <FontAwesomeIcon
                   icon="fa-solid fa-trash"
-                  style={{ zIndex: "-1", cursor: "pointer", fontSize: "2rem" }}
+                  style={{ zIndex: "1", cursor: "pointer", fontSize: "2rem" }}
                 />
               </TrashIcon>
             </div>

@@ -63,9 +63,9 @@ export const cartSlice = createSlice({
       const updatedTotalAmount =
         state.totalAmount - action.payload.enterItemPrice;
 
-      // console.log(state.totalAmount);
-      // console.log(action.payload.enterItemPrice);
-      // console.log(updatedTotalAmount);
+      console.log(state.totalAmount);
+      console.log(action.payload.enterItemPrice);
+      console.log(updatedTotalAmount);
       /**
        * total quantity
        */
@@ -100,10 +100,16 @@ export const cartSlice = createSlice({
       const deleteItemIndex = state.items.findIndex((item) => {
         return item.id === id;
       });
+
       const itemAmount = state.items[deleteItemIndex].amount;
       const updatedTotalQuantity = state.totalQuantity - itemAmount;
+      const itemPrice = state.items[deleteItemIndex].price;
+
+      const updatedTotalAmount = state.totalAmount - itemPrice * itemAmount;
+
       state.items.splice(deleteItemIndex, 1);
       state.totalQuantity = updatedTotalQuantity;
+      state.totalAmount = updatedTotalAmount;
     },
     clearItem() {
       return initialState;
