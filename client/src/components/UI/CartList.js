@@ -8,7 +8,7 @@ import { devices } from "../../MediaQuery/MediaQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
 import { removeItemFromCart } from "../../slices/cart-slice";
-import { fontSize } from "@mui/system";
+import { IconStyle } from "../Navbar/Navigation";
 
 export const ProductWrapper = styled.div`
   display: flex;
@@ -52,18 +52,19 @@ export const TextWrapper = styled.div`
   align-items: flex-start;
 `;
 
-const CartList = () => {
+const CartList = (props) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer);
   const cartList = cart.items;
-
+  const { id, image, name, price, description, amount } = props;
+  // console.log(id);
   // /**
   //  * 把購物車中的其中一個 Item 刪除的函式，還沒寫完。
   //  * @param {event} e
   //  */
   const cartItemRemoveHandler = (e) => {
-    console.log(e.target.parentElement.parentElement);
-    const parentEel = e.target.parentElement.parentElement;
+    console.log(e.target.parentElement);
+    const parentEel = e.target.parentElement;
     const targetId = parentEel.dataset.id;
     if (targetId === undefined) {
       return;
@@ -71,10 +72,10 @@ const CartList = () => {
     dispatch(removeItemFromCart(targetId));
   };
 
-  const a = (e) => {
-    // console.log(cartList[index].name);
-    console.log(e);
-  };
+  // const a = (e) => {
+  //   // console.log(cartList[index].name);
+  //   console.log(e);
+  // };
 
   /**
    * 需要找到相同 index 的
@@ -82,51 +83,53 @@ const CartList = () => {
 
   const totalAmount = cart.totalAmount.toFixed(2);
 
-  const cartItems = cartList.map((item) => {
-    return {
-      name: item.name,
-      itemAmount: item.amount,
-      itemPrice: item.price,
-    };
-  });
-  console.log(cartItems);
+  // const cartItems = cartList.map((item) => {
+  //   return {
+  //     name: item.name,
+  //     itemAmount: item.amount,
+  //     itemPrice: item.price,
+  //   };
+  // });
+  // console.log(cartItems);
   // 讓點擊的 id 不同
+  // console.log(amount);
 
-  return cartList.map((item) => (
+  return (
     <>
-      <ProductWrapper data-id={item.id}>
+      <ProductWrapper data-id={id}>
         <ProductDetail>
           <FlexWrapper>
             <div>
               <ImageStyle
                 height="10rem"
                 width="10rem"
-                src={item.image}
+                src={image}
                 alt="product"
               />{" "}
-              <div></div>{" "}
             </div>{" "}
             <TextWrapper>
-              <h1>{item.name}</h1>
-              <h3>{item.description}</h3>
+              <h1>{name}</h1>
+              <h3>{description}</h3>
             </TextWrapper>
             <AmountWrapper>
-              <CartForm itemAmount={item.amount} />
+              description category
+              <CartForm itemAmount={amount} id={id} />
               <InfoText fontSize="2.5rem" display="flex" mb="0">
-                NT$&nbsp;<strong>{item.price}</strong>
+                NT$&nbsp;<strong>{price}</strong>
               </InfoText>{" "}
             </AmountWrapper>{" "}
           </FlexWrapper>
         </ProductDetail>{" "}
-        <FontAwesomeIcon
-          onClick={cartItemRemoveHandler}
-          icon="fa-solid fa-trash"
-          style={{ cursor: "pointer", fontSize: "2rem" }}
-        />
+        <IconStyle hoverBgc="none" onClick={cartItemRemoveHandler}>
+          <FontAwesomeIcon
+            icon="fa-solid fa-trash"
+            style={{ zIndex: "-1", cursor: "pointer", fontSize: "2rem" }}
+          />
+        </IconStyle>
       </ProductWrapper>{" "}
       <div>{totalAmount}</div>
     </>
-  ));
+  );
 };
 //  <TextWrapper>
 //    <InfoText mb="0">Quantity: {item.amount}</InfoText>

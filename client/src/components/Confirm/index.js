@@ -67,6 +67,7 @@ const Confirm = () => {
       itemPrice: item.price,
     };
   });
+  console.log(cartItems);
   /**
    * Send cart items to firebase <Handler></Handler>
    */

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from "../../slices/cart-slice";
+import { addToCart, decreaseCartItem } from "../../slices/cart-slice";
 
 /****** CartInput and Button  ******/
 const AmountWrapper = styled.form`
@@ -44,33 +44,31 @@ const CartForm = React.forwardRef((props, ref) => {
   const commodityList = useSelector(
     (state) => state.commodityReducer.commodity
   );
+  const cartList = useSelector((state) => state.cartReducer.items);
+
+  const itemId = itemIdRef.current;
+
+  const newItem = commodityList.find((item) => {
+    return item.id === itemId;
+  });
+  const newCartItem = cartList.find((item) => {
+    return item.id === itemId;
+  });
 
   const AddToCartHandler = (e) => {
     e.preventDefault();
-    console.log(e.target);
-
-    const itemId = itemIdRef.current;
-
-    const newItem = commodityList.find((item) => {
-      return item.id === itemId;
-    });
-
     const enterAmount = amountInputRef.current.value;
-    let enterAmountNum = +enterAmount;
-    const enterItemPrice = newItem.price * enterAmountNum;
-
-    if (
-      enterAmountNum.length === 0 ||
-      enterAmountNum < 1 ||
-      enterAmountNum > 5
-    ) {
-      return;
-    }
+    //變成數字的功能
+    let enterAmountNum = parseInt(enterAmount, 10);
+    const enterItemPrice = newItem.price;
 
     dispatch(addToCart({ newItem, enterAmountNum, enterItemPrice }));
   };
   const decreaseItemHandler = (e) => {
     e.preventDefault();
+
+    const enterAmount = newCartItem.amount;
+    dispatch(decreaseCartItem(newItem, enterAmount));
   };
 
   return (
@@ -80,11 +78,11 @@ const CartForm = React.forwardRef((props, ref) => {
         ref={amountInputRef}
         label="Amount"
         min="1"
-        max="1"
+        max="999"
         type="text"
         defaultValue="1"
-        value={props.itemAmount}
         id="amount"
+        value={props.itemAmount}
       />
       <CartBtn onClick={AddToCartHandler}>+</CartBtn>
     </AmountWrapper>
@@ -92,3 +90,13 @@ const CartForm = React.forwardRef((props, ref) => {
 });
 
 export default CartForm;
+//  <Input
+//    ref={amountInputRef}
+//    label="Amount"
+//    min="1"
+//    max="5"
+//    type="text"
+//    defaultValue="1"
+//    id="amount"
+//    value={props.itemAmount}
+//  />;

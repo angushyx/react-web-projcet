@@ -65,7 +65,7 @@ export const IconStyle = styled.div`
       border-radius: 50%;
       height: 3.7rem;
       width: 3.7rem;
-      background-color: var(--color-primary);
+      background: ${(props) => props.hoverBgc || "var(--color-primary)"};
       z-index: -1;
     }
   }

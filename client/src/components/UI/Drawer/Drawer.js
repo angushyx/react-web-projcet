@@ -40,11 +40,23 @@ export default function TemporaryDrawer() {
   const cartReducer = useSelector((state) => state.cartReducer);
 
   const cartList = cartReducer.items;
-  console.log();
 
   const [state, setState] = React.useState({
     left: false,
   });
+
+  const cartItems = cartList.map((item) => (
+    <CartList
+      key={item.id}
+      id={item.id}
+      name={item.name}
+      price={item.price}
+      image={item.image}
+      description={item.description}
+      category={item.category}
+      amount={item.amount}
+    />
+  ));
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -93,9 +105,7 @@ export default function TemporaryDrawer() {
               {cartList.length !== 0 ? (
                 <CartListWrapper>
                   <Title>cart</Title>
-                  <Container>
-                    <CartList />
-                  </Container>{" "}
+                  <Container>{cartItems}</Container>{" "}
                 </CartListWrapper>
               ) : (
                 <NoItem />

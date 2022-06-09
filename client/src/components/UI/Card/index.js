@@ -22,11 +22,10 @@ import {
 
 const Card = (props) => {
   const { id, image, name, price, description, category } = props;
-  console.log(id);
+
   return (
     <>
       <CardStyle key={id}>
-        <CartForm id={id} />
         <IconStyle
           top=".5rem"
           right=".5rem"
@@ -60,12 +59,13 @@ const Card = (props) => {
             <Rating>
               {" "}
               5.0 <span>(52)</span>
-            </Rating>
+            </Rating>{" "}
             <HightLightPill color="#364fc7" bgc="#96f2d7" fontSize="1.2rem">
               {category}
-            </HightLightPill>
-          </RatingWrapper>
-        </CardContext>
+            </HightLightPill>{" "}
+          </RatingWrapper>{" "}
+          <CartForm id={id} />
+        </CardContext>{" "}
       </CardStyle>
     </>
   );

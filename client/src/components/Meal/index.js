@@ -17,8 +17,10 @@ const Meal = () => {
       image={item.image}
       description={item.description}
       category={item.category}
+      amount={item.amount}
     />
   ));
+  // console.log(commodityList);
 
   return (
     <>
