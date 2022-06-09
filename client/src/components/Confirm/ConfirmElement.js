@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const MainWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+
   @media screen and (max-width: 800px) {
     display: flex;
     flex-direction: column;
@@ -87,8 +88,9 @@ export const PaymentWrapper = styled.div`
 export const CartWrapper = styled.div`
   width: 45%;
   max-width: 40rem;
-  height: 65vh;
+
   padding: 2rem;
+
   -webkit-box-shadow: -4px 9px 23px -11px rgba(0, 0, 0, 0.55);
   -moz-box-shadow: -4px 9px 23px -11px rgba(0, 0, 0, 0.55);
   box-shadow: -4px 9px 23px -11px rgba(0, 0, 0, 0.55);
@@ -157,6 +159,7 @@ export const TableWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
+  margin-bottom: 4rem;
 `;
 
 export const CartTbody = styled.tbody`

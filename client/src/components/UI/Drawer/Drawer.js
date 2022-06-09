@@ -8,42 +8,110 @@ import CartList from "../CartList";
 import { ImageStyle } from "../../Payment/PaymentElement";
 import styled from "styled-components";
 import { BtnStyle } from "../Button";
-import { Title } from "../../HeroPart/HeroElement";
 import { devices } from "../../../MediaQuery/MediaQuery";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Notification } from "../../Navbar/Navigation";
+import { IconStyle } from "../../Navbar/Navigation";
 
 export const CartContainer = styled.div`
-  width: 55rem;
+  max-width: 55rem;
   height: 100%;
   text-align: center;
+  @media ${devices.mobileL} {
+    width: 80vw;
+  }
+  @media ${devices.tablet} {
+    width: 70vw;
+    min-width: 45rem;
+  }
+  @media ${devices.tablet} {
+    max-width: 50vw;
+  }
 `;
 
 export const CartListWrapper = styled.div`
+  position: relative;
   overflow: scroll;
   text-align: center;
   width: 100vw;
+  min-height: ${(props) => props.minH || "auto"};
+  margin-bottom: ${(props) => props.mt || "auto"};
 
   @media ${devices.mobileL} {
-    width: 100vw;
+    width: 80vw;
   }
   @media ${devices.tablet} {
-    width: 65vw;
+    width: 70vw;
+    min-width: 45rem;
+  }
+  @media ${devices.tablet} {
+    max-width: 50vw;
   }
 `;
 export const Container = styled.div`
-  width: 90%;
   height: 50%;
-  margin: 0 4rem;
+  width: 100%;
+  @media ${devices.tablet} {
+    width: 90%;
+    margin: 0 auto;
+  }
 `;
 
-export default function TemporaryDrawer() {
+export const Headline = styled.div`
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+
+  font-size: 1.5rem;
+  margin: 2rem auto;
+  color: #222;
+  @media ${devices.mobileL} {
+    font-size: 1.7rem;
+  }
+  @media ${devices.tablet} {
+    font-size: 2.3rem;
+  }
+`;
+
+export const NoItem = () => {
+  return (
+    <CartContainer>
+      <div style={{ position: "relative" }}>
+        <ImageStyle
+          height="80%"
+          width="80%"
+          style={{ margin: "5rem auto" }}
+          src={require("../../../image/undraw_shopping_app_flsj.png")}
+          alt=""
+        />{" "}
+      </div>
+      <h1>Cart Is empty</h1>
+    </CartContainer>
+  );
+};
+
+export default function TemporaryDrawer(props) {
+  const navigate = useNavigate();
   const cartReducer = useSelector((state) => state.cartReducer);
 
   const cartList = cartReducer.items;
 
   const [state, setState] = React.useState({
     left: false,
+    right: false,
+    top: false,
+    bottom: false,
   });
+
+  const checkoutHandler = () => {
+    if (cartList.length !== 0) {
+      navigate("/checkout");
+    } else {
+      navigate("/shop");
+    }
+  };
+
+  const totalAmount = cartReducer.totalAmount.toFixed(2);
 
   const cartItems = cartList.map((item) => (
     <CartList
@@ -69,28 +137,15 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-  const NoItem = () => {
-    return (
-      <CartContainer>
-        <div>
-          <ImageStyle
-            height="80%"
-            width="80%"
-            style={{ margin: "5rem auto" }}
-            src={require("../../../image/undraw_shopping_app_flsj.png")}
-            alt=""
-          />
-        </div>
-        <h1>Cart Is empty</h1>
-      </CartContainer>
-    );
-  };
   return (
     <div>
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Hamburger onClick={toggleDrawer(anchor, true)}>
-            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
+          <Hamburger onClick={toggleDrawer("left", true)}>
+            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />{" "}
+            <Notification right="-.5rem">
+              {cartReducer.totalQuantity}
+            </Notification>
           </Hamburger>
 
           <div>
@@ -104,14 +159,16 @@ export default function TemporaryDrawer() {
               {" "}
               {cartList.length !== 0 ? (
                 <CartListWrapper>
-                  <Title>cart</Title>
-                  <Container>{cartItems}</Container>{" "}
+                  {" "}
+                  <Headline>
+                    <div>cart</div>
+                    <div> $ {totalAmount} NTD</div>{" "}
+                  </Headline>
+                  <Container>{cartItems}</Container>
                 </CartListWrapper>
               ) : (
                 <NoItem />
               )}{" "}
-              <h2></h2>
-              {/* <Link style={{ all: "unset" }} to="/shop"> */}
               <BtnStyle
                 style={{
                   alignSelf: "center",
@@ -120,10 +177,10 @@ export default function TemporaryDrawer() {
                 }}
                 height="3rem"
                 width="85%"
+                onClick={checkoutHandler}
               >
-                Checkout
+                {cartList.length !== 0 ? "Checkout" : " Go to Shopping!"}
               </BtnStyle>
-              {/* </Link> */}
             </Drawer>{" "}
           </div>
         </React.Fragment>

@@ -55,47 +55,59 @@ const Confirm = () => {
 
   const userSlice = useSelector((state) => state.userInfoReducer);
   const userList = userSlice.userInfos;
-  const cart = useSelector((state) => state.cartReducer);
-  const cartList = cart.items;
+  const cartReducer = useSelector((state) => state.cartReducer);
+  const cartList = cartReducer.items;
 
-  const totalAmount = cart.totalAmount.toFixed(2);
+  const totalAmount = cartReducer.totalAmount.toFixed(2);
 
-  const cartItems = cartList.map((item) => {
-    return {
-      name: item.name,
-      itemAmount: item.amount,
-      itemPrice: item.price,
-    };
-  });
-  console.log(cartItems);
+  // const cartItems = cartList.map((item) => {
+  //   return {
+  //     name: item.name,
+  //     itemAmount: item.amount,
+  //     itemPrice: item.price,
+  //   };
+  // });
+
+  const cartItems = cartList.map((item) => (
+    <CartList
+      key={item.id}
+      id={item.id}
+      name={item.name}
+      price={item.price}
+      image={item.image}
+      description={item.description}
+      category={item.category}
+      amount={item.amount}
+    />
+  ));
   /**
    * Send cart items to firebase <Handler></Handler>
    */
 
   const submitCartItemHandler = async (e) => {
     e.preventDefault();
-    try {
-      setIsLoading(true);
-      await axios.post(
-        "https://food-project-a2f13-default-rtdb.firebaseio.com/order.json",
-        {
-          totalAmount,
-          cartItem: cartItems,
-        }
-      );
-      if (cartItems) {
-        await CartSwal.fire({
-          title: "成功送出訂單",
-          text: "謝謝您的惠顧",
-          icon: "success",
-        });
-        setIsLoading(false);
-      }
-      navigate("/");
-      dispatch(clearItem());
-    } catch (err) {
-      console.log("error", err);
-    }
+    // try {
+    //   setIsLoading(true);
+    //   await axios.post(
+    //     "https://food-project-a2f13-default-rtdb.firebaseio.com/order.json",
+    //     {
+    //       totalAmount,
+    //       cartItem: cartItems,
+    //     }
+    //   );
+    //   if (cartItems) {
+    //     await CartSwal.fire({
+    //       title: "成功送出訂單",
+    //       text: "謝謝您的惠顧",
+    //       icon: "success",
+    //     });
+    //     setIsLoading(false);
+    //   }
+    //   navigate("/");
+    //   dispatch(clearItem());
+    // } catch (err) {
+    //   console.log("error", err);
+    // }
   };
   return (
     <>
@@ -156,14 +168,14 @@ const Confirm = () => {
                       <CartTableHeader>Item(s) total</CartTableHeader>
                       <CartTableTd>
                         <span>NT$</span>
-                        <span>{cart.totalAmount}</span>
+                        <span>{totalAmount}</span>
                       </CartTableTd>
                     </CartTableTr>
                     <CartTableTr>
                       <CartTableHeader>Shipping</CartTableHeader>
                       <CartTableTd>
                         <span>NT$</span>
-                        <span>6,644.17</span>
+                        <span>50</span>
                       </CartTableTd>
                     </CartTableTr>
                     <CartTableTr>
@@ -178,7 +190,7 @@ const Confirm = () => {
                       <CartTableHeader>Order total (1 item)</CartTableHeader>
                       <CartTableTd>
                         <span>NT$</span>
-                        <span>{cart.totalAmount + 6644.17}</span>
+                        <span>{totalAmount}</span>
                       </CartTableTd>
                     </CartTableTr>
                   </tbody>
@@ -227,7 +239,7 @@ const Confirm = () => {
           </CartWrapper>
         </MainWrapper>
         {isLoading && <LoadingSpinner />}
-        <CartList />
+        {cartItems}
       </Container>
       <Footer />
     </>

@@ -10,14 +10,35 @@ import { useDispatch } from "react-redux";
 import { removeItemFromCart } from "../../slices/cart-slice";
 import { IconStyle } from "../Navbar/Navigation";
 
+export const TrashIcon = styled(IconStyle)`
+  position: absolute;
+  top: -4rem;
+  transform: translate(-50%, -50%);
+  @media ${devices.mobileL} {
+    top: -7.3rem;
+    transform: translate(-50%, -50%);
+  }
+  @media ${devices.tablet} {
+    right: -1rem;
+  }
+`;
 export const ProductWrapper = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 4rem;
-  padding-top: 2rem;
+  padding-top: 1rem;
   border-top: 1px #ccc solid;
-  gap: 3rem;
+  gap: 1rem;
   width: 100%;
+  margin-top: 1.2rem;
+  @media ${devices.mobileL} {
+    padding-top: 1.4rem;
+    margin-top: 1.4rem;
+  }
+  @media ${devices.tablet} {
+    padding-top: 1.7rem;
+  }
+  @media ${devices.tablet} {
+    padding-top: 2rem;
+  }
 `;
 // export const BrandWrapper = styled.div`
 //   display: flex;
@@ -27,7 +48,14 @@ export const ProductWrapper = styled.div`
 //   text-align: center;
 // `;
 
-export const ProductDetail = styled.div``;
+const ImageWrapper = styled.div`
+  height: 8rem;
+  width: 8rem;
+`;
+export const ProductDetail = styled.div`
+  width: 90%;
+  margin: 0 auto;
+`;
 export const FlexWrapper = styled.div`
   display: flex;
   gap: 3rem;
@@ -39,6 +67,7 @@ export const AmountWrapper = styled.div`
   flex-direction: column-reverse;
   align-items: flex-end;
   gap: 3rem;
+  font-size: 1rem;
   @media ${devices.mobileL} {
     flex-direction: row;
   }
@@ -48,14 +77,23 @@ export const TextWrapper = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   gap: 1rem;
-  text-align: start;
-  align-items: flex-start;
+  font-size: 0.7rem;
+  width: 50%;
+  @media ${devices.mobileL} {
+    font-size: 0.7rem;
+  }
+  @media ${devices.tablet} {
+    font-size: 0.8rem;
+  }
+`;
+const PriceText = styled.div`
+  font-size: 1.5rem;
 `;
 
 const CartList = (props) => {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cartReducer);
-  const cartList = cart.items;
+  const cartReducer = useSelector((state) => state.cartReducer);
+
   const { id, image, name, price, description, amount } = props;
   // console.log(id);
   // /**
@@ -63,71 +101,56 @@ const CartList = (props) => {
   //  * @param {event} e
   //  */
   const cartItemRemoveHandler = (e) => {
-    console.log(e.target.parentElement);
-    const parentEel = e.target.parentElement;
-    const targetId = parentEel.dataset.id;
+    const parentEel = e.target.parentElement.parentElement;
+    const deleEel = parentEel.parentElement;
+    const targetId = deleEel.dataset.id;
+    console.log(deleEel);
     if (targetId === undefined) {
       return;
     }
     dispatch(removeItemFromCart(targetId));
   };
 
-  // const a = (e) => {
-  //   // console.log(cartList[index].name);
-  //   console.log(e);
-  // };
-
   /**
    * 需要找到相同 index 的
    */
 
-  const totalAmount = cart.totalAmount.toFixed(2);
-
-  // const cartItems = cartList.map((item) => {
-  //   return {
-  //     name: item.name,
-  //     itemAmount: item.amount,
-  //     itemPrice: item.price,
-  //   };
-  // });
-  // console.log(cartItems);
-  // 讓點擊的 id 不同
-  // console.log(amount);
+  const totalAmount = cartReducer.totalAmount.toFixed(2);
 
   return (
     <>
-      <ProductWrapper data-id={id}>
-        <ProductDetail>
+      <ProductWrapper>
+        <ProductDetail data-id={id}>
           <FlexWrapper>
-            <div>
+            <ImageWrapper>
               <ImageStyle
-                height="10rem"
-                width="10rem"
+                height="8rem"
+                width="8rem"
                 src={image}
                 alt="product"
               />{" "}
-            </div>{" "}
+            </ImageWrapper>{" "}
             <TextWrapper>
               <h1>{name}</h1>
               <h3>{description}</h3>
             </TextWrapper>
             <AmountWrapper>
-              description category
               <CartForm itemAmount={amount} id={id} />
-              <InfoText fontSize="2.5rem" display="flex" mb="0">
-                NT$&nbsp;<strong>{price}</strong>
-              </InfoText>{" "}
+              <PriceText>
+                NT$&nbsp;<span>{price}</span>
+              </PriceText>{" "}
             </AmountWrapper>{" "}
-          </FlexWrapper>
+            <div style={{ position: "relative" }}>
+              <TrashIcon onClick={cartItemRemoveHandler}>
+                <FontAwesomeIcon
+                  icon="fa-solid fa-trash"
+                  style={{ zIndex: "-1", cursor: "pointer", fontSize: "2rem" }}
+                />
+              </TrashIcon>
+            </div>
+          </FlexWrapper>{" "}
         </ProductDetail>{" "}
-        <IconStyle hoverBgc="none" onClick={cartItemRemoveHandler}>
-          <FontAwesomeIcon
-            icon="fa-solid fa-trash"
-            style={{ zIndex: "-1", cursor: "pointer", fontSize: "2rem" }}
-          />
-        </IconStyle>
       </ProductWrapper>{" "}
-      <div>{totalAmount}</div>
     </>
   );
 };

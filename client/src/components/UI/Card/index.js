@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useRef } from "react";
 import { IconStyle } from "../../Navbar/Navigation";
 import CartForm from "../../UI/CartForm";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../../../slices/cart-slice";
 
 /**
  * 把 db 的資料傳進來這裡，代替 redux 的資料。
@@ -23,15 +26,40 @@ import {
 const Card = (props) => {
   const { id, image, name, price, description, category } = props;
 
+  const dispatch = useDispatch();
+
+  const commodityList = useSelector(
+    (state) => state.commodityReducer.commodity
+  );
+
+  const newItem = commodityList.find((item) => {
+    return item.id === id;
+  });
+
+  const AddToCartHandler = (e) => {
+    e.preventDefault();
+
+    //變成數字的功能
+    let enterAmountNum = 1;
+    const enterItemPrice = newItem.price;
+    dispatch(addToCart({ newItem, enterAmountNum, enterItemPrice }));
+  };
+
   return (
     <>
       <CardStyle key={id}>
+        {" "}
         <IconStyle
           top=".5rem"
           right=".5rem"
           fontSize="2rem"
           color="var(--color-grey-dark-2)"
           position="absolute"
+          hoverBgc="#222"
+          onClick={AddToCartHandler}
+          bgc="#fff"
+          hBgc="var(--color-primary-light)"
+          radius="50%"
         >
           {" "}
           <FontAwesomeIcon icon="fas fa-shopping-cart" />
@@ -64,7 +92,6 @@ const Card = (props) => {
               {category}
             </HightLightPill>{" "}
           </RatingWrapper>{" "}
-          <CartForm id={id} />
         </CardContext>{" "}
       </CardStyle>
     </>

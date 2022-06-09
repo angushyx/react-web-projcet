@@ -7,6 +7,7 @@ export const Header = styled.header`
   height: ${(props) => props.height || "5rem"};
   background-color: var(--color-grey-light-1);
   bottom: 0;
+  z-index: 2000;
   @media ${devices.mobileL} {
     display: ${(props) => props.display || "none"};
   }
@@ -56,6 +57,7 @@ export const IconStyle = styled.div`
   cursor: pointer;
 
   :hover {
+    background: ${(props) => props.hBgc || "none"};
     ::after {
       content: "";
       position: absolute;
@@ -159,7 +161,7 @@ export const UserIcon = styled.div`
 export const Notification = styled.span`
   position: absolute;
   top: -0.5rem;
-  right: 0;
+  right: ${(props) => props.right || "0"};
 
   height: 1.4rem;
   width: 1.4rem;

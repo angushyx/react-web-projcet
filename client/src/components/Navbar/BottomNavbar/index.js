@@ -1,11 +1,20 @@
 import React from "react";
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation } from "react-router-dom";
 import UserModal from "../../UI/UserModal";
 import { ImageStyle } from "../../Payment/PaymentElement";
+import TemporaryDrawer from "../../UI/Drawer/Drawer";
+import Drawer from "@mui/material/Drawer";
+import CartList from "../../UI/CartList";
+import {
+  CartListWrapper,
+  Container,
+  Headline,
+  NoItem,
+} from "../../UI/Drawer/Drawer";
 
 import {
   Header,
@@ -16,7 +25,7 @@ import {
   UserIcon,
 } from "../Navigation";
 
-const BottomNavbar = ({ onShowCart }) => {
+const BottomNavbar = () => {
   /********user modal **************/
 
   const [showModal, setShowModal] = useState(false);
@@ -43,6 +52,37 @@ const BottomNavbar = ({ onShowCart }) => {
     setShowModal((prev) => !prev);
   };
   /**************************************/
+
+  const cartReduce = useSelector((state) => state.cartReducer);
+  const cartList = cartReduce.items;
+  const totalAmount = cartReduce.totalAmount.toFixed(2);
+  /**
+   * 拿到 cartList 後把
+   */
+  const cartItems = cartList.map((item) => (
+    <CartList
+      key={item.id}
+      id={item.id}
+      name={item.name}
+      price={item.price}
+      image={item.image}
+      description={item.description}
+      category={item.category}
+      amount={item.amount}
+    />
+  ));
+
+  const [showCart, setShowCart] = useState(false);
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+    setShowCart((prev) => !prev);
+  };
 
   // const authReducer = useSelector((state) => state.authReducer);
   const cartReducer = useSelector((state) => state.cartReducer);
@@ -140,7 +180,40 @@ const BottomNavbar = ({ onShowCart }) => {
             style={{ height: "100%", display: "flex", alignItems: "center" }}
             to="/"
           >
-            <IconStyle onClick={onShowCart}>
+            <Drawer
+              anchor="bottom"
+              open={showCart}
+              onClose={toggleDrawer("bottom", false)}
+            >
+              {cartList.length !== 0 ? (
+                <CartListWrapper minH="60rem" mt="4.5rem">
+                  <Headline>
+                    {" "}
+                    <IconStyle
+                      position="absolute"
+                      top=".1rem"
+                      right="0.5rem"
+                      onClick={toggleDrawer("bottom", false)}
+                    >
+                      <FontAwesomeIcon
+                        icon="fa-solid fa-times"
+                        style={{
+                          zIndex: "1",
+                          cursor: "pointer",
+                          fontSize: "2rem",
+                        }}
+                      />
+                    </IconStyle>
+                    <div>cart</div>
+                    <div> $ {totalAmount} NTD</div>{" "}
+                  </Headline>
+                  <Container>{cartItems}</Container>{" "}
+                </CartListWrapper>
+              ) : (
+                <NoItem>購物車是空的...</NoItem>
+              )}{" "}
+            </Drawer>
+            <IconStyle onClick={toggleDrawer("bottom", true)}>
               <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
               <Notification>{totalQuantity}</Notification>
             </IconStyle>{" "}

@@ -15,8 +15,6 @@ export const cartSlice = createSlice({
       const updatedTotalAmount =
         state.totalAmount + action.payload.enterItemPrice;
 
-      console.log(updatedTotalAmount);
-
       /**
        * total quantity
        */
@@ -43,13 +41,6 @@ export const cartSlice = createSlice({
       } else {
         updatedItems = state.items.concat(action.payload.newItem);
       }
-      // console.log(action.payload.enterAmountNum);
-      /**
-       * totalQuantity 總共 * 件
-       */
-      // console.log(updatedAmountNum);
-      // console.log(state.totalQuantity);
-      // console.log(action.payload.enterAmountNum);
       return {
         items: updatedItems,
         totalAmount: updatedTotalAmount,
@@ -57,8 +48,50 @@ export const cartSlice = createSlice({
       };
     },
     decreaseCartItem: (state, action) => {
-      console.log(state);
-      console.log(action.payload.amount);
+      let updatedItems;
+      /**
+       * 拿 commodity 的 data 來與目前存在於 cart 的 data 比對
+       */
+      const exitingItemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.newItem.id
+      );
+
+      let exitingItem = state.items[exitingItemIndex];
+      /**
+       * total Amount 為什麼 state.totalAmount 在減最後一次的時候不會變動??
+       */
+      const updatedTotalAmount =
+        state.totalAmount - action.payload.enterItemPrice;
+
+      // console.log(state.totalAmount);
+      // console.log(action.payload.enterItemPrice);
+      // console.log(updatedTotalAmount);
+      /**
+       * total quantity
+       */
+      const updatedTotalQuantity =
+        state.totalQuantity -
+        (action.payload.enterAmountNum - action.payload.enterAmountNum + 1);
+
+      if (exitingItem.amount > 1) {
+        const updatedItem = {
+          ...exitingItem,
+          amount: exitingItem.amount - 1,
+        };
+        updatedItems = [...state.items];
+        updatedItems[exitingItemIndex] = updatedItem;
+      } else {
+        /**
+         * 先不刪除
+         */
+        // updatedItems = state.items.splice(exitingItemIndex, 1);
+        return;
+      }
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
+        totalQuantity: updatedTotalQuantity,
+      };
     },
 
     removeItemFromCart: (state, action) => {

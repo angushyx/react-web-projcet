@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React, { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, decreaseCartItem } from "../../slices/cart-slice";
+import { devices } from "../../MediaQuery/MediaQuery";
 
 /****** CartInput and Button  ******/
 const AmountWrapper = styled.form`
@@ -12,9 +13,9 @@ const AmountWrapper = styled.form`
 
 const CartBtn = styled.button`
   display: flex;
-  width: 4rem;
-  height: 4rem;
-  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
 
   align-items: center;
   border: 1px solid #000;
@@ -26,13 +27,42 @@ const CartBtn = styled.button`
     background-color: #aaa;
     color: #fff;
   }
+
+  @media ${devices.mobileL} {
+    width: 2.3rem;
+    height: 2.3rem;
+    font-size: 1.2rem;
+  }
+  @media ${devices.tablet} {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
+  @media ${devices.laptop} {
+    width: 2.7rem;
+    height: 2.7rem;
+    font-size: 1.7rem;
+  }
 `;
 const Input = styled.input`
   border: 1px solid #aaa;
-  width: 4rem;
-  height: 4rem;
+  width: 2rem;
+  height: 2rem;
 
   text-align: center;
+
+  @media ${devices.mobileL} {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+  @media ${devices.tablet} {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  @media ${devices.laptop} {
+    width: 2.7rem;
+    height: 2.7rem;
+  }
 `;
 
 const CartForm = React.forwardRef((props, ref) => {
@@ -44,6 +74,7 @@ const CartForm = React.forwardRef((props, ref) => {
   const commodityList = useSelector(
     (state) => state.commodityReducer.commodity
   );
+  const cartReducer = useSelector((state) => state.cartReducer);
   const cartList = useSelector((state) => state.cartReducer.items);
 
   const itemId = itemIdRef.current;
@@ -51,6 +82,7 @@ const CartForm = React.forwardRef((props, ref) => {
   const newItem = commodityList.find((item) => {
     return item.id === itemId;
   });
+
   const newCartItem = cartList.find((item) => {
     return item.id === itemId;
   });
@@ -66,9 +98,13 @@ const CartForm = React.forwardRef((props, ref) => {
   };
   const decreaseItemHandler = (e) => {
     e.preventDefault();
+    const enterAmount = amountInputRef.current.value;
+    //變成數字的功能
+    let enterAmountNum = parseInt(enterAmount, 10);
+    const enterItemPrice = newCartItem.price;
 
-    const enterAmount = newCartItem.amount;
-    dispatch(decreaseCartItem(newItem, enterAmount));
+    // console.log(cartReducer);
+    dispatch(decreaseCartItem({ newItem, enterAmountNum, enterItemPrice }));
   };
 
   return (
