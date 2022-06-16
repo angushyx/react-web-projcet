@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthContext from "../../../store/Auth-context";
 import AuthService from "../../../services/authApi";
+import queryString from "query-string";
 
 import {
   Header,
@@ -27,6 +28,12 @@ import {
 } from "../Navigation";
 
 const TopNavbar = ({ onShowCart }) => {
+  const [keyword, setKeyword] = useState("");
+
+  const parsed = queryString.parse(window.location.search);
+
+  console.log(parsed);
+
   /********user modal **************/
   const [showModal, setShowModal] = useState(false);
 
@@ -46,7 +53,13 @@ const TopNavbar = ({ onShowCart }) => {
     setShowModal((prev) => !prev);
   };
   /**************************************/
-
+  // const searchHandler = () => {
+  //   // setKeyword(parsed.keyword);
+  // };
+  const changeHandler = (e) => {
+    setKeyword(e.currentTarget.value);
+  };
+  console.log(keyword);
   const cartReducer = useSelector((state) => state.cartReducer);
   const isLoggedIn = authCtx.isLoggedIn;
 
@@ -69,7 +82,13 @@ const TopNavbar = ({ onShowCart }) => {
             </Link>{" "}
           </LogoWrapper>
           <Search method="GET" action="/search">
-            <Input type="text" placeholder="search..." name="keyword" />
+            <Input
+              onChange={changeHandler}
+              value={keyword}
+              type="text"
+              placeholder="search..."
+              name="keyword"
+            />
             <SearchBtn>
               <IconStyle>
                 <FontAwesomeIcon icon="fa-solid fa-search" />

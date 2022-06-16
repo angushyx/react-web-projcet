@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
+
 import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
 import { BackdropStyle } from "../Cart/Cart";
 import Input from "../UI/Input";
-import Button from "../UI/Button";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
@@ -163,19 +162,18 @@ const Detail = () => {
         <MainWrapper>
           <HeroWrapper>
             <MainImg src={detailProduct.image} />
-            <SubImgOne src={detailProduct.image} />
-            <SubImgTwo src={detailProduct.image} />
-            <SubImgThree src={detailProduct.image} />
-            <SubImgFour src={detailProduct.image} />
-
-            <DetailBtn
-              height="100%"
-              fontSize="1rem"
-              onClick={checkoutModalHandler}
-            >
-              checkout
-            </DetailBtn>
+            <SubImgOne src={detailProduct.image} />{" "}
+            <SubImgTwo src={detailProduct.image} />{" "}
+            <SubImgThree src={detailProduct.image} />{" "}
+            <SubImgFour src={detailProduct.image} />{" "}
           </HeroWrapper>
+          <DetailBtn
+            height="100%"
+            fontSize="1rem"
+            onClick={checkoutModalHandler}
+          >
+            checkout
+          </DetailBtn>
           <ContextWrapper>
             <DescriptionWrapper>
               <FoodName>{detailProduct.name}</FoodName>

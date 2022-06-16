@@ -7,8 +7,9 @@ export const HeadlineWrapper = styled.div`
   width: 90%;
   margin: 2rem auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  text-align: center;
 `;
 
 export const Title = styled.h2`
@@ -93,6 +94,7 @@ export const CardUl = styled.ul`
   justify-content: space-evenly;
   position: relative;
   margin-bottom: 4rem;
+  gap: 2rem;
 `;
 
 export const CardList = styled.li`
@@ -118,9 +120,11 @@ export const CardList = styled.li`
 
 export const ListImage = styled.img`
   background-size: cover;
-  border-radius: 50%;
+
+  border-radius: 1rem;
   :hover {
-    opacity: 0.6;
+    opacity: 0.3;
+    cursor: pointer;
   }
 `;
 

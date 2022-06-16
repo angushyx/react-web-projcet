@@ -38,9 +38,6 @@ const routeConfig = [
     path: "/Shop",
     element: <Shop />,
   },
-
-  { path: "/new", element: <NewItem /> },
-
   { path: "/product/:itemId", element: <DetailPages /> },
   {
     path: "/confirm",

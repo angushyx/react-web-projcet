@@ -12,11 +12,12 @@ import { IconStyle } from "../Navbar/Navigation";
 
 export const TrashIcon = styled(IconStyle)`
   position: absolute;
-  top: -4rem;
-  transform: translate(-50%, -50%);
+  top: 0;
+  right: 0;
+  transform: translate(60%, -70%);
+
   @media ${devices.mobileL} {
-    top: -7.3rem;
-    transform: translate(-50%, -50%);
+    transform: translate(50%, -30%);
   }
   @media ${devices.tablet} {
     right: -1rem;
@@ -24,7 +25,7 @@ export const TrashIcon = styled(IconStyle)`
 `;
 export const ProductWrapper = styled.div`
   display: flex;
-  padding-top: 1rem;
+  padding-top: 2.5rem;
   border-top: 1px #ccc solid;
   gap: 1rem;
   width: 100%;
@@ -57,8 +58,9 @@ export const ProductDetail = styled.div`
   margin: 0 auto;
 `;
 export const FlexWrapper = styled.div`
+  position: relative;
   display: flex;
-  gap: 3rem;
+  gap: 1.5rem;
   justify-content: flex-start;
   align-items: flex-end;
 `;
@@ -104,7 +106,7 @@ const CartList = (props) => {
     const parentEel = e.target.parentElement.parentElement;
     const deleEel = parentEel.parentElement;
     const targetId = deleEel.dataset.id;
-    console.log(deleEel);
+
     if (targetId === undefined) {
       return;
     }
@@ -121,7 +123,7 @@ const CartList = (props) => {
     <>
       <ProductWrapper>
         <ProductDetail data-id={id}>
-          <FlexWrapper>
+          <FlexWrapper data-id={id}>
             <ImageWrapper>
               <ImageStyle
                 height="8rem"
@@ -140,14 +142,15 @@ const CartList = (props) => {
                 NT$&nbsp;<span>{price}</span>
               </PriceText>{" "}
             </AmountWrapper>{" "}
-            <div style={{ position: "relative" }}>
-              <TrashIcon onClick={cartItemRemoveHandler}>
-                <FontAwesomeIcon
-                  icon="fa-solid fa-trash"
-                  style={{ zIndex: "1", cursor: "pointer", fontSize: "2rem" }}
-                />
-              </TrashIcon>
-            </div>
+            <TrashIcon
+              hoverBgc="var(--color-primary-light)"
+              radius="50%"
+              fontSize="2rem"
+              hBgc="var(--color-primary-light)"
+              onClick={cartItemRemoveHandler}
+            >
+              <FontAwesomeIcon icon="fa-solid fa-trash" />
+            </TrashIcon>
           </FlexWrapper>{" "}
         </ProductDetail>{" "}
       </ProductWrapper>{" "}

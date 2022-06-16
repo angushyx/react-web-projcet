@@ -8,6 +8,9 @@ router.get("/test", (req, res) => {
   res.send({ a: 1 });
 });
 
+/**
+ * 使用者 signup 的路由，其中包括驗證功能。
+ */
 router.post("/signup", async (req, res) => {
   const { error } = registerValidation(req.body);
   console.log(req.body);
@@ -19,7 +22,6 @@ router.post("/signup", async (req, res) => {
   /**
    * register the user，如果 google 也要存到 mongodb 就要從 client side 拿到 google login 資料，接著再 new 一個新的 google user，用同一套 model，
    */
-
   const newUser = new User({
     email: req.body.email,
     name: req.body.name,

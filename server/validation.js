@@ -9,7 +9,6 @@ const registerValidation = (data) => {
     confirmPassword: Joi.string().required().valid(Joi.ref("password")),
     imageUrl: Joi.string(),
   });
-
   //讓 schema 做驗證
   return schema.validate(data);
 };

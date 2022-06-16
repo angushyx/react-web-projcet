@@ -31,7 +31,6 @@ const CartNavbar = (props) => {
   const dispatch = useDispatch();
 
   dispatch(changePageView(window.location.pathname));
-  console.log(window.location.pathname);
 
   /**
    * !做 logout 的功能

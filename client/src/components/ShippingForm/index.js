@@ -14,9 +14,11 @@ import {
 } from "./ShippingFormElement";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewUserInfo } from "../../slices/ShippingInfo-slice";
+import {
+  addNewUserInfo,
+  changePageView,
+} from "../../slices/ShippingInfo-slice";
 import FormDialog from "../UI/Modal2";
-import { changePageView } from "../../slices/ShippingInfo-slice";
 import CheckStep from "../UI/CheckStep";
 import CartNavbar from "../Navbar/CartNavbar";
 

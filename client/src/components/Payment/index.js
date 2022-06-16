@@ -2,7 +2,6 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
 import Button from "../UI/Button";
-import CheckStep from "../UI/CheckStep";
 import {
   Form,
   InputWrapper,

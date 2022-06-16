@@ -5,8 +5,8 @@ import Card from "../UI/Card";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
-  width: 80%;
-  margin: 3rem auto;
+  width: 60%;
+  margin: 4rem auto;
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -20,13 +20,12 @@ const Wrapper = styled.div`
  * 搜尋使用者輸入的關鍵字，並回傳符合物件
  * @returns 搜尋的 items
  */
-
 const SearchItem = () => {
-  const commodityReducer = useSelector((state) => state.commodityReducer);
-  const commodityList = commodityReducer.commodity;
-
   const parsed = queryString.parse(window.location.search);
   const keyword = parsed.keyword;
+
+  const commodityReducer = useSelector((state) => state.commodityReducer);
+  const commodityList = commodityReducer.commodity;
 
   const Meals = commodityList.filter((item) => {
     return item.name.toLowerCase().includes(keyword.toLowerCase().trim());
@@ -41,6 +40,7 @@ const SearchItem = () => {
       price={item.price}
       description={item.Description}
       image={item.image}
+      category={item.category}
     />
   ));
 

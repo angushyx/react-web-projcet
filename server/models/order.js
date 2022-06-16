@@ -1,38 +1,46 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-// //從 google 取得的資訊儲存在 user 的檔案
-// const userSchema = new mongoose.Schema({
-//   name: {
-//     type: String,
-//     required: true,
-//     minLength: 2,
-//     maxLength: 255,
-//   },
-//   googleID: {
-//     type: String,
-//   },
-//   data: {
-//     type: Date,
-//     default: Date.now,
-//   },
-//   avatar: {
-//     type: String,
-//   },
+const mealSchema = new mongoose.Schema({
+  id: { type: String },
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  discount: {
+    type: Number,
+  },
+  rating: {
+    type: Number,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  amount: {
+    type: Number,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+  seller: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+  consumer: {
+    type: [String],
+    default: [],
+  },
+});
 
-//   //local login *使用者不是選擇 google login 方式，而是選擇本地的 login
-//   email: {
-//     type: String,
-//   },
-//   password: {
-//     type: String,
-//     maxLength: 1024,
-//   },
-//   confirmPassword: {
-//     type: String,
-//     maxLength: 1024,
-//   },
-// });
-
-// const User = mongoose.model("user", userSchema);
-
-// module.exports = User;
+const Meal = mongoose.model("Meal", mealSchema);
+module.exports = Meal;

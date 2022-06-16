@@ -55,7 +55,6 @@ const Card = (props) => {
           fontSize="2rem"
           color="var(--color-grey-dark-2)"
           position="absolute"
-          hoverBgc="#222"
           onClick={AddToCartHandler}
           bgc="#fff"
           hBgc="var(--color-primary-light)"

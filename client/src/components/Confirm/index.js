@@ -60,13 +60,13 @@ const Confirm = () => {
 
   const totalAmount = cartReducer.totalAmount.toFixed(2);
 
-  // const cartItems = cartList.map((item) => {
-  //   return {
-  //     name: item.name,
-  //     itemAmount: item.amount,
-  //     itemPrice: item.price,
-  //   };
-  // });
+  const cartItem = cartList.map((item) => {
+    return {
+      name: item.name,
+      itemAmount: item.amount,
+      itemPrice: item.price,
+    };
+  });
 
   const cartItems = cartList.map((item) => (
     <CartList
@@ -86,28 +86,28 @@ const Confirm = () => {
 
   const submitCartItemHandler = async (e) => {
     e.preventDefault();
-    // try {
-    //   setIsLoading(true);
-    //   await axios.post(
-    //     "https://food-project-a2f13-default-rtdb.firebaseio.com/order.json",
-    //     {
-    //       totalAmount,
-    //       cartItem: cartItems,
-    //     }
-    //   );
-    //   if (cartItems) {
-    //     await CartSwal.fire({
-    //       title: "成功送出訂單",
-    //       text: "謝謝您的惠顧",
-    //       icon: "success",
-    //     });
-    //     setIsLoading(false);
-    //   }
-    //   navigate("/");
-    //   dispatch(clearItem());
-    // } catch (err) {
-    //   console.log("error", err);
-    // }
+    try {
+      setIsLoading(true);
+      await axios.post(
+        "https://food-project-a2f13-default-rtdb.firebaseio.com/order.json",
+        {
+          totalAmount,
+          cartItem: cartItem,
+        }
+      );
+      if (cartItems) {
+        await CartSwal.fire({
+          title: "成功送出訂單",
+          text: "謝謝您的惠顧",
+          icon: "success",
+        });
+        setIsLoading(false);
+      }
+      navigate("/");
+      dispatch(clearItem());
+    } catch (err) {
+      console.log("error", err);
+    }
   };
   return (
     <>

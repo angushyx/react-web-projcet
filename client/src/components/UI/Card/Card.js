@@ -10,6 +10,7 @@ export const CardStyle = styled.div`
   grid-template-rows: 1fr 1fr;
 
   min-width: 23rem;
+  max-height: 35rem;
   border-radius: 1rem;
 `;
 export const Image = styled.img`

@@ -10,7 +10,16 @@ const mealSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
+  discount: {
+    type: Number,
+  },
+  rating: {
+    type: Number,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
   price: {
     type: Number,
     required: true,
@@ -19,7 +28,7 @@ const mealSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  picture: {
+  image: {
     type: String,
     required: true,
   },

@@ -47,6 +47,13 @@ export const cartSlice = createSlice({
         totalQuantity: updatedTotalQuantity,
       };
     },
+
+    /**
+     *  糙你媽有一天我會想到解法的
+     * @param {目前購物車的狀態} state
+     * @param {payload 傳入目前購物車的狀態、} action
+     * @returns 減法，更新後的 items 陣列、數量、以及總金額
+     */
     decreaseCartItem: (state, action) => {
       let updatedItems;
       /**
@@ -60,11 +67,12 @@ export const cartSlice = createSlice({
       /**
        * total Amount 為什麼 state.totalAmount 在減最後一次的時候不會變動??
        */
-      const updatedTotalAmount =
-        state.totalAmount - action.payload.enterItemPrice;
 
+      let updatedTotalAmount = state.totalAmount - exitingItem.price;
+
+      console.log(exitingItem.price);
       console.log(state.totalAmount);
-      console.log(action.payload.enterItemPrice);
+      // console.log(action.payload.enterItemPrice);
       console.log(updatedTotalAmount);
       /**
        * total quantity
@@ -85,6 +93,7 @@ export const cartSlice = createSlice({
          * 先不刪除
          */
         // updatedItems = state.items.splice(exitingItemIndex, 1);
+        // updatedTotalAmount -= exitingItem[exitingItemIndex].amount;
         return;
       }
       return {
@@ -94,6 +103,11 @@ export const cartSlice = createSlice({
       };
     },
 
+    /**
+     * 不論數量，刪除購物車中特定商品，總價格也會隨之減少，完整邏輯。
+     * @param {目前購物車的狀態} state
+     * @param {按下 trash button 時用 dataset 比對出的 id} action
+     */
     removeItemFromCart: (state, action) => {
       const id = action.payload;
 

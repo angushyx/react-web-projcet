@@ -78,7 +78,8 @@ export const HeadlineItemInfo = styled.h5`
 
 export const MainWrapper = styled.main`
   width: 80%;
-
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
 `;
 
@@ -87,6 +88,7 @@ export const HeroWrapper = styled.div`
   grid-template-columns: 1fr repeat(2, 20%);
   grid-template-rows: 1fr repeat(2, 25%);
 
+  height: 20rem;
   padding-bottom: 1.5rem;
   gap: 0.5rem;
 

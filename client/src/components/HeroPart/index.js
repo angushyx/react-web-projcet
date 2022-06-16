@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconStyle } from "../Navbar/Navigation";
 import TemporaryDrawer from "../UI/Drawer/Drawer";
-import BottomNavbar from "../Navbar/BottomNavbar";
 
 import {
   HeroSection,
@@ -17,8 +16,6 @@ import {
 } from "./HeroElement";
 
 const Hero = () => {
-  const [showDrawer, setShowDrawer] = useState({ top: false });
-
   return (
     <>
       <TemporaryDrawer />
