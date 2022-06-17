@@ -19,36 +19,35 @@ export const Title = styled.h1`
   @media ${devices.laptopL} {
     font-size: 3rem;
   } ;
+`;
 
-`
+export const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: ${(props) => (props.higher ? "50rem" : "43rem")};
+  background: ${(props) => (props.bgc ? "var(--color-primary-light)" : "#fff")};
 
-export const Section  = styled.section`
-    height: ${props=>props.higher ? "50rem":"45rem"};
+  @media ${devices.mobileL} {
+    height: ${(props) => (props.higher ? "50rem" : "40rem")};
+  }
 
-    @media ${devices.mobileL} {
-        height: ${props=>props.higher ? "50rem":"40rem"};
-    }
+  @media ${devices.tablet} {
+    height: ${(props) => (props.higher ? "40rem" : "35rem")};
+    margin-bottom: 4rem;
+  }
 
-    @media ${devices.tablet} {
-        height: ${props=>props.higher ? "40rem":"35rem"};
-        margin-bottom: 4rem;
-    }
- 
-    @media ${devices.laptop} {
-        height: ${props=>props.higher ? "40rem":"22rem"};
-    }
- 
-
-
-`
-
+  @media ${devices.laptop} {
+    height: ${(props) => (props.higher ? "40rem" : "22rem")};
+    margin-bottom: 6%;
+  }
+`;
 
 export const Container = styled.div`
-    width: ${props=>props.widther?'90%':'75%'};
-    margin: 0 auto;
-    height: 100%;
+  width: ${(props) => (props.widther ? "90%" : "75%")};
+  margin: 0 auto;
 `;
- 
 
 export const IconStyle = styled.div`
   position: ${(props) => props.position || "relative"};

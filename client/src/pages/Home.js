@@ -1,11 +1,13 @@
+import BottomNavbar from "../components/Navbar/BottomNavbar";
+import Hero from "../components/HeroPart";
+import Category from "../components/category";
 import Meal from "../components/Meal";
+import Intro from "../components/Introduction";
+import Subscription from "../components/Subscription";
+import Feedback from "../components/Feedback";
+
 import ToTopBtn from "../components/UI/NavBtn";
 import Footer from "../components/UI/Footer";
-import Carousel from "../components/Carousel";
-import Hero from "../components/HeroPart";
-import BottomNavbar from "../components/Navbar/BottomNavbar";
-import Category from "../components/category";
-import Intro from "../components/Introduction";
 
 const Home = () => {
   return (
@@ -13,8 +15,9 @@ const Home = () => {
       <Hero />
       <Category />
       <Meal />
-      {/* <Carousel /> */}
-      <Intro/>
+      <Intro />
+      <Subscription />
+      <Feedback />
       <ToTopBtn />
       <Footer />
       <BottomNavbar />
@@ -23,3 +26,8 @@ const Home = () => {
 };
 
 export default Home;
+
+// import Carousel from "../components/Carousel";
+// {
+//   /* <Carousel /> */
+// }

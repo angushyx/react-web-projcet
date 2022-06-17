@@ -1,10 +1,8 @@
 import Card from "../UI/Card";
 import { useSelector } from "react-redux";
 
-
-import {  Warp } from "./Meal";
-import { Container,Section,Title } from "../UI/Public";
-
+import { Warp } from "./Meal";
+import { Container, Section, Title } from "../UI/Public";
 
 const Meal = () => {
   const commodityReducer = useSelector((state) => state.commodityReducer);
@@ -25,17 +23,14 @@ const Meal = () => {
 
   return (
     <>
-  
-      <Section higher >
+      <Section higher>
         <Container widther>
           <Title>熱門餐點</Title>
           <Warp> {mealList}</Warp>
-          </Container> 
+        </Container>
       </Section>
- 
     </>
   );
 };
 
 export default Meal;
-
