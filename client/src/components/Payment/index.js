@@ -64,7 +64,7 @@ const Payment = () => {
       year: Yup.string().max(4).required(""),
     }),
     onSubmit: (values, { resetForm }) => {
-      navigate("/confirm");
+      navigate("/review/confirm");
       resetForm();
     },
   });

@@ -49,10 +49,36 @@ const ShopList = () => {
   ));
 
   /**
+   * 使用 radio 抓到 value 值後比對 commodity 裡面的 data
+   * 後 filter 出我們想要的 data
+   * @returns
+   */
+  const CategoryList = () => {
+    return (
+      <>
+        {categoryList.map((item) => (
+          <>
+            <InputWrapper>
+              <RadioInput
+                onClick={onChangeHandler}
+                type="radio"
+                name="category"
+                value={item.category}
+              />
+              <label id={item.id} htmlFor={item.category}>
+                {item.category}
+              </label>
+            </InputWrapper>
+          </>
+        ))}
+      </>
+    );
+  };
+
+  /**
    * 當點擊到
    */
   // console.log(shopList.map((item) => console.log(item.props)));
-
   return (
     <>
       <MainContainer>
@@ -70,21 +96,7 @@ const ShopList = () => {
                   all
                 </label>
               </InputWrapper>
-              {categoryList.map((item) => (
-                <>
-                  <InputWrapper>
-                    <RadioInput
-                      onClick={onChangeHandler}
-                      type="radio"
-                      name="category"
-                      value={item.category}
-                    />
-                    <label id={item.id} htmlFor={item.category}>
-                      {item.category}
-                    </label>
-                  </InputWrapper>
-                </>
-              ))}
+              <CategoryList />
             </UnorderedList>
           </Sidebar>
           <Commodity>{shopList}</Commodity>

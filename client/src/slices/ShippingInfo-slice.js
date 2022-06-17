@@ -16,7 +16,7 @@ export const ShippingSlice = createSlice({
       return { userInfos: newUserInfo };
     },
     changePageView: (state, action) => {
-      if (action.payload === "/checkout") {
+      if (action.payload === "/review/checkout") {
         state.isShippingPage = true;
       } else {
         state.isShippingPage = false;

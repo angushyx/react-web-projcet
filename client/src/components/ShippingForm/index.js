@@ -18,9 +18,6 @@ import {
   addNewUserInfo,
   changePageView,
 } from "../../slices/ShippingInfo-slice";
-import FormDialog from "../UI/Modal2";
-import CheckStep from "../UI/CheckStep";
-import CartNavbar from "../Navbar/CartNavbar";
 
 const ShippingForm = (props) => {
   const dispatch = useDispatch();
@@ -55,7 +52,7 @@ const ShippingForm = (props) => {
     onSubmit: (values) => {
       dispatch(addNewUserInfo({ values }));
       if (isShippingPage) {
-        navigate("/payment");
+        navigate("/review/payment");
       }
     },
   });

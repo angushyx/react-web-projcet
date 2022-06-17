@@ -1,21 +1,23 @@
 import "./App.css";
 import Home from "./pages/Home";
-import Shop from "./pages/Shop";
-import NewItem from "./pages/NewItem";
 import NoFound from "./pages/NoFound";
-import DetailPages from "./pages/DetailPages";
-import SignupPage from "./pages/SignupPage";
+
 import Search from "./pages/Search";
+import Meals from "./pages/Meals";
+import DetailPages from "./pages/DetailPages";
+
 import CheckoutPage from "./pages/CheckoutPage";
 import PaymentPage from "./pages/PaymentPage";
 import ConfirmPage from "./pages/ConfirmPage";
+
+import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import ProfilePage from "./pages/ProfilePage";
 
 import Cart from "./components/Cart";
-import { useState } from "react";
-import { gapi } from "gapi-script";
-import { useEffect } from "react";
 
+import { useState, useEffect } from "react";
+import { gapi } from "gapi-script";
 import { Routes, Route, useRoutes, RouteObject } from "react-router-dom";
 
 const routeConfig = [
@@ -35,12 +37,17 @@ const routeConfig = [
     children: [],
   },
   {
-    path: "/Shop",
-    element: <Shop />,
+    path: "/meals",
+    element: <Meals />,
+    children: [],
   },
-  { path: "/product/:itemId", element: <DetailPages /> },
   {
-    path: "/confirm",
+    path: "/meals/:itemId",
+    element: <DetailPages />,
+  },
+  {},
+  {
+    path: "/review/confirm",
     element: <ConfirmPage />,
   },
   {
@@ -48,11 +55,15 @@ const routeConfig = [
     element: <Search />,
   },
   {
-    path: "/payment",
+    path: "/user/profile",
+    element: <ProfilePage />,
+  },
+  {
+    path: "/review/payment",
     element: <PaymentPage />,
   },
   {
-    path: "/checkout",
+    path: "/review/checkout",
     element: <CheckoutPage />,
   },
 

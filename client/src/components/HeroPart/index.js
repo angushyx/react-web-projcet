@@ -35,7 +35,7 @@ const Hero = () => {
             A healthy and organic ingredients delivered directly from the
             village.
           </Headline>
-          <Link to="shop">
+          <Link to="meals">
             <Button width="18rem" radius="1rem">
               shop now
             </Button>

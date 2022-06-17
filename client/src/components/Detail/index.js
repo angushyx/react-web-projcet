@@ -76,7 +76,7 @@ const Detail = () => {
             <CheckoutModal>
               <Headline>Go to Checkout</Headline>
               <div>
-                <Link to="/checkout">
+                <Link to="/review/checkout">
                   <ButtonWrapper>
                     <DetailBtn>以訪客身分購買</DetailBtn>
                   </ButtonWrapper>
@@ -97,7 +97,7 @@ const Detail = () => {
               </div>{" "}
               <SplitLine>OR</SplitLine>
               <ButtonWrapper>
-                <Link to="/checkout">
+                <Link to="/review/checkout">
                   <ImageStyleFree
                     src={require("../../image/Social Media/facebook-logo-2019.png")}
                     alt=""

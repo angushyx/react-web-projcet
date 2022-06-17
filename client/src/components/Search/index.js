@@ -18,15 +18,25 @@ const Wrapper = styled.div`
 
 /**
  * 搜尋使用者輸入的關鍵字，並回傳符合物件
+ * 目前是使用 queryString 套件取得
  * @returns 搜尋的 items
  */
 const SearchItem = () => {
   const parsed = queryString.parse(window.location.search);
+  const hash = queryString.parse(window.location.hash);
+  console.log(parsed);
+  console.log(hash);
   const keyword = parsed.keyword;
 
   const commodityReducer = useSelector((state) => state.commodityReducer);
   const commodityList = commodityReducer.commodity;
 
+  console.log(commodityList[0].category);
+  /**
+   *
+   *
+   *!搜尋條件由此更改
+   */
   const Meals = commodityList.filter((item) => {
     return item.name.toLowerCase().includes(keyword.toLowerCase().trim());
   });

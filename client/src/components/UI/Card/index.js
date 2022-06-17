@@ -63,7 +63,7 @@ const Card = (props) => {
           {" "}
           <FontAwesomeIcon icon="fas fa-shopping-cart" />
         </IconStyle>
-        <Link to={"/product/" + id}>
+        <Link to={"/meals/" + id}>
           <Image src={image} />
         </Link>
         <CardContext>

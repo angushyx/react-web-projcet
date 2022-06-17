@@ -2,7 +2,7 @@ import ShopList from "../components/Shop";
 import Footer from "../components/UI/Footer";
 import TopNavbar from "../components/Navbar/TopNavbar";
 
-const Shop = () => {
+const Meals = () => {
   return (
     <>
       <TopNavbar />
@@ -12,4 +12,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default Meals;
