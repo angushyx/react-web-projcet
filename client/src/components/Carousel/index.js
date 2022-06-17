@@ -2,18 +2,15 @@ import React, { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { useSelector } from "react-redux";
-import { Container } from "../UI/Public";
+import { Container ,Title} from "../UI/Public";
 
 import {
-  CarouselLayout,
   HeadlineWrapper,
-  Title,
   CaretLeft,
   CaretRight,
   CardUl,
   CardList,
   ListImage,
-
 } from "./CarouselElement";
 
 
@@ -85,11 +82,11 @@ const Carousel = () => {
     console.log(isOpen);
   };
   return (
-    <CarouselLayout>
+    <div>
       <Headline />
       <Cards key={uuidv4()} onToggle={toggle} />
       {/* <SchemeModal isOpen={isOpen} /> */}
-    </CarouselLayout>
+    </div>
   );
 };
 

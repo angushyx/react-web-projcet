@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { devices } from "../../MediaQuery/MediaQuery";
 
-export const CarouselLayout = styled.section``;
 
 export const HeadlineWrapper = styled.div`
   width: 90%;
@@ -12,26 +11,7 @@ export const HeadlineWrapper = styled.div`
   text-align: center;
 `;
 
-export const Title = styled.h2`
-  font-size: 1.6rem;
-  @media ${devices.mobileL} {
-    font-size: 1.7rem;
-  }
-  @media ${devices.tablet} {
-    font-size: 2rem;
-  }
-  @media ${devices.laptop} {
-    font-size: 2.4rem;
-  }
-  @media ${devices.laptopL} {
-    font-size: 3rem;
-  } ;
-`;
 
-// export const CaretContainer = styled.div`
-//   /* display: flex;
-//   gap: 1rem; */
-// `;
 
 export const CaretLeft = styled.a`
   width: 1.5rem;

@@ -2,10 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 
-import { Section,Container } from "../UI/Public";
+import { Section,Container,Title } from "../UI/Public";
 import {
   HeadlineWrapper,
-  Title,
   ListImage,
 } from "../Carousel/CarouselElement";
 
@@ -28,7 +27,7 @@ const Category = () => {
       <HeadlineWrapper>
         <Title>選擇類別</Title>
       </HeadlineWrapper>
-      <Container>
+      <Container widther>
         <CategoryUl>
           {" "}
           {categoryList.map((item) => (

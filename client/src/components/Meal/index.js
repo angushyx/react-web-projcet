@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Card from "../UI/Card";
 import { useSelector } from "react-redux";
 
-import {  Title, Warp } from "./Meal";
-import { Container,Section } from "../UI/Public";
+
+import {  Warp } from "./Meal";
+import { Container,Section,Title } from "../UI/Public";
 
 
 const Meal = () => {
@@ -25,12 +25,14 @@ const Meal = () => {
 
   return (
     <>
-    <Container>
-      <Section higher>
-        <Title>熱門餐點</Title>
-        <Warp>{mealList}</Warp>
+  
+      <Section higher >
+        <Container widther>
+          <Title>熱門餐點</Title>
+          <Warp> {mealList}</Warp>
+          </Container> 
       </Section>
-    </Container> 
+ 
     </>
   );
 };

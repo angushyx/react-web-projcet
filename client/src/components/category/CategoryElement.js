@@ -4,8 +4,9 @@ import { devices } from "../../MediaQuery/MediaQuery";
 export const CategoryUl = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
+  max-height: 60rem;
   gap: 1.2rem;
+  justify-items: center;
   @media ${devices.mobileL} {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
@@ -17,10 +18,17 @@ export const CategoryUl = styled.ul`
 `;
 
 export const CategoryList = styled.li`
-  max-width: 20rem;
+  max-width: 15rem;
+
+
+  @media ${devices.mobileL} {
+    max-width: 100%;
+    max-width: 20rem;
+  }
   @media ${devices.laptop} {
     max-width: 100%;
-    }
+    max-width: 20rem;
+  }
 
 `;
 export const CategoryWrapper = styled.div`

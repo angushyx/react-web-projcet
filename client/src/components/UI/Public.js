@@ -1,22 +1,52 @@
 import styled from "styled-components";
 import { devices } from "../../MediaQuery/MediaQuery";
 
+export const Title = styled.h1`
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: 0.2rem;
+
+  @media ${devices.mobileL} {
+    font-size: 1.7rem;
+  }
+  @media ${devices.tablet} {
+    font-size: 2rem;
+  }
+  @media ${devices.laptop} {
+    font-size: 2.4rem;
+  }
+  @media ${devices.laptopL} {
+    font-size: 3rem;
+  } ;
+
+`
+
 export const Section  = styled.section`
     height: ${props=>props.higher ? "50rem":"45rem"};
-    margin: 4rem auto;
 
     @media ${devices.mobileL} {
         height: ${props=>props.higher ? "50rem":"40rem"};
     }
-    @media ${devices.laptop} {
-        height: ${props=>props.higher ? "50rem":"22rem"};
+
+    @media ${devices.tablet} {
+        height: ${props=>props.higher ? "40rem":"35rem"};
+        margin-bottom: 4rem;
     }
+ 
+    @media ${devices.laptop} {
+        height: ${props=>props.higher ? "40rem":"22rem"};
+    }
+ 
+
+
 `
 
 
 export const Container = styled.div`
-    width: 90%;
+    width: ${props=>props.widther?'90%':'75%'};
     margin: 0 auto;
+    height: 100%;
 `;
  
 
