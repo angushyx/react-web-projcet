@@ -1,13 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+
+import { Section,Container } from "../UI/Public";
 import {
-  CarouselLayout,
   HeadlineWrapper,
   Title,
-  CartListContainer,
   ListImage,
 } from "../Carousel/CarouselElement";
+
+
 
 import {
   CategoryUl,
@@ -22,11 +24,11 @@ const Category = () => {
   const categoryList = categoryReducer.category;
 
   return (
-    <CarouselLayout>
+    <Section>
       <HeadlineWrapper>
         <Title>選擇類別</Title>
       </HeadlineWrapper>
-      <CartListContainer>
+      <Container>
         <CategoryUl>
           {" "}
           {categoryList.map((item) => (
@@ -42,8 +44,8 @@ const Category = () => {
             </CategoryList>
           ))}
         </CategoryUl>
-      </CartListContainer>
-    </CarouselLayout>
+      </Container>
+    </Section>
   );
 };
 

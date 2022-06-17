@@ -7,12 +7,16 @@ export const CardStyle = styled.div`
   box-shadow: -7px 16px 31px -32px rgba(0, 0, 0, 0.75);
 
   display: grid;
-  grid-template-rows: 1fr 1fr;
-
+  grid-template-rows:repeat(2,1fr);
+  border-radius: 1rem;
+  
+  /* need to flexable */
   min-width: 23rem;
   max-height: 35rem;
-  border-radius: 1rem;
+
 `;
+
+
 export const Image = styled.img`
   width: 100%;
   height: 22vh;

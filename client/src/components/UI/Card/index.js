@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
+import React from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useRef } from "react";
-import { IconStyle } from "../../Navbar/Navigation";
-import CartForm from "../../UI/CartForm";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../../slices/cart-slice";
 
 /**
  * 把 db 的資料傳進來這裡，代替 redux 的資料。
  */
+import { IconStyle } from "../Public";
 import {
   CardStyle,
   Image,
@@ -98,6 +98,3 @@ const Card = (props) => {
 };
 
 export default Card;
-{
-  /* <CartForm price={price} id={props.id} /> */
-}

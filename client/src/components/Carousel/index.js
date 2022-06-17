@@ -2,21 +2,20 @@ import React, { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { useSelector } from "react-redux";
+import { Container } from "../UI/Public";
+
 import {
   CarouselLayout,
   HeadlineWrapper,
   Title,
   CaretLeft,
   CaretRight,
-  CartListContainer,
   CardUl,
   CardList,
   ListImage,
-  FoodInfo,
-  Nav,
-  FoodTitle,
-  FoodDescription,
+
 } from "./CarouselElement";
+
 
 //TODO 點擊 < 或 > 改變 SCROLL 位置
 const Headline = () => {
@@ -64,7 +63,7 @@ const Cards = (props) => {
 
   return (
     <>
-      <CartListContainer>
+      <Container>
         <CardUl>
           <CaretLeft onClick={pervSlice} />
           {currentPage.map((item) => (
@@ -74,7 +73,7 @@ const Cards = (props) => {
           ))}
           <CaretRight onClick={nextSlice} />
         </CardUl>
-      </CartListContainer>{" "}
+      </Container>{" "}
     </>
   );
 };

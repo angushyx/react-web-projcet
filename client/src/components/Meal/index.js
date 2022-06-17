@@ -2,7 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Card from "../UI/Card";
 import { useSelector } from "react-redux";
 
-import { MealSection, Title, Warp } from "./Meal";
+import {  Title, Warp } from "./Meal";
+import { Container,Section } from "../UI/Public";
+
 
 const Meal = () => {
   const commodityReducer = useSelector((state) => state.commodityReducer);
@@ -20,36 +22,18 @@ const Meal = () => {
       amount={item.amount}
     />
   ));
-  // console.log(commodityList);
 
   return (
     <>
-      <MealSection>
-        <Title>Save your cooking time and health</Title>
+    <Container>
+      <Section higher>
+        <Title>熱門餐點</Title>
         <Warp>{mealList}</Warp>
-      </MealSection>
+      </Section>
+    </Container> 
     </>
   );
 };
 
 export default Meal;
 
-//  <Sticky>
-//    <FilterContainer>
-//      <FilterMain>
-//        <FilterMainLeft>
-//          <button>OFF</button>
-//          <span>FREE CURBSIDE PICKUP</span>
-//          <FilterIcon>
-//            <FontAwesomeIcon icon="fa-solid fa-filter" />
-//            <span>Filter</span>
-//          </FilterIcon>
-//        </FilterMainLeft>
-//        <Detail2>
-//          <span>115 Items</span>&nbsp;&nbsp;&nbsp;&nbsp;
-//          <span>MOST RELEVANT</span>&nbsp;&nbsp;&nbsp;
-//          <FontAwesomeIcon icon="fa-solid fa-caret-down" />
-//        </Detail2>
-//      </FilterMain>
-//    </FilterContainer>
-//  </Sticky>;

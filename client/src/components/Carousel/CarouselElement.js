@@ -13,7 +13,7 @@ export const HeadlineWrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   @media ${devices.mobileL} {
     font-size: 1.7rem;
   }
@@ -84,10 +84,7 @@ export const CaretRight = styled(CaretLeft)`
   }
 `;
 
-export const CartListContainer = styled.div`
-  width: 90%;
-  margin: 0 auto;
-`;
+
 
 export const CardUl = styled.ul`
   display: flex;
@@ -129,7 +126,7 @@ export const ListImage = styled.img`
 `;
 
 export const FoodInfo = styled.div`
-  background-color: ${(props) => props.footerColor};
+  background: ${(props) => props.footerColor};
   grid-row: 2 / 3;
   border-radius: 0 0 1rem 1rem;
   padding: 2rem;

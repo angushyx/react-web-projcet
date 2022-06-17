@@ -3,19 +3,26 @@ import { devices } from "../../MediaQuery/MediaQuery";
 
 export const CategoryUl = styled.ul`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding-bottom: 4rem;
+  grid-template-columns: repeat(2, 1fr);
+
   gap: 1.2rem;
   @media ${devices.mobileL} {
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     grid-template-columns: repeat(6, 1fr);
-    padding-bottom: 5rem;
+ 
   }
 `;
 
-export const CategoryList = styled.li``;
+export const CategoryList = styled.li`
+  max-width: 20rem;
+  @media ${devices.laptop} {
+    max-width: 100%;
+    }
+
+`;
 export const CategoryWrapper = styled.div`
   position: relative;
   height: 100%;
