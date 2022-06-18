@@ -5,40 +5,39 @@ import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
 import { BackdropStyle } from "../Cart/Cart";
 import Input from "../UI/Input";
+import { Container } from "../UI/Public";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { auth } from "../../slices/auth-slice";
+import { BtnStyle } from "../UI/Button";
 
 import {
   Headline,
-  HeadlineWrapper,
-  HeadlineItem,
+  ContextWrapper,
+  ButtonWrapper,
+  DetailBtn,
+  BtnGroup,
+  SubImage,
+} from "./DetailElement";
+
+import {
   MainWrapper,
   HeroWrapper,
+  InfoWrapper,
   MainImg,
-  SubImgOne,
-  SubImgTwo,
-  SubImgThree,
-  SubImgFour,
   DescriptionWrapper,
   RatingWrapper,
   RatingText,
   FoodName,
-  HeadlineItemTitle,
-  HeadlineItemInfo,
   StarWrapper,
-  HeadlineItemContent,
-  SubInfo,
-  ContextWrapper,
-  DetailHeadline,
-  ButtonWrapper,
+  TitleWrapper,
   SplitLine,
   AllInfo,
-  DetailBtn,
+  CategoryPill,
+  ImageGroup,
   CheckoutModal,
   ImageStyleFree,
-  MainContainer,
 } from "./DetailElement";
 
 const Detail = () => {
@@ -78,7 +77,7 @@ const Detail = () => {
               <div>
                 <Link to="/review/checkout">
                   <ButtonWrapper>
-                    <DetailBtn>以訪客身分購買</DetailBtn>
+                    <BtnStyle>以訪客身分購買</BtnStyle>
                   </ButtonWrapper>
                 </Link>
                 <SplitLine>OR</SplitLine>
@@ -90,7 +89,7 @@ const Detail = () => {
                   </div>
                   <ButtonWrapper>
                     <Link to="/register">
-                      <DetailBtn>Continue</DetailBtn>
+                      <BtnStyle>Continue</BtnStyle>
                     </Link>
                   </ButtonWrapper>
                 </from>
@@ -102,7 +101,7 @@ const Detail = () => {
                     src={require("../../image/Social Media/facebook-logo-2019.png")}
                     alt=""
                   />
-                  <DetailBtn>Continue with Facebook</DetailBtn>
+                  <BtnStyle>Continue with Facebook</BtnStyle>
                 </Link>{" "}
               </ButtonWrapper>{" "}
               <ButtonWrapper>
@@ -117,9 +116,9 @@ const Detail = () => {
                   onFailure={googleFailure}
                   cookiePolicy="single_host_origin"
                   render={(renderProps) => (
-                    <DetailBtn onClick={renderProps.onClick}>
+                    <BtnStyle onClick={renderProps.onClick}>
                       Continue with Google
-                    </DetailBtn>
+                    </BtnStyle>
                   )}
                 />
               </ButtonWrapper>{" "}
@@ -133,78 +132,58 @@ const Detail = () => {
           </BackdropStyle>
         </>
       )}
-      <MainContainer>
-        <HeadlineWrapper>
-          <DetailHeadline>
-            <HeadlineItem>
-              <FontAwesomeIcon icon="fa-solid fa-location-dot" />
-              <HeadlineItemContent>
-                <HeadlineItemTitle>LOCATION</HeadlineItemTitle>{" "}
-                <HeadlineItemInfo>Taipei no.1 street</HeadlineItemInfo>
-              </HeadlineItemContent>
-            </HeadlineItem>
-            <HeadlineItem>
-              <FontAwesomeIcon icon="fa-solid fa-calendar" />
-              <HeadlineItemContent>
-                <HeadlineItemTitle>CALENDER</HeadlineItemTitle>{" "}
-                <HeadlineItemInfo>29 April</HeadlineItemInfo>
-              </HeadlineItemContent>
-            </HeadlineItem>
-            <HeadlineItem>
-              <FontAwesomeIcon icon="fa-solid fa-users" />
-              <HeadlineItemContent>
-                <HeadlineItemTitle>GUESTS</HeadlineItemTitle>{" "}
-                <HeadlineItemInfo>1 adults / meal</HeadlineItemInfo>
-              </HeadlineItemContent>
-            </HeadlineItem>
-          </DetailHeadline>
-        </HeadlineWrapper>
+      ;
+      <Container>
         <MainWrapper>
           <HeroWrapper>
-            <MainImg src={detailProduct.image} />
-            <SubImgOne src={detailProduct.image} />{" "}
-            <SubImgTwo src={detailProduct.image} />{" "}
-            <SubImgThree src={detailProduct.image} />{" "}
-            <SubImgFour src={detailProduct.image} />{" "}
+            <div>
+              <MainImg src={detailProduct.image} />
+            </div>
+            <ImageGroup>
+              <SubImage src={detailProduct.image} />
+              <SubImage src={detailProduct.image} />
+              <SubImage src={detailProduct.image} />
+              <SubImage src={detailProduct.image} />
+            </ImageGroup>
           </HeroWrapper>
-          <DetailBtn
-            height="100%"
-            fontSize="1rem"
-            onClick={checkoutModalHandler}
-          >
-            checkout
-          </DetailBtn>
-          <ContextWrapper>
-            <DescriptionWrapper>
-              <FoodName>{detailProduct.name}</FoodName>
-              <RatingWrapper>
-                <StarWrapper>
-                  <FontAwesomeIcon icon="fa-solid fa-star" />
-                  <FontAwesomeIcon icon="fa-solid fa-star" />
-                  <FontAwesomeIcon icon="fa-solid fa-star" />
-                  <FontAwesomeIcon icon="fa-solid fa-star" />
-                </StarWrapper>
-                <RatingText>4.0(235)</RatingText>
-              </RatingWrapper>
-            </DescriptionWrapper>
 
-            <SubInfo>105台北市松山區八德路三段12巷No15號</SubInfo>
-            <AllInfo>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-              expedita voluptas modi? Sapiente accusamus, aperiam veniam, dolor
-              facere, esse perspiciatis eveniet praesentium commodi adipisci
-              fugit tempora recusandae amet quaerat nobis. Atque incidunt animi
-              voluptas consectetur? Alias sint assumenda tenetur dolorem, modi,
-              ab vitae error laboriosam eius in enim cupiditate voluptatem.
-              Optio deserunt libero ipsam consequuntur, delectus aliquam tempora
-              recusandae amet quaerat nobis. Atque incidunt animi voluptas
-              consectetur? Alias sint assumenda tenetur dolorem, modi, ab vitae
-              error laboriosam eius in enim cupiditate voluptatem. Optio
-              deserunt libero ipsam consequuntur, delectus aliquam
-            </AllInfo>
-          </ContextWrapper>
+          <InfoWrapper>
+            <ContextWrapper>
+              <DescriptionWrapper>
+                <TitleWrapper>
+                  <FoodName>{detailProduct.name}</FoodName>{" "}
+                  <CategoryPill>{detailProduct.category}</CategoryPill>
+                </TitleWrapper>
+                <RatingWrapper>
+                  {" "}
+                  <RatingText>4.0(235)</RatingText>
+                  <StarWrapper>
+                    <FontAwesomeIcon icon="fa-solid fa-star" />
+                    <FontAwesomeIcon icon="fa-solid fa-star" />
+                    <FontAwesomeIcon icon="fa-solid fa-star" />
+                    <FontAwesomeIcon icon="fa-solid fa-star" />
+                  </StarWrapper>
+                </RatingWrapper>
+                <h1>$ {detailProduct.price}</h1>{" "}
+                <AllInfo>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
+                  expedita voluptas modi? Sapiente accusamus, aperiam veniam,
+                  dolor facere, esse perspiciatis eveniet praesentium commodi
+                  adipisci fugit tempora recusandae en
+                </AllInfo>
+              </DescriptionWrapper>{" "}
+              <BtnGroup>
+                <DetailBtn fontSize="1.2rem" onClick={checkoutModalHandler}>
+                  加入購物車
+                </DetailBtn>
+                <DetailBtn fontSize="1.2rem" onClick={checkoutModalHandler}>
+                  直接購買
+                </DetailBtn>
+              </BtnGroup>
+            </ContextWrapper>
+          </InfoWrapper>
         </MainWrapper>
-      </MainContainer>
+      </Container>
     </>
   );
 };

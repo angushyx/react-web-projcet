@@ -34,7 +34,7 @@ export const Section = styled.section`
   }
 
   @media ${devices.tablet} {
-    height: ${(props) => (props.higher ? "40rem" : "35rem")};
+    height: ${(props) => (props.higher ? "45rem" : "35rem")};
     margin-bottom: 4rem;
   }
 

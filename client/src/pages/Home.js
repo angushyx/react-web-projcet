@@ -16,7 +16,7 @@ const Home = () => {
       <Category />
       <Meal />
       <Intro />
-      <Subscription />
+      {/* <Subscription /> */}
       <Feedback />
       <ToTopBtn />
       <Footer />

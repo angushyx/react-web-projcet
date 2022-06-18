@@ -3,129 +3,68 @@ import { BtnStyle } from "../UI/Button";
 import { ModalStyle } from "../Cart/Cart";
 import { ImageStyle } from "../Payment/PaymentElement";
 import { devices } from "../../MediaQuery/MediaQuery";
-
-export const MainContainer = styled.div`
-  height: 93vh;
-`;
-
-export const HeadlineWrapper = styled.div`
-  height: 10rem;
-  background: var(--color-primary-light);
-  margin-bottom: 3rem;
-`;
-export const DetailHeadline = styled.ul`
-  height: 100%;
-  width: 95%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-
-  @media ${devices.mobileL} {
-    width: 80%;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-`;
-
-export const HeadlineItem = styled.li`
-  background: var(--color-grey-light-1);
-  width: 40%;
-  height: 80%;
-  font-size: 1.5rem;
-  border-radius: 1rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 1rem;
-
-  @media ${devices.mobileL} {
-    background-color: var(--color-grey-light-1);
-    width: 32%;
-    height: 50%;
-    font-size: 2rem;
-    gap: 0;
-
-    flex-direction: row;
-  }
-`;
-
-export const HeadlineItemContent = styled.div`
-  font-size: 1rem;
-  @media ${devices.mobileL} {
-    font-size: 2rem;
-    margin-left: 1rem;
-  }
-`;
-export const HeadlineItemTitle = styled.strong`
-  font-size: 1.3rem;
-  color: var(--color-grey-dark-1);
-  @media ${devices.mobileL} {
-    font-size: 1.5rem;
-  }
-`;
-export const HeadlineItemInfo = styled.h5`
-  font-size: 1.2rem;
-  color: var(--color-grey-dark-2);
-`;
+import { HightLightPill } from "../UI/Card/Card";
 
 export const MainWrapper = styled.main`
-  width: 80%;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  gap: 5rem;
+  margin-bottom: 10rem;
+  @media ${devices.tablet} {
+    margin-top: 5rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 `;
 
 export const HeroWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr repeat(2, 20%);
-  grid-template-rows: 1fr repeat(2, 25%);
+  flex: 0.4;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
 
-  height: 20rem;
-  padding-bottom: 1.5rem;
-  gap: 0.5rem;
-
-  @media ${devices.mobileL} {
-    padding-bottom: 2rem;
+  max-height: 40rem;
+  @media ${devices.tablet} {
+    min-width: 35rem;
   }
 `;
-export const ContextWrapper = styled.div``;
+
+export const InfoWrapper = styled.div`
+  flex: 0.4;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ContextWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  flex-direction: column;
+`;
+export const TitleWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 5rem;
+`;
 
 export const MainImg = styled.img`
-  grid-column: 1/2;
-  grid-row: 1/-1;
-`;
-export const SubImgOne = styled.img`
-  grid-row: 1/2;
-  grid-column: 2/3;
-`;
-export const SubImgTwo = styled.img`
-  grid-row: 1/2;
-  grid-column: 3/4;
-`;
-export const SubImgThree = styled.img`
-  grid-row: 2/-1;
-  grid-column: 2/3;
+  max-height: 20rem;
+  object-fit: cover;
 `;
 
-export const SubImgFour = styled.img`
-  grid-column: 3/4;
-  grid-row: 2/3;
+export const BtnGroup = styled.div`
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
 `;
 
 export const DetailBtn = styled(BtnStyle)`
   align-self: flex-end;
   justify-self: center;
-  border-radius: 2rem;
-  width: 100%;
+
+  width: 50%;
 `;
+
 export const ButtonWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -140,6 +79,8 @@ export const ButtonWrapper = styled.div`
 export const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
 `;
 export const FoodName = styled.h1`
   font-size: 2.5rem;
@@ -248,6 +189,11 @@ export const ImageStyleFree = styled(ImageStyle)`
   top: 20%;
 `;
 
+export const CategoryPill = styled(HightLightPill)`
+  font-size: 1.2rem;
+  height: 2rem;
+`;
+
 //  &::after {
 //     content: "⨉";
 //     position: absolute;
@@ -272,3 +218,14 @@ export const ImageStyleFree = styled(ImageStyle)`
 //     background-color: #ccc;
 //     cursor: pointer;
 //   }
+
+export const ImageGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const SubImage = styled(ImageStyle)`
+  display: inline-block;
+  width: 7rem;
+  height: 7rem;
+`;

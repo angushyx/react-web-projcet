@@ -7,7 +7,7 @@ export const BackdropStyle = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 99;
+  z-index: 99099999;
   background-color: rgba(0, 0, 0, 0.75);
 `;
 
@@ -20,7 +20,7 @@ export const ModalStyle = styled.div`
   background-color: #fff;
   align-items: center;
   left: 5%;
-  z-index: 99;
+  z-index: 99099999;
   -webkit-box-shadow: -1px 3px 5px 0px rgba(255, 255, 255, 1);
   -moz-box-shadow: -1px 3px 5px 0px rgba(255, 255, 255, 1);
   box-shadow: -1px 3px 5px 0px rgba(255, 255, 255, 1);
