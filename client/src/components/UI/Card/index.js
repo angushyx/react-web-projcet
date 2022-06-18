@@ -24,7 +24,7 @@ import {
 } from "./Card";
 
 const Card = (props) => {
-  const { id, image, name, price, description, category } = props;
+  const { id, image, name, price, category } = props;
 
   const dispatch = useDispatch();
 

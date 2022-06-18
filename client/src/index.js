@@ -6,7 +6,6 @@ import { BrowserRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
 
-import { AuthContextProvider } from "./store/Auth-context";
 import store from "./store/store";
 
 import { library } from "@fortawesome/fontawesome-svg-core";

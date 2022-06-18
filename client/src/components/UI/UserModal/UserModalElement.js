@@ -25,7 +25,7 @@ export const DetailBox = styled.ul`
     align-items: center;
     color: #fff;
     &:hover {
-      transition: all 0.4s ease-in;
+      transition: all 0.1s ease-in;
       background: var(--color-grey-dark-2);
     }
   }

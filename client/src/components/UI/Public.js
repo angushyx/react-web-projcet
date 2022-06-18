@@ -4,7 +4,6 @@ import { devices } from "../../MediaQuery/MediaQuery";
 export const Title = styled.h1`
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 2rem;
   letter-spacing: 0.2rem;
 
   @media ${devices.mobileL} {

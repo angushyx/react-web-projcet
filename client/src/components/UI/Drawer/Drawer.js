@@ -1,17 +1,18 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
+import React from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Hamburger } from "../../HeroPart/HeroElement";
-import { useSelector } from "react-redux";
-import CartList from "../CartList";
 import { ImageStyle } from "../../Payment/PaymentElement";
-import styled from "styled-components";
-import { BtnStyle } from "../Button";
+import { Hamburger } from "../../HeroPart/HeroElement";
 import { devices } from "../../../MediaQuery/MediaQuery";
-import { useNavigate } from "react-router-dom";
 import { Notification } from "../../Navbar/Navigation";
 import { IconStyle } from "../../Navbar/Navigation";
+import { useNavigate } from "react-router-dom";
+import Drawer from "@mui/material/Drawer";
+import { useSelector } from "react-redux";
+import styled from "styled-components";
+import Box from "@mui/material/Box";
+import CartList from "../CartList";
+import { BtnStyle } from "../Button";
 
 export const CartContainer = styled.div`
   max-width: 55rem;
@@ -90,7 +91,7 @@ export const NoItem = () => {
   );
 };
 
-export default function TemporaryDrawer(props) {
+export default function TemporaryDrawer() {
   const navigate = useNavigate();
   const cartReducer = useSelector((state) => state.cartReducer);
 
@@ -105,9 +106,9 @@ export default function TemporaryDrawer(props) {
 
   const checkoutHandler = () => {
     if (cartList.length !== 0) {
-      navigate("/checkout");
+      navigate("/review/checkout");
     } else {
-      navigate("/shop");
+      navigate("/meals");
     }
   };
 

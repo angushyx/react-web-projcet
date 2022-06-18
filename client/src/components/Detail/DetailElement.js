@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { BtnStyle } from "../UI/Button";
-import { ModalStyle } from "../Cart/Cart";
 import { ImageStyle } from "../Payment/PaymentElement";
 import { devices } from "../../MediaQuery/MediaQuery";
 import { HightLightPill } from "../UI/Card/Card";
@@ -147,13 +146,6 @@ export const FormWrapper = styled.div`
   gap: 1rem;
   align-items: center;
   margin: 2rem 0;
-`;
-
-export const CheckoutModal = styled(ModalStyle)`
-  position: relative;
-  max-width: 40rem;
-  margin: 3rem auto;
-  padding: 3rem;
 `;
 
 export const Headline = styled.h2`

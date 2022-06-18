@@ -1,7 +1,6 @@
 import Card from "../UI/Card";
-import { useSelector } from "react-redux";
-
 import { Warp } from "./Meal";
+import { useSelector } from "react-redux";
 import { Container, Section, Title } from "../UI/Public";
 
 const Meal = () => {

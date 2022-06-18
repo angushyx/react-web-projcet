@@ -14,6 +14,7 @@ export const cartSlice = createSlice({
     addToCart: (state = initialState, action) => {
       const updatedTotalAmount =
         state.totalAmount + action.payload.enterItemPrice;
+      console.log(action.payload);
 
       /**
        * total quantity
@@ -89,11 +90,6 @@ export const cartSlice = createSlice({
         updatedItems = [...state.items];
         updatedItems[exitingItemIndex] = updatedItem;
       } else {
-        /**
-         * 先不刪除
-         */
-        // updatedItems = state.items.splice(exitingItemIndex, 1);
-        // updatedTotalAmount -= exitingItem[exitingItemIndex].amount;
         return;
       }
       return {

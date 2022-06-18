@@ -4,7 +4,6 @@ import UserModal from "../../UI/UserModal";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AuthContext from "../../../store/Auth-context";
 import AuthService from "../../../services/authApi";
 import { changePageView } from "../../../slices/ShippingInfo-slice";
 import { useDispatch } from "react-redux";
@@ -27,7 +26,6 @@ const CartNavbar = (props) => {
   /********user modal **************/
   const [showModal, setShowModal] = useState(false);
 
-  const authCtx = useContext(AuthContext);
   const dispatch = useDispatch();
 
   dispatch(changePageView(window.location.pathname));
@@ -38,7 +36,7 @@ const CartNavbar = (props) => {
    */
   const logoutHandler = () => {
     AuthService.logout();
-    authCtx.logout();
+
     setShowModal((prev) => !prev);
   };
 
@@ -46,33 +44,7 @@ const CartNavbar = (props) => {
     setShowModal((prev) => !prev);
   };
   /**************************************/
-
-  /**
-   *  bgc2="#222"
-          after2=" "
-          bgc3="#ccc"
-          after3=" "
-          width3="2rem"
-          height3="2rem"
-   */
-  /**
-   * bgc3="#222" after3=" "
-   */
-  // <CheckStep
-  //   bgc1="#222"
-  //   after1=" "
-  //   bgc2="#ccc"
-  //   after2=" "
-  //   bgc3="#ccc"
-  //   after3=" "
-  //   width2="1.5rem"
-  //   height2="1.5rem"
-  //   width3="1.5rem"
-  //   height3="1.5rem"
-  // />;
-
   const cartReducer = useSelector((state) => state.cartReducer);
-  const isLoggedIn = authCtx.isLoggedIn;
 
   //todo 處理 Price 累加的問題
 
@@ -93,32 +65,17 @@ const CartNavbar = (props) => {
           {props.children}
           <UserNav>
             <Ul>
-              {!isLoggedIn && (
-                <Link to="/login">
-                  <Li>
-                    <FontAwesomeIcon icon="fa-solid fa-user" />
-                  </Li>{" "}
-                </Link>
-              )}
-              {isLoggedIn && (
-                <Li onClick={toggleUserModalHandler}>
-                  <UserImage>
-                    <Image
-                      src={require("../../../image/user.JPG")}
-                      alt="user"
-                    />{" "}
-                    <span>Angus</span>
-                  </UserImage>{" "}
-                </Li>
-              )}
-              {isLoggedIn && (
+              {/* <Link to="/login">
                 <Li>
-                  <CartIcon>
-                    <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
-                    <Notification>{totalQuantity}</Notification>
-                  </CartIcon>
-                </Li>
-              )}{" "}
+                  <FontAwesomeIcon icon="fa-solid fa-user" />
+                </Li>{" "}
+              </Link> */}
+
+              <Li onClick={toggleUserModalHandler}>
+                <UserImage>
+                  <Image src={require("../../../image/user.JPG")} alt="user" />{" "}
+                </UserImage>{" "}
+              </Li>
             </Ul>
           </UserNav>{" "}
         </Wrapper>{" "}

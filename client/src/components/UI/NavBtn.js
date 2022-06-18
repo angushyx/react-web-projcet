@@ -22,9 +22,9 @@ const BtnContainer = styled.button`
     border-right: 1rem solid transparent;
   }
   :hover {
-    background: var(--color-grey-light-1);
+    background: var(--color-primary-dark);
     &::after {
-      border-bottom: 1rem solid var(--color-grey-dark-1);
+      border-bottom: 1rem solid var(--color-grey-dark-2);
     }
   }
 `;

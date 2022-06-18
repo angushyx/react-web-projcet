@@ -4,7 +4,6 @@ import UserModal from "../../UI/UserModal";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AuthContext from "../../../store/Auth-context";
 import AuthService from "../../../services/authApi";
 import queryString from "query-string";
 
@@ -37,15 +36,13 @@ const TopNavbar = ({ onShowCart }) => {
   /********user modal **************/
   const [showModal, setShowModal] = useState(false);
 
-  const authCtx = useContext(AuthContext);
-
   /**
    * !做 logout 的功能
    *
    */
   const logoutHandler = () => {
     AuthService.logout();
-    authCtx.logout();
+
     setShowModal((prev) => !prev);
   };
 
@@ -61,7 +58,6 @@ const TopNavbar = ({ onShowCart }) => {
   };
   console.log(keyword);
   const cartReducer = useSelector((state) => state.cartReducer);
-  const isLoggedIn = authCtx.isLoggedIn;
 
   //todo 處理 Price 累加的問題
 
@@ -97,32 +93,25 @@ const TopNavbar = ({ onShowCart }) => {
           </Search>
           <UserNav>
             <Ul>
-              {!isLoggedIn && (
-                <Link to="/login">
-                  <Li>
-                    <FontAwesomeIcon icon="fa-solid fa-user" />
-                  </Li>{" "}
-                </Link>
-              )}
-              {isLoggedIn && (
-                <Li onClick={toggleUserModalHandler}>
-                  <UserImage>
-                    <Image
-                      src={require("../../../image/user.JPG")}
-                      alt="user"
-                    />{" "}
-                    <span>Angus</span>
-                  </UserImage>{" "}
-                </Li>
-              )}
-              {isLoggedIn && (
-                <Li onClick={onShowCart}>
-                  <CartIcon>
-                    <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
-                    <Notification>{totalQuantity}</Notification>
-                  </CartIcon>
-                </Li>
-              )}{" "}
+              <Link to="/login">
+                <Li>
+                  <FontAwesomeIcon icon="fa-solid fa-user" />
+                </Li>{" "}
+              </Link>
+
+              <Li onClick={toggleUserModalHandler}>
+                <UserImage>
+                  <Image src={require("../../../image/user.JPG")} alt="user" />{" "}
+                  <span>Angus</span>
+                </UserImage>{" "}
+              </Li>
+
+              <Li onClick={onShowCart}>
+                <CartIcon>
+                  <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
+                  <Notification>{totalQuantity}</Notification>
+                </CartIcon>
+              </Li>
             </Ul>
           </UserNav>{" "}
         </Wrapper>{" "}

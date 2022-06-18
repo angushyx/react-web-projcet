@@ -41,13 +41,6 @@ export const ProductWrapper = styled.div`
     padding-top: 2rem;
   }
 `;
-// export const BrandWrapper = styled.div`
-//   display: flex;
-//   flex: 1;
-//   flex-direction: column;
-//   justify-content: space-evenly;
-//   text-align: center;
-// `;
 
 const ImageWrapper = styled.div`
   height: 8rem;
@@ -157,21 +150,5 @@ const CartList = (props) => {
     </>
   );
 };
-//  <TextWrapper>
-//    <InfoText mb="0">Quantity: {item.amount}</InfoText>
-//  </TextWrapper>;
-export default CartList;
 
-//  <BrandWrapper>
-//    <div style={{ margin: "0 auto" }}>
-//      <ImageStyle
-//        width="3rem"
-//        height="3rem"
-//        src={require("../../image/picasa.png")}
-//      />
-//    </div>
-//    <div>
-//      <h2>OliveCreativeCny</h2>
-//      <div>Made just for yos</div>
-//    </div>
-//  </BrandWrapper>;
+export default CartList;

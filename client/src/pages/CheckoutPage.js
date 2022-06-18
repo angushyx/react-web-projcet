@@ -1,14 +1,14 @@
 import React from "react";
 import ShippingForm from "../components/ShippingForm";
 import CheckStep from "../components/UI/CheckStep";
+import { changePageView } from "../slices/ShippingInfo-slice";
+import CartNavbar from "../components/Navbar/CartNavbar";
+import Footer from "../components/UI/Footer";
+import { useDispatch } from "react-redux";
 import {
   Container,
   Headline,
 } from "../components/ShippingForm/ShippingFormElement";
-import Footer from "../components/UI/Footer";
-import { useDispatch } from "react-redux";
-import { changePageView } from "../slices/ShippingInfo-slice";
-import CartNavbar from "../components/Navbar/CartNavbar";
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();

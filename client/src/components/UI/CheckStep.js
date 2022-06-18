@@ -35,7 +35,6 @@ const StepDot = styled.button`
   transition: border 0.32s;
   border: 1px solid #ccc;
 
-  //!well change
   background-color: ${(props) => props.bgc || "#fff"};
 
   &::after {

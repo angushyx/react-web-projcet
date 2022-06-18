@@ -3,7 +3,6 @@ import Hero from "../components/HeroPart";
 import Category from "../components/category";
 import Meal from "../components/Meal";
 import Intro from "../components/Introduction";
-import Subscription from "../components/Subscription";
 import Feedback from "../components/Feedback";
 
 import ToTopBtn from "../components/UI/NavBtn";
@@ -16,7 +15,7 @@ const Home = () => {
       <Category />
       <Meal />
       <Intro />
-      {/* <Subscription /> */}
+
       <Feedback />
       <ToTopBtn />
       <Footer />
@@ -26,8 +25,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// import Carousel from "../components/Carousel";
-// {
-//   /* <Carousel /> */
-// }

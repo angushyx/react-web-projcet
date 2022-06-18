@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-import { Container, Headline } from "../ShippingForm/ShippingFormElement";
-import Button from "../UI/Button";
-import FormDialog from "../UI/Modal2";
+
 import { useSelector, useDispatch } from "react-redux";
 import { clearItem } from "../../slices/cart-slice";
-import axios from "axios";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import LoadingSpinner from "../UI/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
-import CartNavbar from "../Navbar/CartNavbar";
-import CartList from "../../components/UI/CartList";
+import axios from "axios";
 
+import withReactContent from "sweetalert2-react-content";
+import CartList from "../../components/UI/CartList";
+import LoadingSpinner from "../UI/LoadingSpinner";
+import CartNavbar from "../Navbar/CartNavbar";
+import FormDialog from "../UI/Modal2";
+import Footer from "../UI/Footer";
+import Button from "../UI/Button";
+import Swal from "sweetalert2";
+
+import { Container, Headline } from "../ShippingForm/ShippingFormElement";
 import {
   Checkbox,
   CheckboxWrapper,
@@ -34,8 +37,6 @@ import {
   EmailAddress,
 } from "./ConfirmElement";
 import { ImageStyle } from "../Payment/PaymentElement";
-import Footer from "../UI/Footer";
-
 const Confirm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const CartSwal = withReactContent(Swal);
@@ -80,10 +81,10 @@ const Confirm = () => {
       amount={item.amount}
     />
   ));
+
   /**
    * Send cart items to firebase <Handler></Handler>
    */
-
   const submitCartItemHandler = async (e) => {
     e.preventDefault();
     try {
@@ -116,7 +117,6 @@ const Confirm = () => {
         handleClose={handleClose}
         handleClickOpen={handleClickOpen}
       />
-
       <Container width="90%" maxWidth="100rem">
         <Headline>Please confirm and submit your order</Headline>
         <MainWrapper>

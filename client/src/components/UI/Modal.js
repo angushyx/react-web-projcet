@@ -1,5 +1,5 @@
 import React from "react";
-import * as ReactDOM from "react-dom";
+import ReactDOM from "react-dom";
 import styled from "styled-components";
 
 const BackdropStyle = styled.div`

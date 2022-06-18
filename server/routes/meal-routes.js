@@ -15,13 +15,6 @@ router.post("/", async (req, res) => {
   let { name, description, price, amount, picture } = req.body;
   console.log(req.user);
 
-  /**
-   * !為何req會有 user 可以用??????
-   * 說是從 passport 來的???
-   */
-  // if (req.user.isConsumer()) {
-  //   return res.status(400).send("Only seller can post new meals");
-  // }
   let newMeal = new Meal({
     name,
     description,

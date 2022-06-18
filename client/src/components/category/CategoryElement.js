@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { devices } from "../../MediaQuery/MediaQuery";
 
+export const Headline = styled.div`
+  margin: 2rem auto;
+`;
+
 export const CategoryUl = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -13,13 +17,11 @@ export const CategoryUl = styled.ul`
   }
   @media ${devices.laptop} {
     grid-template-columns: repeat(6, 1fr);
- 
   }
 `;
 
 export const CategoryList = styled.li`
   max-width: 15rem;
-
 
   @media ${devices.mobileL} {
     max-width: 100%;
@@ -29,7 +31,6 @@ export const CategoryList = styled.li`
     max-width: 100%;
     max-width: 20rem;
   }
-
 `;
 export const CategoryWrapper = styled.div`
   position: relative;

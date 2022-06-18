@@ -1,3 +1,8 @@
+/**
+ *  2022.06.18
+ * !還要改 filter 的條件
+ */
+
 import React, { useState } from "react";
 import Card from "../UI/Card";
 import { useSelector } from "react-redux";
@@ -75,10 +80,6 @@ const ShopList = () => {
     );
   };
 
-  /**
-   * 當點擊到
-   */
-  // console.log(shopList.map((item) => console.log(item.props)));
   return (
     <>
       <MainContainer>

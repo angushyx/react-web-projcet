@@ -105,8 +105,9 @@ export const UserNav = styled.nav`
 export const UserImage = styled.div`
   display: flex;
   align-items: center;
+
   gap: 1rem;
-  width: 11rem;
+  width: 5rem;
   height: 4rem;
   border-radius: 50%;
 `;

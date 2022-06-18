@@ -4,30 +4,23 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { auth } from "../../slices/auth-slice";
 import { GoogleLogin } from "react-google-login";
+import AuthService from "../../services/authApi";
 
 import { ImageStyleFree, ButtonWrapper } from "../Detail/DetailElement";
-import { BtnStyle } from "../UI/Button";
-import Input from "../UI/Input";
+import { Wrapper, Headline, SignupCard, From } from "../Signup/SignElement";
 import withReactContent from "sweetalert2-react-content";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import { BtnStyle } from "../UI/Button";
+import Input from "../UI/Input";
 import Swal from "sweetalert2";
-import { Wrapper, Headline, SignupCard, From } from "../Signup/SignElement";
-import AuthService from "../../services/authApi";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  // 引入SweetAlert
   const AuthSwal = withReactContent(Swal);
 
-  //判斷狀態，1. 是否登入?  2. 是否 load 中
   const [isLoading, setIsLoading] = useState(false);
-  // const [isLogin, setIsLogin] = useState(true);
   const dispatch = useDispatch();
-
-  //轉換登入、建立帳號模式
-
-  /**************JWT VERSION 2*************/
 
   const initialState = {
     email: "",
@@ -44,7 +37,7 @@ const Login = () => {
   };
   /**
    * USE JWT login
-   * @param {event} 
+   * @param {event}
    */
   const handlerSubmit = async (e) => {
     e.preventDefault();
@@ -133,10 +126,8 @@ const Login = () => {
               Creat new account{" "}
             </Link>
           </BtnStyle>
-
           <br />
           <br />
-
           <>
             <h2>----------------OR----------------</h2>
             <ButtonWrapper>

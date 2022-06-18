@@ -1,7 +1,7 @@
 import React from "react";
+import Card from "../UI/Card";
 import styled from "styled-components";
 import queryString from "query-string";
-import Card from "../UI/Card";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
@@ -31,12 +31,6 @@ const SearchItem = () => {
   const commodityReducer = useSelector((state) => state.commodityReducer);
   const commodityList = commodityReducer.commodity;
 
-  console.log(commodityList[0].category);
-  /**
-   *
-   *
-   *!搜尋條件由此更改
-   */
   const Meals = commodityList.filter((item) => {
     return item.name.toLowerCase().includes(keyword.toLowerCase().trim());
   });

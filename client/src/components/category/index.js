@@ -1,21 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
-
-import { Section,Container,Title } from "../UI/Public";
-import {
-  HeadlineWrapper,
-  ListImage,
-} from "../Carousel/CarouselElement";
-
-
-
+import { Section, Container, Title } from "../UI/Public";
 import {
   CategoryUl,
   CategoryList,
   CategoryWrapper,
   CategoryText,
+  Headline,
 } from "./CategoryElement";
+import { ImageStyle } from "../Payment/PaymentElement";
 
 const Category = () => {
   const categoryReducer = useSelector((state) => state.categoryReducer);
@@ -24,9 +17,9 @@ const Category = () => {
 
   return (
     <Section>
-      <HeadlineWrapper>
+      <Headline>
         <Title>選擇類別</Title>
-      </HeadlineWrapper>
+      </Headline>
       <Container widther>
         <CategoryUl>
           {" "}
@@ -34,7 +27,12 @@ const Category = () => {
             <CategoryList>
               {" "}
               <CategoryWrapper>
-                <ListImage src={item.image} />
+                <ImageStyle
+                  width="100%"
+                  height="100%"
+                  radius="1rem"
+                  src={item.image}
+                />
 
                 <CategoryText>
                   <div> {item.category}</div>

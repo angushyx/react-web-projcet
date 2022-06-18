@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Button from "../UI/Button";
+import React from "react";
 import { Link } from "react-router-dom";
+import Button from "../UI/Button";
+import TemporaryDrawer from "../UI/Drawer/Drawer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconStyle } from "../Navbar/Navigation";
-import TemporaryDrawer from "../UI/Drawer/Drawer";
 
 import {
   HeroSection,
