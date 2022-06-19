@@ -7,7 +7,7 @@ export const Header = styled.header`
   height: ${(props) => props.height || "5rem"};
   background-color: var(--color-grey-light-1);
   bottom: 0;
-  z-index: 2000;
+  z-index: 99;
   @media ${devices.mobileL} {
     display: ${(props) => props.display || "none"};
   }

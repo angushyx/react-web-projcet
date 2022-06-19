@@ -6,6 +6,8 @@ import Drawer from "@mui/material/Drawer";
 import CartList, { NoItem, CartHeadline } from "../../UI/CartList";
 import User from "../user";
 import { CartListWrapper, Container } from "../../UI/CartList/CartList";
+import { BtnStyle } from "../../UI/Button";
+import ListBtn from "../../UI/CartList/ListBtn";
 
 import {
   Header,
@@ -108,6 +110,7 @@ const BottomNavbar = () => {
               ) : (
                 <NoItem>購物車是空的...</NoItem>
               )}{" "}
+              <ListBtn />
             </Drawer>
             <IconStyle onClick={toggleDrawer("bottom", true)}>
               <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />

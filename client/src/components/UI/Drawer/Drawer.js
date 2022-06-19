@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
 import { useSelector } from "react-redux";
 import CartList, { NoItem, CartHeadline } from "../CartList";
-import { BtnStyle } from "../Button";
 import { CartListWrapper, Container } from "../CartList/CartList";
+import ListBtn from "../CartList/ListBtn";
 
 export default function TemporaryDrawer() {
   const navigate = useNavigate();
@@ -22,14 +22,6 @@ export default function TemporaryDrawer() {
     top: false,
     bottom: false,
   });
-
-  const checkoutHandler = () => {
-    if (cartList.length !== 0) {
-      navigate("/review/checkout");
-    } else {
-      navigate("/meals");
-    }
-  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -72,18 +64,7 @@ export default function TemporaryDrawer() {
               ) : (
                 <NoItem />
               )}{" "}
-              <BtnStyle
-                style={{
-                  alignSelf: "center",
-                  padding: "1rem",
-                  marginBottom: "2rem ",
-                }}
-                height="3rem"
-                width="85%"
-                onClick={checkoutHandler}
-              >
-                {cartList.length !== 0 ? "Checkout" : " Go to Shopping!"}
-              </BtnStyle>
+              <ListBtn />
             </Drawer>{" "}
           </div>
         </React.Fragment>
