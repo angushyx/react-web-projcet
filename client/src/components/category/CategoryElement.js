@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { devices } from "../../MediaQuery/MediaQuery";
+import { ImageStyle } from "../Payment/PaymentElement";
 
 export const Headline = styled.div`
   margin: 2rem auto;
@@ -51,5 +52,12 @@ export const CategoryText = styled.div`
   font-weight: 700;
   @media ${devices.laptop} {
     font-size: 2.4rem;
+  }
+`;
+
+export const CategoryImg = styled(ImageStyle)`
+  :hover {
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in;
   }
 `;

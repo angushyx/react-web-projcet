@@ -39,7 +39,7 @@ const routeConfig = [
     path: "/meals/:itemId",
     element: <DetailPages />,
   },
-  {},
+
   {
     path: "/review/confirm",
     element: <ConfirmPage />,

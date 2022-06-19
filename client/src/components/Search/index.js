@@ -23,9 +23,6 @@ const Wrapper = styled.div`
  */
 const SearchItem = () => {
   const parsed = queryString.parse(window.location.search);
-  const hash = queryString.parse(window.location.hash);
-  console.log(parsed);
-  console.log(hash);
   const keyword = parsed.keyword;
 
   const commodityReducer = useSelector((state) => state.commodityReducer);

@@ -7,6 +7,7 @@ import {
   CategoryWrapper,
   CategoryText,
   Headline,
+  CategoryImg,
 } from "./CategoryElement";
 import { ImageStyle } from "../Payment/PaymentElement";
 
@@ -27,7 +28,7 @@ const Category = () => {
             <CategoryList>
               {" "}
               <CategoryWrapper>
-                <ImageStyle
+                <CategoryImg
                   width="100%"
                   height="100%"
                   radius="1rem"
