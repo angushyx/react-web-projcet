@@ -1,11 +1,12 @@
 import React from "react";
 import { useState, useContext } from "react";
-import UserModal from "../../UI/UserModal";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthService from "../../../services/authApi";
 import queryString from "query-string";
+import UserModal from "../../UI/UserModal";
+import User from "../user";
 
 import {
   Header,
@@ -31,8 +32,6 @@ const TopNavbar = ({ onShowCart }) => {
 
   const parsed = queryString.parse(window.location.search);
 
-  console.log(parsed);
-
   /********user modal **************/
   const [showModal, setShowModal] = useState(false);
 
@@ -42,7 +41,6 @@ const TopNavbar = ({ onShowCart }) => {
    */
   const logoutHandler = () => {
     AuthService.logout();
-
     setShowModal((prev) => !prev);
   };
 
@@ -93,29 +91,19 @@ const TopNavbar = ({ onShowCart }) => {
           </Search>
           <UserNav>
             <Ul>
-              <Link to="/login">
-                <Li>
-                  <FontAwesomeIcon icon="fa-solid fa-user" />
-                </Li>{" "}
-              </Link>
-
               <Li onClick={toggleUserModalHandler}>
-                <UserImage>
-                  <Image src={require("../../../image/user.JPG")} alt="user" />{" "}
-                  <span>Angus</span>
-                </UserImage>{" "}
+                {" "}
+                <User />
               </Li>
-
               <Li onClick={onShowCart}>
                 <CartIcon>
                   <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
-                  <Notification>{totalQuantity}</Notification>
+                  <Notification right="-1rem">{totalQuantity}</Notification>
                 </CartIcon>
               </Li>
             </Ul>
           </UserNav>{" "}
         </Wrapper>{" "}
-        {showModal && <UserModal onLogout={logoutHandler} />}
       </Header>{" "}
     </>
   );

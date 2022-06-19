@@ -105,6 +105,7 @@ export const UserNav = styled.nav`
 export const UserImage = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 
   gap: 1rem;
   width: 5rem;
@@ -129,6 +130,7 @@ export const Ul = styled.ul`
   }
 `;
 export const Li = styled.li`
+  position: relative;
   cursor: pointer;
 
   @media ${devices.mobileL} {
@@ -162,7 +164,7 @@ export const UserIcon = styled.div`
 export const Notification = styled.span`
   position: absolute;
   top: -0.5rem;
-  right: ${(props) => props.right || "0"};
+  right: ${(props) => props.right || "3rem"};
 
   height: 1.4rem;
   width: 1.4rem;

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AuthService from "../../../services/authApi";
 import { changePageView } from "../../../slices/ShippingInfo-slice";
 import { useDispatch } from "react-redux";
+import User from "../user";
 
 import {
   Header,
@@ -65,21 +66,15 @@ const CartNavbar = (props) => {
           {props.children}
           <UserNav>
             <Ul>
-              {/* <Link to="/login">
-                <Li>
-                  <FontAwesomeIcon icon="fa-solid fa-user" />
-                </Li>{" "}
-              </Link> */}
-
               <Li onClick={toggleUserModalHandler}>
                 <UserImage>
-                  <Image src={require("../../../image/user.JPG")} alt="user" />{" "}
+                  <User />
                 </UserImage>{" "}
+                {showModal && <UserModal onLogout={logoutHandler} />}
               </Li>
             </Ul>
           </UserNav>{" "}
         </Wrapper>{" "}
-        {showModal && <UserModal onLogout={logoutHandler} />}
       </Header>{" "}
     </>
   );

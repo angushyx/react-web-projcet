@@ -8,7 +8,6 @@ import axios from "axios";
 import withReactContent from "sweetalert2-react-content";
 import CartList from "../../components/UI/CartList";
 import LoadingSpinner from "../UI/LoadingSpinner";
-import CartNavbar from "../Navbar/CartNavbar";
 import FormDialog from "../UI/Modal2";
 import Footer from "../UI/Footer";
 import Button from "../UI/Button";
@@ -117,6 +116,7 @@ const Confirm = () => {
         handleClose={handleClose}
         handleClickOpen={handleClickOpen}
       />
+
       <Container width="90%" maxWidth="100rem">
         <Headline>Please confirm and submit your order</Headline>
         <MainWrapper>

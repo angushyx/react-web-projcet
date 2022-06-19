@@ -1,14 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useLocation } from "react-router-dom";
-import UserModal from "../../UI/UserModal";
-import { ImageStyle } from "../../Payment/PaymentElement";
-import TemporaryDrawer from "../../UI/Drawer/Drawer";
 import Drawer from "@mui/material/Drawer";
 import CartList from "../../UI/CartList";
+import User from "../user";
+
 import {
   CartListWrapper,
   Container,
@@ -26,31 +23,30 @@ import {
 } from "../Navigation";
 
 const BottomNavbar = () => {
-  /********user modal **************/
+  // /********user modal **************/
+  // const [showModal, setShowModal] = useState(false);
+  // const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  // const googleLogin = JSON.parse(localStorage.getItem("profile"));
 
-  const [showModal, setShowModal] = useState(false);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-  const googleLogin = JSON.parse(localStorage.getItem("profile"));
+  // const navigator = useNavigate();
 
-  const navigator = useNavigate();
-
-  //for google login
-  const location = useLocation();
-  useEffect(() => {
-    const token = user?.token;
-    setUser(JSON.parse(localStorage.getItem("user")));
-  }, [location]);
+  // //for google login
+  // const location = useLocation();
+  // useEffect(() => {
+  //   const token = user?.token;
+  //   setUser(JSON.parse(localStorage.getItem("user")));
+  // }, [location]);
 
   // const authCtx = useContext(AuthContext);
-  const logoutHandler = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("profile");
-    navigator("/login");
-  };
+  // const logoutHandler = () => {
+  //   localStorage.removeItem("user");
+  //   localStorage.removeItem("profile");
+  //   navigator("/login");
+  // };
 
-  const toggleUserModalHandler = () => {
-    setShowModal((prev) => !prev);
-  };
+  // const toggleUserModalHandler = () => {
+  //   setShowModal((prev) => !prev);
+  // };
   /**************************************/
 
   const cartReduce = useSelector((state) => state.cartReducer);
@@ -87,7 +83,7 @@ const BottomNavbar = () => {
   // const authReducer = useSelector((state) => state.authReducer);
   const cartReducer = useSelector((state) => state.cartReducer);
 
-  const googleImage = googleLogin?.imageUrl;
+  // const googleImage = googleLogin?.imageUrl;
 
   const totalQuantity = cartReducer.totalQuantity;
 
@@ -104,41 +100,7 @@ const BottomNavbar = () => {
           radius="50%"
           bgc="var(--color-grey-light-1)"
         >
-          {user ? (
-            <>
-              <div onClick={toggleUserModalHandler}>
-                {showModal && <UserModal onLogout={logoutHandler} />}
-                <div>
-                  <ImageStyle
-                    width="5rem"
-                    height="5rem"
-                    style={{ borderRadius: "50%" }}
-                    src={user.user.imageUrl}
-                    alt="user avatar"
-                  />
-                </div>
-              </div>
-            </>
-          ) : googleLogin ? (
-            <>
-              <div onClick={toggleUserModalHandler}>
-                {showModal && <UserModal onLogout={logoutHandler} />}
-                <div>
-                  <ImageStyle
-                    width="5rem"
-                    height="5rem"
-                    style={{ borderRadius: "50%" }}
-                    src={googleImage}
-                    alt="user avatar"
-                  />
-                </div>
-              </div>
-            </>
-          ) : (
-            <Link to="/login">
-              <FontAwesomeIcon icon="fa-solid fa-user" />{" "}
-            </Link>
-          )}
+          <User />
         </IconStyle>
       </UserIcon>
       <Header>

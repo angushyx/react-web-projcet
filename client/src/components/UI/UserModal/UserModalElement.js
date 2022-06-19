@@ -7,7 +7,6 @@ export const DetailBox = styled.ul`
   background: var(--color-grey-dark-1);
   position: absolute;
   top: 6rem;
-
   left: -20rem;
   border-radius: 0.3rem;
 
