@@ -43,8 +43,6 @@ export default function TemporaryDrawer() {
     }
   };
 
-  const totalAmount = cartReducer.totalAmount.toFixed(2);
-
   const cartItems = cartList.map((item) => (
     <CartList
       key={item.id}
@@ -71,9 +69,9 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      {["left"].map((anchor) => (
+      {["bottom"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Hamburger onClick={toggleDrawer("left", true)}>
+          <Hamburger onClick={toggleDrawer("bottom", true)}>
             <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />{" "}
             <Notification right="-.5rem">
               {cartReducer.totalQuantity}
@@ -84,11 +82,10 @@ export default function TemporaryDrawer() {
             {" "}
             <Drawer
               style={{ position: "absolute" }}
-              anchor="left"
+              anchor="bottom"
               open={state[anchor]}
               onClose={toggleDrawer(anchor, false)}
             >
-              {" "}
               <CartListWrapper mt="0">
                 {cartList.length !== 0 ? (
                   <>

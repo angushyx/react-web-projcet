@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Drawer from "@mui/material/Drawer";
 import CartList from "../../UI/CartList";
 import User from "../user";
+import TemporaryDrawer from "../../UI/Drawer/Drawer";
 
 import {
   CartListWrapper,
@@ -115,11 +116,7 @@ const BottomNavbar = () => {
             style={{ height: "100%", display: "flex", alignItems: "center" }}
             to="/"
           >
-            <Drawer
-              anchor="bottom"
-              open={showCart}
-              onClose={toggleDrawer("bottom", false)}
-            />
+            <Drawer></Drawer>
             <IconStyle onClick={toggleDrawer("bottom", true)}>
               <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
               <Notification>{totalQuantity}</Notification>
