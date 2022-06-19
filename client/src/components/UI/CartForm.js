@@ -126,13 +126,3 @@ const CartForm = React.forwardRef((props, ref) => {
 });
 
 export default CartForm;
-//  <Input
-//    ref={amountInputRef}
-//    label="Amount"
-//    min="1"
-//    max="5"
-//    type="text"
-//    defaultValue="1"
-//    id="amount"
-//    value={props.itemAmount}
-//  />;

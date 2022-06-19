@@ -23,32 +23,6 @@ import {
 } from "../Navigation";
 
 const BottomNavbar = () => {
-  // /********user modal **************/
-  // const [showModal, setShowModal] = useState(false);
-  // const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-  // const googleLogin = JSON.parse(localStorage.getItem("profile"));
-
-  // const navigator = useNavigate();
-
-  // //for google login
-  // const location = useLocation();
-  // useEffect(() => {
-  //   const token = user?.token;
-  //   setUser(JSON.parse(localStorage.getItem("user")));
-  // }, [location]);
-
-  // const authCtx = useContext(AuthContext);
-  // const logoutHandler = () => {
-  //   localStorage.removeItem("user");
-  //   localStorage.removeItem("profile");
-  //   navigator("/login");
-  // };
-
-  // const toggleUserModalHandler = () => {
-  //   setShowModal((prev) => !prev);
-  // };
-  /**************************************/
-
   const cartReduce = useSelector((state) => state.cartReducer);
   const cartList = cartReduce.items;
   const totalAmount = cartReduce.totalAmount.toFixed(2);
@@ -80,11 +54,10 @@ const BottomNavbar = () => {
     setShowCart((prev) => !prev);
   };
 
-  // const authReducer = useSelector((state) => state.authReducer);
+  /**
+   * no
+   */
   const cartReducer = useSelector((state) => state.cartReducer);
-
-  // const googleImage = googleLogin?.imageUrl;
-
   const totalQuantity = cartReducer.totalQuantity;
 
   return (
@@ -146,35 +119,7 @@ const BottomNavbar = () => {
               anchor="bottom"
               open={showCart}
               onClose={toggleDrawer("bottom", false)}
-            >
-              {cartList.length !== 0 ? (
-                <CartListWrapper minH="60rem" mt="4.5rem">
-                  <Headline>
-                    {" "}
-                    <IconStyle
-                      position="absolute"
-                      top=".1rem"
-                      right="0.5rem"
-                      onClick={toggleDrawer("bottom", false)}
-                    >
-                      <FontAwesomeIcon
-                        icon="fa-solid fa-times"
-                        style={{
-                          zIndex: "1",
-                          cursor: "pointer",
-                          fontSize: "2rem",
-                        }}
-                      />
-                    </IconStyle>
-                    <div>cart</div>
-                    <div> $ {totalAmount} NTD</div>{" "}
-                  </Headline>
-                  <Container>{cartItems}</Container>{" "}
-                </CartListWrapper>
-              ) : (
-                <NoItem>購物車是空的...</NoItem>
-              )}{" "}
-            </Drawer>
+            />
             <IconStyle onClick={toggleDrawer("bottom", true)}>
               <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
               <Notification>{totalQuantity}</Notification>

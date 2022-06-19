@@ -164,7 +164,7 @@ export const UserIcon = styled.div`
 export const Notification = styled.span`
   position: absolute;
   top: -0.5rem;
-  right: ${(props) => props.right || "3rem"};
+  right: ${(props) => props.right || "0"};
 
   height: 1.4rem;
   width: 1.4rem;
