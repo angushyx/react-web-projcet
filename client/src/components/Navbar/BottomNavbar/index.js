@@ -3,16 +3,9 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Drawer from "@mui/material/Drawer";
-import CartList from "../../UI/CartList";
+import CartList, { NoItem, CartHeadline } from "../../UI/CartList";
 import User from "../user";
-import TemporaryDrawer from "../../UI/Drawer/Drawer";
-
-import {
-  CartListWrapper,
-  Container,
-  Headline,
-  NoItem,
-} from "../../UI/Drawer/Drawer";
+import { CartListWrapper, Container } from "../../UI/CartList/CartList";
 
 import {
   Header,
@@ -26,22 +19,6 @@ import {
 const BottomNavbar = () => {
   const cartReduce = useSelector((state) => state.cartReducer);
   const cartList = cartReduce.items;
-  const totalAmount = cartReduce.totalAmount.toFixed(2);
-  /**
-   * 拿到 cartList 後把
-   */
-  const cartItems = cartList.map((item) => (
-    <CartList
-      key={item.id}
-      id={item.id}
-      name={item.name}
-      price={item.price}
-      image={item.image}
-      description={item.description}
-      category={item.category}
-      amount={item.amount}
-    />
-  ));
 
   const [showCart, setShowCart] = useState(false);
 
@@ -55,10 +32,8 @@ const BottomNavbar = () => {
     setShowCart((prev) => !prev);
   };
 
-  /**
-   * no
-   */
   const cartReducer = useSelector((state) => state.cartReducer);
+
   const totalQuantity = cartReducer.totalQuantity;
 
   return (
@@ -116,7 +91,24 @@ const BottomNavbar = () => {
             style={{ height: "100%", display: "flex", alignItems: "center" }}
             to="/"
           >
-            <Drawer></Drawer>
+            <Drawer
+              anchor="bottom"
+              open={showCart}
+              onClose={toggleDrawer("bottom", false)}
+            >
+              {cartList.length !== 0 ? (
+                <CartListWrapper minH="60rem" mt="4.5rem">
+                  <>
+                    <CartHeadline />
+                    <Container>
+                      <CartList />
+                    </Container>
+                  </>
+                </CartListWrapper>
+              ) : (
+                <NoItem>購物車是空的...</NoItem>
+              )}{" "}
+            </Drawer>
             <IconStyle onClick={toggleDrawer("bottom", true)}>
               <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
               <Notification>{totalQuantity}</Notification>

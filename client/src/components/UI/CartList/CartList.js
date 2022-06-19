@@ -19,6 +19,15 @@ export const CartContainer = styled.div`
   }
 `;
 
+export const Container = styled.div`
+  height: 50%;
+  width: 100%;
+  @media ${devices.tablet} {
+    width: 90%;
+    margin: 0 auto;
+  }
+`;
+
 export const CartListWrapper = styled.div`
   position: relative;
   overflow: scroll;

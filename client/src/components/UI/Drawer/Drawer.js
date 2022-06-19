@@ -6,21 +6,9 @@ import { Notification } from "../../Navbar/Navigation";
 import { useNavigate } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
 import { useSelector } from "react-redux";
-import CartList from "../CartList";
+import CartList, { NoItem, CartHeadline } from "../CartList";
 import { BtnStyle } from "../Button";
-import styled from "styled-components";
-import { devices } from "../../../MediaQuery/MediaQuery";
-import { NoItem, CartHeadline } from "../CartList";
-import { CartListWrapper } from "../CartList/CartList";
-
-const Container = styled.div`
-  height: 50%;
-  width: 100%;
-  @media ${devices.tablet} {
-    width: 90%;
-    margin: 0 auto;
-  }
-`;
+import { CartListWrapper, Container } from "../CartList/CartList";
 
 export default function TemporaryDrawer() {
   const navigate = useNavigate();
@@ -43,19 +31,6 @@ export default function TemporaryDrawer() {
     }
   };
 
-  const cartItems = cartList.map((item) => (
-    <CartList
-      key={item.id}
-      id={item.id}
-      name={item.name}
-      price={item.price}
-      image={item.image}
-      description={item.description}
-      category={item.category}
-      amount={item.amount}
-    />
-  ));
-
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -69,9 +44,9 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      {["bottom"].map((anchor) => (
+      {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Hamburger onClick={toggleDrawer("bottom", true)}>
+          <Hamburger onClick={toggleDrawer("left", true)}>
             <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />{" "}
             <Notification right="-.5rem">
               {cartReducer.totalQuantity}
@@ -79,23 +54,24 @@ export default function TemporaryDrawer() {
           </Hamburger>
 
           <div>
-            {" "}
             <Drawer
               style={{ position: "absolute" }}
-              anchor="bottom"
+              anchor="left"
               open={state[anchor]}
               onClose={toggleDrawer(anchor, false)}
             >
-              <CartListWrapper mt="0">
-                {cartList.length !== 0 ? (
+              {cartList.length !== 0 ? (
+                <CartListWrapper mt="0">
                   <>
                     <CartHeadline />
-                    <Container>{cartItems}</Container>
-                  </>
-                ) : (
-                  <NoItem />
-                )}{" "}
-              </CartListWrapper>
+                    <Container>
+                      <CartList />
+                    </Container>
+                  </>{" "}
+                </CartListWrapper>
+              ) : (
+                <NoItem />
+              )}{" "}
               <BtnStyle
                 style={{
                   alignSelf: "center",

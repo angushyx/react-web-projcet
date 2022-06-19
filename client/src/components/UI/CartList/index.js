@@ -48,12 +48,10 @@ export const CartHeadline = () => {
   );
 };
 
-const CartList = (props) => {
+const CartList = () => {
   const dispatch = useDispatch();
+  const cartList = useSelector((state) => state.cartReducer.items);
 
-  const { id, image, name, price, description, amount } = props;
-  // console.log(id);
-  // /**
   //  * 把購物車中的其中一個 Item 刪除的函式，還沒寫完。
   //  * @param {event} e
   //  */
@@ -68,45 +66,45 @@ const CartList = (props) => {
     dispatch(removeItemFromCart(targetId));
   };
 
-  /**
-   * 需要找到相同 index 的
-   */
-
   return (
     <>
-      <ProductWrapper>
-        <ProductDetail data-id={id}>
-          <FlexWrapper data-id={id}>
-            <ImageWrapper>
-              <ImageStyle
-                height="8rem"
-                width="8rem"
-                src={image}
-                alt="product"
-              />{" "}
-            </ImageWrapper>{" "}
-            <TextWrapper>
-              <h1>{name}</h1>
-              <h3>{description}</h3>
-            </TextWrapper>
-            <AmountWrapper>
-              <CartForm itemAmount={amount} id={id} />
-              <PriceText>
-                NT$&nbsp;<span>{price}</span>
-              </PriceText>{" "}
-            </AmountWrapper>{" "}
-            <TrashIcon
-              hoverBgc="var(--color-primary-light)"
-              radius="50%"
-              fontSize="2rem"
-              hBgc="var(--color-primary-light)"
-              onClick={cartItemRemoveHandler}
-            >
-              <FontAwesomeIcon icon="fa-solid fa-trash" />
-            </TrashIcon>
-          </FlexWrapper>{" "}
-        </ProductDetail>{" "}
-      </ProductWrapper>{" "}
+      {cartList.map((item) => (
+        <>
+          <ProductWrapper key={item.id}>
+            <ProductDetail data-id={item.id}>
+              <FlexWrapper data-id={item.id}>
+                <ImageWrapper>
+                  <ImageStyle
+                    height="8rem"
+                    width="8rem"
+                    src={item.image}
+                    alt="product"
+                  />{" "}
+                </ImageWrapper>{" "}
+                <TextWrapper>
+                  <h1>{item.name}</h1>
+                  <h3>{item.description}</h3>
+                </TextWrapper>
+                <AmountWrapper>
+                  <CartForm itemAmount={item.amount} id={item.id} />
+                  <PriceText>
+                    NT$&nbsp;<span>{item.price}</span>
+                  </PriceText>{" "}
+                </AmountWrapper>{" "}
+                <TrashIcon
+                  hoverBgc="var(--color-primary-light)"
+                  radius="50%"
+                  fontSize="2rem"
+                  hBgc="var(--color-primary-light)"
+                  onClick={cartItemRemoveHandler}
+                >
+                  <FontAwesomeIcon icon="fa-solid fa-trash" />
+                </TrashIcon>
+              </FlexWrapper>{" "}
+            </ProductDetail>{" "}
+          </ProductWrapper>{" "}
+        </>
+      ))}
     </>
   );
 };
