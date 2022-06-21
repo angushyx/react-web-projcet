@@ -5,7 +5,9 @@ import axios from "axios";
 //   baseURL,
 // });
 // import { signIn } from "../slices/auth-slice";
-const API = axios.create({ baseURL: "http://localhost:8080/api" });
+const API = axios.create({
+  baseURL: "https://reactmealapp.herokuapp.com/api",
+});
 
 // export const getCartItem = () => API.get("/carts");
 // export const addItemToCart = (newCartItem) => API.post("cart", newCartItem);

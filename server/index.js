@@ -13,6 +13,7 @@ const authRoutes = require("./routes/auth-routes");
 const mealRoutes = require("./routes/meal-routes");
 
 const cors = require("cors");
+const path = require("path");
 
 mongoose
   .connect(process.env.DB_CONNECT, {
@@ -33,6 +34,11 @@ app.use(session({ secret: process.env.PASSPORT_SECRET }));
 app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(express.static(path.join(__dirname, "/client")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+});
 
 app.use("/api/users", authRoutes);
 app.use("/api/meals", mealRoutes);
